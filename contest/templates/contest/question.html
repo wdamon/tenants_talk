@@ -1,0 +1,38 @@
+{% extends 'contest/base.html' %}
+{% block content %}
+        <h2>{{ question.question_text }}</h2>
+        <div class="form-check">
+            <ul style="list-style: none;">
+              {% for c in choices %}
+              {% if not c.leaf  %}
+                <li style="padding-bottom: 5px"> <a class="btn btn-lg" style="background-color: #ffb74d; white-space: normal; width:95%" href="/contest/{{c.children.id}}"role="button"> {{ c.choice_text }}
+                </a>
+              {% if c.tooltip %}
+                <a tabindex="0" id= "{{forloop.counter}}" class="fa fa-question-circle-o fa-lg" role="button" style="color:black" aria-hidden="true" data-toggle="popover" data-placement="right" data-trigger="focus" title="Tooltip"  data-content="{{c.tooltip}}"></a>
+                </li>
+                <script>
+                $(function () {
+                  $('#{{forloop.counter}}').popover();
+                });
+                </script>
+              {% endif %}
+              {% else %}
+              <li style="padding-bottom: 5px"> <a class="btn btn-lg" style="background-color: #ffb74d; white-space: normal; width:95%" href="/contest/fletter/{{c.leaf}}"role="button"> {{ c.choice_text }}
+              </a>
+              {% if c.tooltip %}
+              <a tabindex="0" id= "{{forloop.counter}}" class="fa fa-question-circle-o fa-lg" role="button" style="color:black" aria-hidden="true" data-toggle="popover" data-placement="right" data-trigger="focus" title="Tooltip"  data-content="{{c.tooltip}}"></a>
+              </li>
+
+              <script>
+              $(function () {
+                $('#{{forloop.counter}}').popover();
+              });
+              </script>
+              {% endif %}
+              {% endif %}
+              {% endfor %}
+
+            </ul>
+      </div>
+    </div>
+{% endblock %}

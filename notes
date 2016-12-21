@@ -1,0 +1,46 @@
+class Questions(models.Model):
+    a list of its children.
+    text = model.CharField(max_length=100)
+    an optional boolean - is final field
+
+class Choice(models.Model):
+  question = models.ForeignKey(Questions, on_delete=models.CASCADE)
+  choice_text = models.CharField(max_length=200)
+  <script>
+      function map_init_basic(map, options) {
+          var geojsonPointLayer = new L.GeoJSON.AJAX("{% url 'points' %}", {
+            onEachFeature:function(feature, layer) {
+              layer.bindPopup(feature.properties.address.toString());
+            }
+          });
+          geojsonPointLayer.addTo(map);
+        }
+  </script>
+
+  function popUp(f,l){
+        var out = [];
+        if (f.evictreason){
+            for(key in f.evictreason){
+                out.push(key+": "+f.evictreason[key]);
+            }
+            l.bindPopup(out.join("<br />"));
+        }
+    }
+
+      var marker = L.marker([49.2698486, -123.1488476]).addTo(m);
+
+      [ {"type": "Feature",
+                        "properties": {
+                            "id":  ident,
+                            "popupContent":  "id=%s" % (ident,)
+                            },
+                        "geometry": {
+                            "type": "Point",
+                            "coordinates": [loni,lati] }}
+                        for ident,loni,lati in zip(address,lon,lat) ]
+
+
+
+var geojsonPointLayer = {{ evc_serialized|safe }};
+
+L.geoJson(geojsonPointLayer).addTo(m);
