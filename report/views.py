@@ -23,6 +23,9 @@ def map(request):
     evc_serialized = GeoJSONSerializer().serialize(Eviction.objects.all(), use_natural_keys=True, with_modelname=False)
     return render(request, 'report/map.html', {'evc_serialized':evc_serialized})
 
+def map2(request):
+    return render(request, 'report/map2.html')
+
 def form(request):
     form = ReportForm()
     return render(request, 'report/form.html', {'form':form})
@@ -36,6 +39,9 @@ def post_report(request):
 
     else:
         print form.errors
+
+def advocates(request):
+    return(request, 'report/advocates.html')
 
 class MapLayer(GeoJSONLayerView):
     #Options

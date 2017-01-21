@@ -11,4 +11,7 @@ urlpatterns = [
     url(r'^map/', views.map, name='map'),
     url(r'^form/post_url/$', views.post_report, name='post_report'),
     url(r'^data.geojson$', GeoJSONLayerView.as_view(model=Eviction), name='data'),
+    url(r'^advocates/', views.advocates, name='advocates'),
+    url(r'^map2/', views.map2, name='map2'),
+
     ]

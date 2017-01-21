@@ -1,0 +1,159 @@
+{% extends 'contest/base.html' %}
+{% block content %}
+<div class="row">
+  <div class="col-md-12 col-sm-6 col-xs-12">
+    <div id="step1">
+    <h1> <b>Step 1:</b> </h1>
+      <p class="lead">
+        Please answer these questions to the best of your ability
+      </p>
+      <div class="well">
+        <div class="panel panel-default">
+           <div class="panel-heading">
+             <h3 class="panel-title">Request for Landlord's Name and Address</h3>
+           </div>
+        </div>
+          <div class="panel-body">
+            <form class="form row-border" action="{% url 'post_report' %}" method="POST">
+            {% csrf_token %}
+              <div class="form-group">
+                <label class="control-label" for="datetimepicker12">Date</label>
+                <input class="form-control" id="datetimepicker12" name="date" placeholder="YYYY-MM-DD" title="" type="text" required /></div>
+              <div id="autoform">
+
+              </div>
+            </form>
+          </div>
+      </div>
+    </div>
+      <div id="step2" style="display:none; text-align: left" class="col-md-12">
+        <div>
+          <h1> <b>  Step 2: </b> </h1>
+          <p class ="lead">
+          Send this form to your landlord. Copy and paste the text or just print it.
+          </p>
+        </div>
+        <hr/>
+        <div id="printarea">
+          <h4>Request for Landlord’s Legal Name and Address</h4>
+          <hr/>
+          <div id="dateprint">Date: </div>
+            <br/>
+          <div class="tnameprint">Tenant's Name: %text%</div>
+            <br/>
+            <div class="taddressprint">%text%</div>
+            <div class="tcityprint">%text% BC,</div>
+            <div class="tpostalprint">%text%</div>
+
+            <br/>
+            <div class="mdeliveryprint">Method of Delivery: %text%</div>
+            <br/>
+
+            <div class="lnameprint">Dear %text%,</div>
+            <br/>
+            Section 13 of the Residential Tenancy Act requires that landlords include their legal name and an address for service in the tenancy agreement.  Please provide me with this information, as you did not include it in my tenancy agreement.
+            <br/> <br/>
+            If you are unwilling, I will need to find the information through a land title search, and have the right to apply for dispute resolution at the Residential Tenancy Branch (RTB) to recover the cost from you.
+            <br/><br/>
+            For additional information on this matter, please refer to the RTA
+             (http://www.bclaws.ca/EPLibraries/bclaws_new/document/ID/freeside/00_02078_01) or contact the RTB (www.gov.bc.ca/landlordtenant) at 604-660-1020 or 1-800-665-8779.
+            <br/> <br/>
+            Thank you, <br/><br/><br/>
+
+            _______________
+            <div class="tnameprint">%text%</div>
+      </div>
+      <br/>
+      <div style="padding-bottom:5em">
+      <button class="btn btn-success" onclick="printDiv('printarea')" style="float:right">
+        <i class="fa fa-print" aria-hidden="true"></i> Print Letter
+      </button>
+    </div>
+      </div>
+    </div>
+
+             <button  class="btn btn-primary" id="back" disabled="disabled" type="button" onClick="refreshPage()">
+               <i class="fa fa-arrow-left" aria-hidden="true"></i> Back
+             </button>
+             <button class="btn btn-primary" id="next"> Next
+               <i class="fa fa-arrow-right" aria-hidden="true"></i>
+             </button>
+             <hr/>
+
+    </div>
+  </div>
+</div>
+</div>
+    <script>
+    var dict = {"tname":{'id':"tname", "name":"Your Name", "pholder":"Your First and Last Name"}, "address":{"id":"taddress","name":"Your Address", "pholder":"123 Main Street"}, "city":{"id":"tcity", "name":"Your City of Residence", "pholder":"Cityville"}, "postal":{"id":"tpostal", "name": "Your Postal Code", "pholder":"V5Y1J2"}, "lname": {"id": "lname" ,"name": "Your Landlord's Name", "pholder": "Jane Doe"}, "mdelivery":{"id":"mdelivery", "name": "Method of Delivery", "pholder": "Describe how you are giving this letter to your landlord (i.e email, in person, etc). Use complete sentences."}}
+    var formgroup = '<div class="form-group"><label class="control-label" for="%id%">%name%</label> <input class="form-control" id="%id%" name="%name%" placeholder="%pholder%" title="" type="text" required /></div>'
+    window.onload = function() {
+        for (var fgroup in dict) {
+          formattedgroup = formgroup.replace(/%name%/g, dict[fgroup]["name"]).replace(/%id%/g, dict[fgroup]["id"]).replace(/%pholder%/g, dict[fgroup]["pholder"]);
+          $("#autoform").append(formattedgroup);
+        };
+        $input = $("#mdelivery")
+        $textarea = $("<textarea></textarea>").attr({
+        class: 'form-control',
+        id: $input.attr('id'),
+        name: $input.attr('name'),
+        placeholder: 'Describe how you are giving this letter to your landlord (i.e email, in person, etc)',
+        cols: '40',
+        rows: '2'
+        });
+        $input.after($textarea).remove();
+
+        $().attr('type', 'textarea');
+      };
+    var clicks=0;
+    document.getElementById("next").addEventListener("click", function( event ) {
+        if (clicks == 0){
+          var date = $("#datetimepicker12").val();
+          $('#dateprint').append(date);
+
+          for (var fgroup in dict) {
+            dict[fgroup]["var"] = $("#"+dict[fgroup]["id"]).val();
+            $("." + dict[fgroup]["id"]+"print").each(function(){
+              $(this).text(function(){
+              return $(this).text().replace(/%text%/, dict[fgroup]["var"]);
+              });
+            });
+            }
+
+          document.getElementById('step1').style.display = 'none';
+          document.getElementById('step2').style.display = 'block';
+          $("#back").attr("disabled", false);
+          clicks = 1;
+        }
+        else {
+        location.href='/contest/landing/';
+      };
+    }, false);
+   $(function () {
+       $('#datetimepicker12').datetimepicker({
+            format: 'YYYY-MM-DD'
+       });
+   });
+
+  function refreshPage(){
+    clicks = 0;
+    document.getElementById('step1').style.display = 'block';
+    document.getElementById('step2').style.display = 'none';
+    for (var fgroup in dict) {
+      $("." + dict[fgroup]["id"]+"print").each(function(){
+          $(this).text(function(){
+            return $(this).text().replace(dict[fgroup]["var"], "%text%");
+          });
+        });
+    }
+  }
+  function printDiv(divName) {
+
+   var printContents = document.getElementById(divName).innerHTML;
+   w=window.open();
+   w.document.write(printContents);
+   w.print();
+   w.close();
+  }
+   </script>
+{% endblock %}

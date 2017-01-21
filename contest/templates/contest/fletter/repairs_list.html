@@ -1,0 +1,166 @@
+{% extends 'contest/base.html' %}
+{% block content %}
+<div class="row">
+  <div class="col-md-12 col-sm-6 col-xs-12">
+    <div id="step1">
+    <h1> <b>Step 1:</b> </h1>
+      <p class="lead">
+        Please answer these questions to the best of your ability
+      </p>
+      <div class="well">
+        <div class="panel panel-default">
+           <div class="panel-heading">
+             <h3 class="panel-title">Request for Repairs</h3>
+           </div>
+        </div>
+          <div class="panel-body">
+            <form class="form row-border" action="{% url 'post_report' %}" method="POST">
+            {% csrf_token %}
+              <div class="form-group">
+                <label class="control-label" for="datetimepicker12">Today's Date</label>
+                <input class="form-control" id="datetimepicker12" name="date" placeholder="YYYY-MM-DD" title="" type="text" required /></div>
+              <div id="autoform">
+
+              </div>
+            </form>
+          </div>
+      </div>
+    </div>
+      <div id="step2" style="display:none; text-align: left" class="col-md-12">
+        <div>
+          <h1> <b>  Step 2: </b> </h1>
+          <p class ="lead">
+          Send this form to your landlord. Copy and paste the text or just print it.
+          </p>
+        </div>
+        <hr/>
+        <div id="printarea">
+          <h4>Request for Repairs</h4>
+          <hr/>
+          <div id="dateprint">Date: </div>
+            <br/>
+          <div class="tnameprint">Tenant's Name: %text%</div>
+            <br/>
+            <u> Tenant's Address</u>:
+            <br/>
+            <div class="taddressprint">%text%</div>
+            <div class="tcityprint">%text%, BC</div>
+            <div class="tpostalprint">%text%</div>
+
+            <br/>
+            <div class="lnameprint">Landlord's Name: %text%</div>
+            <br/>
+            <u> Landlord's Address</u>:
+            <br/>
+            <div class="laddressprint">%text%</div>
+            <div class="lcityprint">%text%, BC</div>
+            <div class="lpostalprint">%text%</div>
+            <br/>
+            <div class="lnameprint">Dear %text%,</div>
+            <br/>
+            This is a formal request for the following repair(s):<br/>
+            <br/>
+            <div class="repairsprint">%text%</div>
+            <br/><br/>
+            Section 32(1) of the Residential Tenancy Act (RTA) (www.bclaws.ca/EPLibraries/bclaws_new/document/ID/freeside/00_02078_01#section32) states
+            <br/><br/>
+            <div style="margin-left:5%">
+            (1)	A landlord must provide and maintain residential property in a state of decoration and repair that
+              <br/><div style="margin-left:5%">
+              (a)	complies with the health, safety and housing standards required by law, and
+              <br/>
+              (b)	having regard to the age, character and location of the rental unit, makes it suitable for occupation by a tenant.
+              </div>
+            </div><br/>
+            <br/>
+            I am hoping that we can resolve the above issue on or before <b><div class="rdateprint"></div></b> without having to apply for dispute resolution with the Residential Tenancy Branch (RTB). If not completed by the requested date, I have the right to take legal action through the RTB.
+          <br/><br/>
+          For additional information on this matter, please refer to Residential Tenancy Branch Policy Guideline #1:<br/> “Landlord and Tenant – Responsibility for Residential Premises” (www2.gov.bc.ca/gov/DownloadAsset?assetId=90C1FAA5B4CE4DD6A4C810FA241AE8BB&filename=gl01.pdf) or contact the Residential Tenancy Branch (www.gov.bc.ca/landlordtenant) at 604-660-1020 or 1-800-665-8779.
+            <br/> <br/>
+            Thank you, <br/><br/><br/>
+
+            _______________
+            <div class="tnameprint">%text%</div>
+      </div>
+      <br/>
+      <div style="padding-bottom:5em">
+      <button class="btn btn-success" onclick="printDiv('printarea')" style="float:right">
+        <i class="fa fa-print" aria-hidden="true"></i> Print Letter
+      </button>
+    </div>
+      </div>
+    </div>
+
+             <button  class="btn btn-primary" id="back" disabled="disabled" type="button" onClick="refreshPage()">
+               <i class="fa fa-arrow-left" aria-hidden="true"></i> Back
+             </button>
+             <button class="btn btn-primary" id="next"> Next
+               <i class="fa fa-arrow-right" aria-hidden="true"></i>
+             </button>
+             <hr/>
+
+    </div>
+  </div>
+</div>
+</div>
+<script>
+    var dict = repairsdict;
+
+    window.onload = function() {
+        for (var fgroup in dict) {
+          formattedgroup = formgroup.replace(/%name%/g, dict[fgroup]["name"]).replace(/%id%/g, dict[fgroup]["id"]).replace(/%pholder%/g, dict[fgroup]["pholder"]);
+          $("#autoform").append(formattedgroup);
+        };
+        textareafy(dict["repairs"], 40, 4);
+      };
+    var clicks = 0;
+    document.getElementById("next").addEventListener("click", function( event ) {
+      if (clicks == 0) {
+        var date = $("#datetimepicker12").val();
+        $('#dateprint').append(date);
+
+        for (var fgroup in dict) {
+          dict[fgroup]["var"] = $("#"+dict[fgroup]["id"]).val();
+          $("." + dict[fgroup]["id"]+"print").each(function(){
+            $(this).text(function(){
+            return $(this).text().replace(/%text%/, dict[fgroup]["var"]);
+            });
+          });
+          }
+
+        document.getElementById('step1').style.display = 'none';
+        document.getElementById('step2').style.display = 'block';
+        $("#back").attr("disabled", false);
+        clicks = 1;
+      } else {
+        location.href='/contest/landing/';
+      }
+    }, false);
+   $(function () {
+       $('#datetimepicker12').datetimepicker({
+            format: 'YYYY-MM-DD'
+       });
+   });
+
+  function refreshPage(){
+    clicks = 0;
+    document.getElementById('step1').style.display = 'block';
+    document.getElementById('step2').style.display = 'none';
+    for (var fgroup in dict) {
+      $("." + dict[fgroup]["id"]+"print").each(function(){
+          $(this).text(function(){
+            return $(this).text().replace(dict[fgroup]["var"], "%text%");
+          });
+        });
+    }
+  }
+  function printDiv(divName) {
+
+   var printContents = document.getElementById(divName).innerHTML;
+   w=window.open();
+   w.document.write(printContents);
+   w.print();
+   w.close();
+  }
+   </script>
+{% endblock %}

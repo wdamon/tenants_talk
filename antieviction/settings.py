@@ -12,21 +12,12 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 # -*- coding: utf-8 -*-
 import os
 import dj_database_url
-
+from local_settings import *
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'f_&x6a=_z17kfl%mbdmb%ypt1coi$ckq*f3rc#%1-$jylqf0)&'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-GOOGLE_API_KEY = 'AIzaSyBfALoA4Ig1n2wthbL6A_slTI9AZMhsSQg'
-ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 

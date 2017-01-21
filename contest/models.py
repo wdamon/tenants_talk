@@ -21,17 +21,18 @@ class Choice(models.Model):
         return self.name
 
 class cform(models.Model):
-    category = models.CharField(max_length=100)
-    tname = models.CharField(max_length=100)
-    lname = models.CharField(max_length=100)
-    laddress = models.CharField(max_length=100)
-    lcity = models.CharField(max_length=100)
-    lpostal = models.CharField(max_length=100)
-    deposittotal = models.IntegerField()
-    faddress = models.CharField(max_length=100)
-    fcity = models.CharField(max_length=100)
-    fprovince = models.CharField(max_length=100)
-    fpostal = models.CharField(max_length=100)
+    date = models.DateField(blank=True)
+    tname = models.CharField(max_length=100, blank=True)
+    address = models.CharField(max_length=100, blank=True)
+    city = models.CharField(max_length=100, blank=True)
+    postal = models.CharField(max_length=100, blank=True)
+    mdelivery = models.CharField(max_length=200, blank=True)
+    deposittotal = models.IntegerField(blank=True)
+    lname = models.CharField(max_length=100, blank=True)
+    laddress = models.CharField(max_length=100, blank=True)
+    lcity = models.CharField(max_length=100, blank=True)
+    lpostal = models.CharField(max_length=100, blank=True)
+
 
     def __str__(self):
         return self.address

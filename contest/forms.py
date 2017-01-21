@@ -12,12 +12,9 @@ CATEGORIES = (
 )
 
 class CForm(forms.ModelForm):
-    """page_slug tells us the category which tells the form what to display and the
-    view what template to use
-    """
-
-    forms.ChoiceField(choices=CATEGORIES, required=True)
 
     class Meta:
         model = cform
-        fields = ['category', 'tname', 'lname','laddress', 'lcity', 'lpostal', 'deposittotal', 'faddress', 'fcity', 'fprovince', 'fpostal']
+        fields = ['date', 'tname', 'address', 'city', 'postal', 'deposittotal', 'mdelivery', 'lname', 'laddress', 'lcity', 'lpostal']
+        labels = {'date': ('Date'), 'tname': ('Your First and Last Name'), 'address': ('Your Current Address'), 'city': ('Your Current City'), 'postal': ('Your Current Postal Code'), 'mdelivery': ('Describe how you are giving this letter to your landlord (i.e email, in person, etc)'), 'deposittotal': ('The Total Amount of Your Security Deposit'), 'lname': ('Your Landlord&#39;s Name'), 'laddress': ('Your Landlord&#39;s Address'), 'lcity': ('Your Landlord&#39;s Current City'), 'lpostal': ('Your Landlord&#39;s Current Postal Code') }
+        widgets = {'date': forms.DateInput(attrs={'id': 'datetimepicker12'})}

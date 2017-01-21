@@ -1,0 +1,12 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.DS_Store
+*local_settings.py
+contest/notes.txt
+contest/migrations
+report/migrations
+
+# Django stuff:
+*.log
+*.pot
