@@ -6,3 +6,4 @@ django_leaflet==0.19.0
 whitenoise==3.2.2
 django_jsonfield==1.0.1
 django-bootstrap3==8.1.0
+gunicorn==19.6.0
