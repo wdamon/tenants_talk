@@ -6,7 +6,8 @@ __pycache__/
 contest/notes.txt
 contest/migrations
 report/migrations
-
+report/static
+venv
 # Django stuff:
 *.log
 *.pot
