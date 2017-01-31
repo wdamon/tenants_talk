@@ -5,7 +5,6 @@ from contest.models import Question, Choice
 from contest.forms import CForm
 from django.http import HttpResponseRedirect, HttpResponse
 
-
 def contest(request):
     return render(request, 'contest/contest.html')
 
