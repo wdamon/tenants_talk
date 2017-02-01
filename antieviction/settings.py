@@ -80,9 +80,12 @@ WSGI_APPLICATION = 'antieviction.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 # from https://aliteralmind.wordpress.com/2014/09/21/jquery_django_tutorial/
-DATABASES['default'] = dj_database_url.config()
-DATABASES['default']['CONN_MAX_AGE'] = 500
 
+DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
+# Update database configuration with $DATABASE_URL.
+
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
 
