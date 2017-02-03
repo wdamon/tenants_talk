@@ -20,7 +20,8 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: don't run with debug turned on in production!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 'f_&x6a=_z17kfl%mbdmb%ypt1coi$ckq*f3rc#%1-$jylqf0)&'
+#os.environ.get('SECRET_KEY')
 DEBUG = True
 ALLOWED_HOSTS = ['*']
 
@@ -80,12 +81,23 @@ WSGI_APPLICATION = 'antieviction.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 # from https://aliteralmind.wordpress.com/2014/09/21/jquery_django_tutorial/
-
-DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'tenants',
+        'USER': 'will',
+        'PASSWORD': 'U1L3I3S7es',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
+#DATABASES['default'] = {'default': dj_database_url.config(default='postgres://will:U1L3I3S7es@localhost/tenant')}
 # Update database configuration with $DATABASE_URL.
 
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+#db_from_env = dj_database_url.config(conn_max_age=500)
+#DATABASES['default'].update(db_from_env)
+#DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
+#DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
 
