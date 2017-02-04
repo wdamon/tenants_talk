@@ -94,8 +94,8 @@ DATABASES = {
 #DATABASES['default'] = {'default': dj_database_url.config(default='postgres://will:U1L3I3S7es@localhost/tenant')}
 # Update database configuration with $DATABASE_URL.
 
-#db_from_env = dj_database_url.config(conn_max_age=500)
-#DATABASES['default'].update(db_from_env)
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 #DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
 #DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 # Password validation
