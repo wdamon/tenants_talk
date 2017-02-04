@@ -41,4 +41,4 @@ class ReportForm(forms.ModelForm):
         if data['status'] == 'OK':
             lat = data['results'][0]['geometry']['location']['lat']
             lng = data['results'][0]['geometry']['location']['lng']
-            return Decimal(lat), Decimal(lng)
+            return round(float(lat), 6), round(float(lng),6)

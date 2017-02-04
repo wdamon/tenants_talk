@@ -4,8 +4,6 @@ __pycache__/
 *.DS_Store
 *local_settings.py
 contest/notes.txt
-contest/migrations
-report/migrations
 report/static
 venv
 # Django stuff:

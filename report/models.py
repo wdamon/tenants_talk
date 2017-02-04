@@ -2,7 +2,6 @@ from __future__ import unicode_literals
 from django.db import models
 from jsonfield import JSONField
 from  djgeojson.fields import PointField
-from django.db import models
 
 CATEGORIES = (
     ('EVC', 'Eviction'),
@@ -19,8 +18,8 @@ class Eviction(models.Model):
     postal = models.CharField(max_length=100)
     evictdate = models.DateField()
     evictreason = models.CharField(max_length=500)
-    lat = models.DecimalField(max_digits=9, decimal_places=6)
-    lon = models.DecimalField(max_digits=9, decimal_places=6)
+    lat = models.FloatField()
+    lon = models.FloatField()
     geom = PointField()
 
     def __str__(self):
