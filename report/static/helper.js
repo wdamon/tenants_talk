@@ -130,7 +130,7 @@ var autoformbckg =
     "id": "repairs",
     "name":"Description of Repairs",
     "pholder":"Descriptive List of Repairs. Please use complete sentences. For instance, 'The upstairs sink is leaking.'"
-  },
+  },}
 
 </div>
 div id="autoformevd"></div>
