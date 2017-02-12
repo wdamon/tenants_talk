@@ -144,10 +144,10 @@ var repbackground = {
   "impact":{
     "id":"impact",
     "name":"Impact",
-    "pholder":"In a few short sentences describe how your landlord's neglegence has negatively effected you. These impacts can be physical, mental, or financial. Be as specific as possible and give dates and full names of witnesses wherever possible."},
-}
+    "pholder":"In a few short sentences describe how your landlord's neglegence has negatively effected you. These impacts can be physical, mental, or financial. Be as specific as possible and give dates and full names of witnesses wherever possible."}
+  }
 var evidence = {
-  "edate"{
+  "edate":{
     "id": "edate",
     "name":"Evidence Time Stap",
     "pholder":""},
