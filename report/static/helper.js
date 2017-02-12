@@ -156,7 +156,7 @@ var evidence = {
     "name":"Evidence Time Stap",
     "pholder":""},
 }
-repconclusion = {
+var repconclusion = {
   "damages":{
     "id":"damages",
     "name":"Damages",
