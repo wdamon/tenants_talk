@@ -63,7 +63,7 @@ function textareafy(fgroup, col, row) {
 
 }
 
-function populateform(dictionary) {
+function saveform(dictionary) {
   for (var fgroup in dictionary) {
     dictionary[fgroup]["var"] = $("#"+dictionary[fgroup]["id"]).val();
     $("." + dictionary[fgroup]["id"]+"print").each(function(){
@@ -73,6 +73,12 @@ function populateform(dictionary) {
     });
   }
 }
+
+function printform(num, dict) {
+  for (var fgroup in dict) {
+    formattedgroup = formgroup.replace(/%name%/g, dict[fgroup]["name"]).replace(/%id%/g, dict[fgroup]["id"]).replace(/%pholder%/g, dict[fgroup]["pholder"]);
+    $("#"+forms[num]).append(formattedgroup);
+  };
 
 
 

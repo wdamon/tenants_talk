@@ -476,6 +476,8 @@
       });
   //populates forms based on dicts
     var sections = [repintroduction, repbackground, evidence, repconclusion];
+  //form sections
+    var forms = [autoformevd, autoformconc, autoformintro, autoformbckg];
   //nav buttons at the bottom of the screen
     $(function(){
       $('.btnPrevious').click(function () {
@@ -493,7 +495,7 @@
         $('#dateprint').append(date);
 
         for (var section in sections){
-          populateform(section);
+          saveform(section);
         };
 
       } else if($('#navs > .active').attr('id') == 'nav5') {
@@ -506,10 +508,9 @@
     });
 
     window.onload = function() {
-        for (var fgroup in dict) {
-          formattedgroup = formgroup.replace(/%name%/g, dict[fgroup]["name"]).replace(/%id%/g, dict[fgroup]["id"]).replace(/%pholder%/g, dict[fgroup]["pholder"]);
-          $("#autoform").append(formattedgroup);
-        };
+      for (var dict in sections) {
+        printform(dict, sections[dict]);
+      }
     };
   $(function () {
         $('#datetimepicker12').datetimepicker({
