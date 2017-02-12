@@ -69,7 +69,7 @@
               <li role="presentation" class="navstyle" id="nav2"><a href="#step2" aria-controls="step2" role="tab" data-toggle="tab">Serve your landlord</a></li>
               <li role="presentation" class="navstyle" id="nav3"><a href="#step3" aria-controls="step3" role="tab" data-toggle="tab">Prepare Evidence for your hearing</a></li>
               <li role="presentation" class="navstyle" id="nav4"><a href="#step4" aria-controls="step4" role="tab" data-toggle="tab">Write your written submission </a></li>
-              <li role="presentation" class="navstyle" id="nav5"><a href="#step5" aria-controls="step5" role="tab" data-toggle="tab">View and print your submission </a></li>
+              <li role="presentation" class="navstyle" "disabled" id="nav5"><a href="#step5" aria-controls="step5" role="tab" data-toggle="tab">View and print your submission </a></li>
             </ul>
         </div>
       </nav>
@@ -327,7 +327,7 @@
               <div class="panel panel-default" style="border:1px solid black; font-family:Work Sans">
                 <div class="panel-heading" role="tab" id="heading13">
                   <h4>
-                    <span></span>
+                    <span>Evidence</span>
                     <button type="button"class="btn btn-default pull-right" data-toggle="collapse" data-target="#body13" aria-expanded="false" aria-controls="Minimize">
                       <i class="fa fa-minus" aria-hidden="true"></i>
                     </button>
@@ -347,7 +347,7 @@
                 <div class="panel panel-default" style="border:1px solid black; font-family:Work Sans">
                   <div class="panel-heading" role="tab" id="headingTwelve">
                     <h4>
-                      <span>Concluision</span>
+                      <span>Conclusion</span>
                       <button type="button"class="btn btn-default pull-right" data-toggle="collapse" data-target="#conclusion" aria-expanded="false" aria-controls="Minimize">
                         <i class="fa fa-minus" aria-hidden="true"></i>
                       </button>
@@ -401,12 +401,14 @@
                       <br/>
                       <h4>Introduction<h4>
                       <br/>
-                      <p>On <div class="idateprint"> </div>we requested repairs from <div class="lnameprint"></div>. <div id="issuesummaryprint"></div>.</p>
-                      <p>On <div class="ldate"></div> we sent a letter requesting repairs specifying <div class="ddate"></div> as a deadline for repairs to be finished by.</p>
+                      <p>On <div class="idateprint"> %text% </div> <div id="issuesummaryprint">%text%</div>.</p>
+                      <p>In response, on <div class="ldate">%text%</div> we sent a letter requesting repairs specifying <div class="ddate">%text%</div> as a deadline for repairs to be finished by.</p>
+                      <p>The deadline has passed and the landlord has not finished repars. At this point, we request that the RTB take action to encourage repairs</p>
                       <br/>
+
                       <h4>Background</h4>
-                      <div class="repairsprint">%text%</div>
                       <br/><br/>
+                      <p><div class="bckground"> %text% </div></p>
                       Section 32(1) of the Residential Tenancy Act (RTA) (www.bclaws.ca/EPLibraries/bclaws_new/document/ID/freeside/00_02078_01#section32) states
                       <br/><br/>
                       <div style="margin-left:5%">
@@ -418,10 +420,14 @@
                         </div>
                       </div><br/>
                       <br/>
-                      I am hoping that we can resolve the above issue on or before <b><div class="rdateprint"></div></b> without having to apply for dispute resolution with the Residential Tenancy Branch (RTB). If not completed by the requested date, I have the right to take legal action through the RTB.
-                    <br/><br/>
-                    For additional information on this matter, please refer to Residential Tenancy Branch Policy Guideline #1:<br/> “Landlord and Tenant – Responsibility for Residential Premises” (www2.gov.bc.ca/gov/DownloadAsset?assetId=90C1FAA5B4CE4DD6A4C810FA241AE8BB&filename=gl01.pdf) or contact the Residential Tenancy Branch (www.gov.bc.ca/landlordtenant) at 604-660-1020 or 1-800-665-8779.
+                      Furthermore, the Residential Tenancy Branch Policy Guideline #1: “Landlord and Tenant – Responsibility for Residential Premises” clearly states these repairs are the landlord's responsibility.
                       <br/> <br/>
+                      These repairs are not trivial. As a result of the landlord's neglect <div class="impacts">%text%</div>.
+
+                    <h4>Evidence</h4>
+                    <br/><br/>
+
+
                       Thank you, <br/><br/><br/>
 
                       _______________
@@ -469,8 +475,8 @@
       .on( "mouseleave", function() {
         $( this ).removeClass( "active" );
       });
-  //populates a form based on dict
-    var dict = repairarbdict;
+  //populates forms based on dicts
+    var sections = [repintroduction, repbackground, evidence, repconclusion];
   //nav buttons at the bottom of the screen
     $(function(){
       $('.btnPrevious').click(function () {
@@ -483,16 +489,14 @@
 
       if($('#navs > .active').attr('id') == 'nav4'){
         $('#navs > .active').prev('li').find('a').tab('show');
+        $(".btnNext").attr("disabled", true);
         var date = $("#datetimepicker12").val();
         $('#dateprint').append(date);
-        for (var fgroup in dict) {
-          dict[fgroup]["var"] = $("#"+dict[fgroup]["id"]).val();
-          $("." + dict[fgroup]["id"]+"print").each(function(){
-            $(this).text(function(){
-              return $(this).text().replace(/%text%/, dict[fgroup]["var"]);
-            });
-          });
-        }
+
+        for (var section in sections){
+          populateform(section);
+        };
+
       } else if($('#navs > .active').attr('id') == 'nav5') {
               location.href='/contest/landing/';
       } else {
