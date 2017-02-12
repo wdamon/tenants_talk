@@ -78,7 +78,7 @@ function printform(num, dict) {
     formattedgroup = formgroup.replace(/%name%/g, dict[fgroup]["name"]).replace(/%id%/g, dict[fgroup]["id"]).replace(/%pholder%/g, dict[fgroup]["pholder"]);
     $("#"+forms[num]).append(formattedgroup);
   };
-
+}
 
 
 var repintroduction = {
