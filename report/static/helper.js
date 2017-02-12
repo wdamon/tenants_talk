@@ -2,8 +2,6 @@ var formgroup = '<div class="form-group"><label class="control-label" for="%id%"
 var jscript1 = 'var date = $("%id%").val();';
 var jscript2 =  '$("%printid%").append(date);';
 
-var sections = [repintroduction, repbackground, evidence, repconclusion];
-
 var repairsdict = {
   "tname":{
     "id":"tname",
@@ -151,4 +149,11 @@ var evidence = {
     "id": "edate",
     "name":"Evidence Time Stap",
     "pholder":""},
+}
+repconclusion = {
+  "damages":{
+    "id":"damages",
+    "name":"Damages",
+    "pholder":"Amount of money you are asking to get re-imbursed for. If you are asking for money back you should submit a Monetary order worksheet (http://www2.gov.bc.ca/assets/gov/housing-and-tenancy/residential-tenancies/forms/rtb21.pdf)"
+  }
 }
