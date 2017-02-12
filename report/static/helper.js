@@ -47,7 +47,7 @@ var repairsdict = {
     "id":"rdate",
     "name": "Reasonable Date for Completion of Repairs",
     "pholder": "Provide a deadline for the repairs to be finished by."}
-  }
+  };
 
 function textareafy(fgroup, col, row) {
   $input = $("#"+fgroup["id"]);
@@ -60,8 +60,7 @@ function textareafy(fgroup, col, row) {
     rows: row
   });
   $input.after($textarea).remove();
-
-}
+};
 
 function saveform(dictionary) {
   for (var fgroup in dictionary) {
@@ -72,7 +71,7 @@ function saveform(dictionary) {
       });
     });
   }
-}
+};
 
 function printform(num, dict) {
   for (var fgroup in dict) {
@@ -139,7 +138,7 @@ var repintroduction = {
       "id": "repairs",
       "name":"Description of Repairs",
       "pholder":"Descriptive List of Repairs. Please use complete sentences. For instance, 'The upstairs sink is leaking.'"}
-}
+};
 var repbackground = {
   "bckground":{
     "id": "bckground",
@@ -149,17 +148,17 @@ var repbackground = {
     "id":"impact",
     "name":"Impact",
     "pholder":"In a few short sentences describe how your landlord's neglegence has negatively effected you. These impacts can be physical, mental, or financial. Be as specific as possible and give dates and full names of witnesses wherever possible."}
-  }
+  };
 var evidence = {
   "edate":{
     "id": "edate",
     "name":"Evidence Time Stap",
     "pholder":""},
-}
+};
 var repconclusion = {
   "damages":{
     "id":"damages",
     "name":"Damages",
     "pholder":"Amount of money you are asking to get re-imbursed for. If you are asking for money back you should submit a Monetary order worksheet (http://www2.gov.bc.ca/assets/gov/housing-and-tenancy/residential-tenancies/forms/rtb21.pdf)"
   }
-}
+};
