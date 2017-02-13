@@ -479,24 +479,28 @@
   //form sections
     var forms = ["formevd", "formconc", "formintro", "formbckg"];
   //nav buttons at the bottom of the screen
-    $(function(){
+  //previous
       $('.btnPrevious').click(function () {
         if($('#navs > .active').attr('id') == 'nav1'){
           $(".btnPrevious").attr("disabled", true);
         }  else {
           $('#navs > .active').prev('li').find('a').tab('show');
+          $(".btnPrevious").attr("disabled", false);
         }
       });
+  //next
       $('.btnNext').click(function () {
          if($('#navs > .active').attr('id') == 'nav4'){
-          saveform(section);
+           for (var section in sections){
+             saveform(section);
+           }
         } else if($('#navs > .active').attr('id') == 'nav5') {
           location.href='/contest/landing/';
         } else {
         $('#navs > .active').next('li').find('a').tab('show');
         }
       });
-    });
+      
   //load forms
     window.onload = function() {
       for (var dict in sections) {
