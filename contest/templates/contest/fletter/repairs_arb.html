@@ -46,7 +46,7 @@
           <ul class="nav navbar-nav">
             <li><a href="{% url 'index'%}">Report a Landlord</a></li>
             <li><a href="{% url 'map' %}">Tenant Complaint Registry</a></li>
-            <li class="active"><a href="/contest">Tenant Robot Lawyer</a></li>
+            <li><a href="/contest">Tenant Robot Lawyer</a></li>
           </ul>
         </div>
     </nav>
@@ -480,27 +480,24 @@
     var forms = ["formevd", "formconc", "formintro", "formbckg"];
   //nav buttons at the bottom of the screen
   //previous
-      $('.btnPrevious').onclick(function () {
-        if($('#navs > .active').attr('id') == 'nav1'){
-          $(".btnPrevious").attr("disabled", true);
-        }  else {
-          $('#navs > .active').prev('li').find('a').tab('show');
-          $(".btnPrevious").attr("disabled", false);
-        }
-      });
+    $(function(){
+      $('.btnPrevious').click(function(e){
+        $('#navs > .active').prev('li').find('a').tab('show');
+      }),
   //next
-      $('.btnNext').onclick(function () {
+      $('.btnNext').click(function(e){
          if($('#navs > .active').attr('id') == 'nav4'){
            for (var section in sections){
              saveform(section);
-           }
+           };
         } else if($('#navs > .active').attr('id') == 'nav5') {
           location.href='/contest/landing/';
         } else {
         $('#navs > .active').next('li').find('a').tab('show');
+        $(".btnPrevious").attr("disabled", false);
         }
       });
-
+    });
   //load forms
     window.onload = function() {
       for (var dict in sections) {
