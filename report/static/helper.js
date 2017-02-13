@@ -1,7 +1,6 @@
 var formgroup = '<div class="form-group"><label class="control-label" for="%id%">%name%</label> <input class="form-control" id="%id%" name="%name%" placeholder="%pholder%" title="" type="text" required /></div>';
 var jscript1 = 'var date = $("%id%").val();';
 var jscript2 =  '$("%printid%").append(date);';
-
 var repairsdict = {
   "tname":{
     "id":"tname",
@@ -48,6 +47,10 @@ var repairsdict = {
     "name": "Reasonable Date for Completion of Repairs",
     "pholder": "Provide a deadline for the repairs to be finished by."}
   };
+//I need more textareafy fields but I want to do it programmatically. I.e, given a list of ids to textarfy it'll just do it.
+function grouptextarea(flist) {
+  //delete what's there and write over
+}
 
 function textareafy(fgroup, col, row) {
   $input = $("#"+fgroup["id"]);
@@ -152,7 +155,7 @@ var repbackground = {
 var evidence = {
   "edate":{
     "id": "edate",
-    "name":"Evidence Time Stap",
+    "name":"Evidence Time Stamp",
     "pholder":""},
 };
 var repconclusion = {
