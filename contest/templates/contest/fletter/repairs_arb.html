@@ -65,7 +65,7 @@
         <!-- Nav tabs -->
         <div class="collapse navbar-collapse" id="navbar2">
             <ul style="background-color:white" class="nav navbar-light nav-pills" role="tablist" id="navs">
-              <li role="presentation" class="active navstyle" id="nav1"><a href="#step1" aria-controls="step1" role="tab" data-toggle="tab">Apply for Dispute Resoluton</a></li>
+              <li role="presentation" class="active" id="nav1"><a href="#step1" aria-controls="step1" role="tab" data-toggle="tab">Apply for Dispute Resoluton</a></li>
               <li role="presentation" class="navstyle" id="nav2"><a href="#step2" aria-controls="step2" role="tab" data-toggle="tab">Serve your landlord</a></li>
               <li role="presentation" class="navstyle" id="nav3"><a href="#step3" aria-controls="step3" role="tab" data-toggle="tab">Prepare Evidence for your hearing</a></li>
               <li role="presentation" class="navstyle" id="nav4"><a href="#step4" aria-controls="step4" role="tab" data-toggle="tab">Write your written submission </a></li>
@@ -152,6 +152,7 @@
                 <p>Dispute resolution costs $100. However, this fee may be waived if you submit a <a href="http://www2.gov.bc.ca/gov/content/housing-tenancy/residential-tenancies/solving-problems/dispute-resolution/applying-for-dispute-resolution/fees-and-fee-waivers">Fee Waiver Application</a> along with proof that you have a low income.</p>
               </div>
             </div>
+          </div>
         </div>
         <div role="tabpanel" class="tab-pane" id="step2">
           <div class="panel panel-default" style="border:1px solid black; font-family:Work Sans">
@@ -470,10 +471,10 @@
     $( ".panel-link").on( "mouseenter",
       function() {
         $( this ).addClass( "active" );
-      })
-      .on( "mouseleave", function() {
+      }).on( "mouseleave", function() {
         $( this ).removeClass( "active" );
       });
+
   //populates forms based on dicts
     var sections = [repintroduction, repbackground, evidence, repconclusion];
   //form sections
@@ -499,11 +500,11 @@
       });
     });
   //load forms
-    window.onload = function() {
-      for (var dict in sections) {
-        printform(dict, sections[dict]);
-      }
-    };
+  window.onload = function() {
+    for (var dict in sections) {
+      printform(dict, sections[dict]);
+    }
+  };
 
   function printDiv(divName) {
    var printContents = document.getElementById(divName).innerHTML;
@@ -513,11 +514,6 @@
    w.close();
   }
    </script>
-
-   </div> <!-- /container -->
-   </div>
-   </div>
-
    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
   <script src="{% static 'ie10-viewport-bug-workaround.js' %}"></script>
    </body>
