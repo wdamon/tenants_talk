@@ -480,7 +480,7 @@
     var forms = ["formevd", "formconc", "formintro", "formbckg"];
   //nav buttons at the bottom of the screen
   //previous
-      $('.btnPrevious').click(function () {
+      $('.btnPrevious').onclick(function () {
         if($('#navs > .active').attr('id') == 'nav1'){
           $(".btnPrevious").attr("disabled", true);
         }  else {
@@ -489,7 +489,7 @@
         }
       });
   //next
-      $('.btnNext').click(function () {
+      $('.btnNext').onclick(function () {
          if($('#navs > .active').attr('id') == 'nav4'){
            for (var section in sections){
              saveform(section);
@@ -500,7 +500,7 @@
         $('#navs > .active').next('li').find('a').tab('show');
         }
       });
-      
+
   //load forms
     window.onload = function() {
       for (var dict in sections) {
