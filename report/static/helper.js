@@ -76,7 +76,7 @@ function saveform(dictionary) {
 function printform(num, dict) {
   for (var fgroup in dict) {
     formattedgroup = formgroup.replace(/%name%/g, dict[fgroup]["name"]).replace(/%id%/g, dict[fgroup]["id"]).replace(/%pholder%/g, dict[fgroup]["pholder"]);
-    $("#"+forms[num]).append(formattedgroup);
+    $("#auto"+forms[num]).append(formattedgroup);
   };
 }
 

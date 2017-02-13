@@ -8,7 +8,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="Get help with your tenancy issues">
     <meta name="author" content="William Damon">
-    <! <link rel="icon" href="{% static 'favicon.ico' %}">
+    <!-- <link rel="icon" href="{% static 'favicon.ico' %}">-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet"  href="{% static 'offcanvas.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
@@ -69,7 +69,7 @@
               <li role="presentation" class="navstyle" id="nav2"><a href="#step2" aria-controls="step2" role="tab" data-toggle="tab">Serve your landlord</a></li>
               <li role="presentation" class="navstyle" id="nav3"><a href="#step3" aria-controls="step3" role="tab" data-toggle="tab">Prepare Evidence for your hearing</a></li>
               <li role="presentation" class="navstyle" id="nav4"><a href="#step4" aria-controls="step4" role="tab" data-toggle="tab">Write your written submission </a></li>
-              <li role="presentation" class="navstyle" disabled="disabled" id="nav5"><a href="#step5" aria-controls="step5" role="tab" data-toggle="tab">View and print your submission </a></li>
+              <li role="presentation" class="navstyle" id="nav5"><a href="#step5" aria-controls="step5" role="tab" data-toggle="tab">View and print your submission </a></li>
             </ul>
         </div>
       </nav>
@@ -477,7 +477,7 @@
   //populates forms based on dicts
     var sections = [repintroduction, repbackground, evidence, repconclusion];
   //form sections
-    var forms = [autoformevd, autoformconc, autoformintro, autoformbckg];
+    var forms = [formevd, formconc, formintro, formbckg];
   //nav buttons at the bottom of the screen
     $(function(){
       $('.btnPrevious').click(function () {
@@ -518,7 +518,7 @@
    </div>
 
    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-  <!-- <script src="{% static 'ie10-viewport-bug-workaround.js' %}"></script>-->
+  <script src="{% static 'ie10-viewport-bug-workaround.js' %}"></script>
    </body>
    </html>
 </html>
