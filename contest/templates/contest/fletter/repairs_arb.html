@@ -18,7 +18,7 @@
     <script type="text/javascript" src="{%  static 'jquery-3.1.0.min.js' %}"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script type="text/javascript" src="{%  static 'moment/min/moment.min.js' %}"></script>
-    <!--<script type="text/javascript" src="{%  static 'bootstrap-datetimepicker.js' %}"></script>-->
+    <script type="text/javascript" src="{%  static 'bootstrap-datetimepicker.js' %}"></script>
     <script type="text/javascript" src="{%  static 'offcanvas.js'  %}"></script>
     <script type="text/javascript" src="{%  static 'helper.js'  %}"></script>
 
@@ -323,25 +323,25 @@
                 </div>
               <!--Evidence -->
                 <div id="evidenceblck">
-              <div class="panel panel-default" style="border:1px solid black; font-family:Work Sans">
-                <div class="panel-heading" role="tab" id="heading13">
-                  <h4>
-                    <span>Evidence</span>
-                    <button type="button"class="btn btn-default pull-right" data-toggle="collapse" data-target="#body13" aria-expanded="false" aria-controls="Minimize">
-                      <i class="fa fa-minus" aria-hidden="true"></i>
-                    </button>
-                  </h4>
-                </div>
-                <div id="body13" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading13">
-                  <div class="panel-body" style="padding-left: 2em; font-family:Work Sans; font-size: 21px; font-weight: 200">
-                    <div id="autoformevd"></div>
+                  <div class="panel panel-default" style="border:1px solid black; font-family:Work Sans">
+                    <div class="panel-heading" role="tab" id="heading13">
+                      <h4>
+                        <span>Evidence</span>
+                        <button type="button"class="btn btn-default pull-right" data-toggle="collapse" data-target="#body13" aria-expanded="false" aria-controls="Minimize">
+                          <i class="fa fa-minus" aria-hidden="true"></i>
+                        </button>
+                      </h4>
+                    </div>
+                    <div id="body13" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading13">
+                      <div class="panel-body" style="padding-left: 2em; font-family:Work Sans; font-size: 21px; font-weight: 200">
+                        <div id="autoformevd"></div>
+                      </div>
+                      <button type="button"class="btn btn-default pull-right" id="#btnEvd" aria-expanded="false" aria-controls="addMore">
+                        <i class="fa fa-plus-circle" aria-hidden="true">Add more evidence </i>
+                      </button>
+                    </div>
                   </div>
-                  <button type="button"class="btn btn-default pull-right" data-target="#13evd" aria-expanded="false" aria-controls="addMore">
-                    <i class="fa fa-plus-lg" aria-hidden="true"></i>
-                  </button>
-                </div>
               </div>
-            </div>
               <!--Conclusion -->
                 <div class="panel panel-default" style="border:1px solid black; font-family:Work Sans">
                   <div class="panel-heading" role="tab" id="headingTwelve">
@@ -450,7 +450,7 @@
   </div>
   <footer class="footer text-center navbar-fixed-bottom">
     <div class="container" style="padding-top:.5em">
-     <button  class="btn btn-lg btn-primary btnPrevious" disabled="disabled" type="button" onClick="refreshPage()" style="padding-right:1em">
+     <button  class="btn btn-lg btn-primary btnPrevious" disabled="disabled" type="button" style="padding-right:1em">
        <i class="fa fa-arrow-left" aria-hidden="true"></i> Back
      </button>
      <span class="fa-stack fa-lg">
@@ -478,10 +478,10 @@
   var repairtextarealist = [];
 
   //populates forms based on dicts
-    var sections = [repintroduction, repbackground, evidence, repconclusion];
+  var sections = {"repintroduction":repintroduction, "repbackground":repbackground, "evidence":evidence, "repconclusion":repconclusion};
 
   //form sections
-    var forms = ["formintro", "formbckg", "formevd", "formconc"];
+  var forms = {"repintroduction":"formintro", "repbackground":"formbckg", "evidence":"formevd", "repconclusion":"formconc"};
 
   //nav buttons at the bottom of the screen
   //previous
@@ -496,7 +496,7 @@
       $('.btnNext').click(function(e){
          if($('#navs > .active').attr('id') == 'nav4'){
            for (var section in sections){
-             saveform(section);
+             saveform(sections[section]);
            };
          $('#navs > .active').next('li').find('a').tab('show');
         } else if($('#navs > .active').attr('id') == 'nav5') {
@@ -510,10 +510,21 @@
   //load forms
   window.onload = function() {
     for (var dict in sections) {
-      printform(dict, sections[dict]);
+      printform(dict,sections[dict]);
     }
   };
-
+//Add additional evidence
+  var evdcount = 0
+  $(function(){
+    $('.btnEvd').click(function(){
+      evdcount +=1;
+      formattedevd = evidenceblck.replace(/%ecount%/g, evdcount);
+      $('#evidenceblck').append(formattedevd);
+      formattedgroup = formgroup.replace(/%name%/g, dict[fgroup]["name"]).replace(/%id%/g, dict[fgroup]["id"]).replace(/%pholder%/g, dict[fgroup]["pholder"]);
+      $("#evdform"+evdcount).append(formattedgroup);
+      sections["evidence"+evdcount]=sections[2]
+    })
+  });
   function printDiv(divName) {
    var printContents = document.getElementById(divName).innerHTML;
    w=window.open();

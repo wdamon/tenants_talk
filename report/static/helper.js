@@ -1,6 +1,8 @@
 var formgroup = '<div class="form-group"><label class="control-label" for="%id%">%name%</label> <input class="form-control" id="%id%" name="%name%" placeholder="%pholder%" title="" type="text" required /></div>';
 var jscript1 = 'var date = $("%id%").val();';
 var jscript2 =  '$("%printid%").append(date);';
+
+var evidenceblock = '<div id="eblock%ecount%"><div class="panel panel-default" style="border:1px solid black; font-family:Work Sans"><div class="panel-heading" role="tab" id="heading%ecount%"><h4><span>Evidence #%ecount%</span><button type="button"class="btn btn-default pull-right" data-toggle="collapse" data-target="#bodyid%ecount%" aria-expanded="false" aria-controls="Minimize"><i class="fa fa-minus" aria-hidden="true"></i></button></h4></div><div id="#bodyid%ecount%" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading%ecount%"><div class="panel-body" style="padding-left: 2em; font-family:Work Sans; font-size: 21px; font-weight: 200"><div id="evdform%ecount%"></div></div><button type="button"class="btn btn-default pull-right" id="#btnEvd" aria-expanded="false" aria-controls="addMore"><i class="fa fa-plus-circle" aria-hidden="true">Add more evidence...</i></button></div></div></div>'
 var repairsdict = {
   "tname":{
     "id":"tname",
