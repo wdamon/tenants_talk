@@ -50,9 +50,6 @@ var repairsdict = {
     "pholder": "Provide a deadline for the repairs to be finished by."}
   };
 //I need more textareafy fields but I want to do it programmatically. I.e, given a list of ids to textarfy it'll just do it.
-function grouptextarea(flist) {
-  //delete what's there and write over
-}
 
 function textareafy(fgroup, col, row) {
   $input = $("#"+fgroup["id"]);
@@ -82,15 +79,14 @@ function printform(num, dict) {
   for (var fgroup in dict) {
     formattedgroup = formgroup.replace(/%name%/g, dict[fgroup]["name"]).replace(/%id%/g, dict[fgroup]["id"]).replace(/%pholder%/g, dict[fgroup]["pholder"]);
     $("#auto"+forms[num]).append(formattedgroup);
+    if (textarealist.indexOf(fgroup) > -1) {
+      textareafy(fgroup, 4, 4);
+    }
   };
 }
 
 
 var repintroduction = {
-  "tdate":{
-    "id":"tdate",
-    "name":"Todays date",
-    "pholder":"MM/DD/YYYY"},
   "tname":{
       "id":"tname",
       "name":"Your Name",
@@ -127,8 +123,8 @@ var repintroduction = {
       "id":"idate",
       "name": "Date the issue started",
       "pholder": "MM/DD/YYYY"},
-  "issuesummaryprint":{
-      "id":"issuesummaryprint",
+  "issuesummary":{
+      "id":"issuesummary",
       "name":"Issue summary",
       "pholder": "Brief summary of the issue, in complete sentences. The sink was broken."},
   "ldate":{
@@ -139,11 +135,7 @@ var repintroduction = {
       "id":"ddate",
       "name": "Deadline Given Landlord for Completion of Repairs",
       "pholder": "MM/DD/YYYY"},
-  "repairs":{
-      "id": "repairs",
-      "name":"Description of Repairs",
-      "pholder":"Descriptive List of Repairs. Please use complete sentences. For instance, 'The upstairs sink is leaking.'"}
-};
+  };
 var repbackground = {
   "bckground":{
     "id": "bckground",
@@ -159,6 +151,18 @@ var evidence = {
     "id": "edate",
     "name":"Evidence Time Stamp",
     "pholder":""},
+  "ename":{
+    "id":"ename",
+    "name":"Name",
+    "pholder":"Name this piece of evidence"},
+  "eindex":{
+    "id":"eindex",
+    "name":"Index Number",
+    "pholder":"The associated index number of the evidence in your evidence submission index"},
+  "edesc":{
+    "id":"edesc",
+    "name":"Description",
+    "pholder":"A short description of the evidence that includes its signifcance. E.g A photo of the flooding damage caused by the leaking sink"}
 };
 var repconclusion = {
   "damages":{

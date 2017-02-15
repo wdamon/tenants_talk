@@ -75,7 +75,8 @@
       </nav>
     <!-- Tab panes -->
     <div class="container">
-      <div class="tab-content">
+      <div class="row">
+        <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="step1">
           <div class="panel panel-default" style="border:1px solid black; font-family:Work Sans">
             <div class="panel-heading" role="tab" id="headingOne">
@@ -305,6 +306,7 @@
                     </div>
                   </div>
                 </div>
+              </div>
               <!--Background -->
                 <div class="panel panel-default" style="border:1px solid black; font-family:Work Sans">
                   <div class="panel-heading" role="tab" id="headingTwelve">
@@ -335,10 +337,10 @@
                     <div id="body13" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading13">
                       <div class="panel-body" style="padding-left: 2em; font-family:Work Sans; font-size: 21px; font-weight: 200">
                         <div id="autoformevd"></div>
+                        <button type="button"class="btn btn-default pull-right" id="#btnEvd" aria-expanded="false" aria-controls="addMore">
+                          <i class="fa fa-plus-circle" aria-hidden="true">Add more evidence </i>
+                        </button>
                       </div>
-                      <button type="button"class="btn btn-default pull-right" id="#btnEvd" aria-expanded="false" aria-controls="addMore">
-                        <i class="fa fa-plus-circle" aria-hidden="true">Add more evidence </i>
-                      </button>
                     </div>
                   </div>
               </div>
@@ -347,12 +349,12 @@
                   <div class="panel-heading" role="tab" id="headingTwelve">
                     <h4>
                       <span>Conclusion</span>
-                      <button type="button"class="btn btn-default pull-right" data-toggle="collapse" data-target="#conclusion" aria-expanded="false" aria-controls="Minimize">
+                      <button type="button"class="btn btn-default pull-right" data-toggle="collapse" data-target="#Conclusionbody" aria-expanded="false" aria-controls="Minimize">
                         <i class="fa fa-minus" aria-hidden="true"></i>
                       </button>
                     </h4>
                   </div>
-                  <div id="Conclusionbody" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="conclusion">
+                  <div id="Conclusionbody" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwelve">
                     <div class="panel-body" style="padding-left: 2em; font-family:Work Sans; font-size: 21px; font-weight: 200">
                       <div id="autoformconc"></div>
                     </div>
@@ -446,6 +448,7 @@
           <h4>Disclaimer</h4> Use at your own risk. &copy; <a href="www.wgdamon.com">William Damon</a> 2016
         </div>
       </div>
+      </div>
     </div>
   </div>
   <footer class="footer text-center navbar-fixed-bottom">
@@ -475,7 +478,7 @@
       });
 
   //list of Qs i want to use a larger textarea for
-  var repairtextarealist = [];
+  var textarealist = ["issuesummary", "bckground", "impact", "edesc", "damages"];
 
   //populates forms based on dicts
   var sections = {"repintroduction":repintroduction, "repbackground":repbackground, "evidence":evidence, "repconclusion":repconclusion};
