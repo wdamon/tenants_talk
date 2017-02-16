@@ -513,20 +513,22 @@
   $(function(){
     $('.btnEvd').click(function(){
       evdcount +=1;
-      formattedevd = evidenceblck.replace(/%ecount%/g, evdcount);
-      $('#evidenceblck').append(formattedevd);
+      formattedevd = evidenceblock.replace(/%ecount%/g, evdcount);
+      $('#e'+evdcount).append(formattedevd);
       sections["evidence"+evdcount] = sections["evidence"];
       forms["evidence"+evdcount] = "formevd"+evdcount;
       for (var i in sections["evidence"+evdcount]) {
         edict[i]["id"] = edict[i]["id"] + evdcount;
-        printform(Object.keys(sections).length, section["evidence"+evdcount )
+        printform(Object.keys(sections).length, section["evidence"+evdcount])
       }
     });
   });
 //remove evidence
     $(function(){
-      $('.removeEvd').click(funtion(){
-        $('#')
+      $('.removeEvd').click(funtion(this){
+        $('#e' + evdcount).remove();
+        sections.pop();
+        forms.pop();
         evdcount -=1;
 
       })
