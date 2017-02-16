@@ -525,12 +525,11 @@
   });
 //remove evidence
     $(function(){
-      $('.removeEvd').click(funtion(this){
+      $('.removeEvd').click(funtion(){
         $('#e' + evdcount).remove();
         sections.pop();
         forms.pop();
         evdcount -=1;
-
       })
     })
   function printDiv(divName) {
