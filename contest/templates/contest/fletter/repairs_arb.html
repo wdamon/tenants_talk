@@ -518,7 +518,7 @@
       sections["evidence"+evdcount] = sections["evidence"];
       forms["evidence"+evdcount] = "formevd"+evdcount;
       for (var i in sections["evidence"+evdcount]) {
-        edict[i]["id"] = edict[i]["id"] + evdcount;
+        sections["evidence"+evdcount][i]["id"] = sections["evidence"+evdcount][i]["id"] + evdcount;
         printform(Object.keys(sections).length, section["evidence"+evdcount])
       }
     });
