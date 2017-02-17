@@ -68,7 +68,6 @@ function dateafy(fgroup) {
     placeholder: fgroup["pholder"],
   });
   $input.after($dategroup).append("<input type='text' class='form-control'/><span class='input-group-addon'><span class='glyphicon-calendar glyphicon'></span></span>");
-  $input.after($dategroup).remove();
   $("#"+fgroup["id"]).datetimepicker({format: 'YYYY-MM-DD'});
 };
 
