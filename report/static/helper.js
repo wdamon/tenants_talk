@@ -69,7 +69,7 @@ function dateafy(fgroup) {
   });
   $input.after($dategroup).append("<input type='text' class='form-control'/><span class='input-group-addon'><span class='glyphicon-calendar glyphicon'></span></span>");
   $input.after($dategroup).remove();
-  $("#"+dict[fgroup]["id"]).datetimepicker({format: 'YYYY-MM-DD'});
+  $("#"+fgroup["id"]).datetimepicker({format: 'YYYY-MM-DD'});
 };
 
 
