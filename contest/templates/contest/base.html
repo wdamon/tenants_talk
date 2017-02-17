@@ -56,9 +56,10 @@
     </div>
   </div>
   <div class="container">
-    <div class="jumbotron">
+    <div class="jumbotron jumbotron-fluid">
       {% block content %}
       {% endblock %}
+    </div>
       <div class="row marketing">
         <div class="col-lg-6" style="color: white">
           <h4>Disclaimer</h4>
@@ -71,8 +72,6 @@
       </footer>
 
     </div> <!-- /container -->
-  </div>
-  </div>
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="{% static 'ie10-viewport-bug-workaround.js' %}"></script>
