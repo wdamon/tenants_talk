@@ -1,6 +1,7 @@
 {% extends 'contest/base.html' %}
 {% block content %}
 <h1>Thanks for Using Tenant's Talk</h1>
+<div class="row">
   <div class="col-md-4" style="border: 3px solid; height:100%">
       <p class="lead">
         <u><b><h3>Report your Tenancy Issue</h3></b></u>
@@ -17,18 +18,17 @@
   </div>
   <div class="col-md-4" style="border-style: solid; border-width: 3px 0px 3px 0px; height:100%">
     <p class="lead">
-    <u><b>  <h3> Still Need Help? </h3> </b></u>
-    <br/>
-    <div style="border: solid .5em; border-radius: 1em">
-    <img class="img-responsive" src=/static/images/map_icon.png>
-  </div>
-</p>
+      <u><b>  <h3> Still Need Help? </h3> </b></u>
+      <br/>
+      <div style="border: solid .5em; border-radius: 1em">
+        <img class="img-responsive" src=/static/images/map_icon.png>
+      </div>
+    </p>
     Find a nearby advocate now. Legal advocates are free and can help you with a variety of legal issues. We've got them all in one place here.
-
-<br/>
-<br/>
-<br/>
-<p><a class="btn btn-lg " style="background-color:#79bd9a;" href="{% url 'report_form' %}" role="button">Get Help</a></p>
+    <br/>
+    <br/>
+    <br/>
+    <p><a class="btn btn-lg " style="background-color:#79bd9a;" href="{% url 'report_form' %}" role="button">Get Help</a></p>
   </div>
   <div class="col-md-4" style="border: 3px solid; height: 100%">
     <u><b><h3>See What Other Tenant's Are Saying</h3></b></u>
@@ -36,7 +36,7 @@
     <div style="border: solid .5em; border-radius: 1em">
       <img class="img-responsive" style="padding:.24em" src=/static/images/tenantmap.png alt="Map of Tenant Complaints">
     </div>
-  </p>
+    </p>
     The next time you rent learn from other people's experience. Together we can hold landlord's accountable and avoid renting from creeps</p>
     <br/>
     <br/>
@@ -44,5 +44,7 @@
     <br/>
     <p><a class="btn btn-lg " style="background-color:#ffb74d" href="{% url 'map' %}" role="button">MAP</a></p>
   </div>
+</div>
+</div>
   {% endblock %}
 </div>
