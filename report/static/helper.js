@@ -80,7 +80,7 @@ function printform(num, dict) {
     if (dict[fgroup]["widget"] === "textarea") {
       textareafy(dict[fgroup], 40, 4)
     } else if (dict[fgroup]["widget"] === "date") {
-      $(dict[fgroup]["id"]).datetimepicker({
+      $("#"+dict[fgroup]["id"]).datetimepicker({
            format: 'YYYY-MM-DD'
       })
     }
