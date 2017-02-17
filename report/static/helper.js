@@ -60,6 +60,19 @@ function textareafy(fgroup, col, row) {
   });
   $input.after($textarea).remove();
 };
+function dateafy(fgroup) {
+  $input = $("#"+fgroup["id"]);
+  $dategroup = $("<div></div>").attr({
+    class: 'input-group date',
+    id: $input.attr('id'),
+    placeholder: fgroup["pholder"],
+  });
+  $input.after($dategroup).append("<input type='text' class='form-control'/><span class='input-group-addon'><span class='glyphicon-calendar glyphicon'></span></span>");
+  $input.after($dategroup).remove();
+  $("#"+dict[fgroup]["id"]).datetimepicker({
+       format: 'YYYY-MM-DD')}
+};
+
 
 function saveform(dictionary) {
   for (var fgroup in dictionary) {
@@ -80,8 +93,7 @@ function printform(num, dict) {
     if (dict[fgroup]["widget"] === "textarea") {
       textareafy(dict[fgroup], 40, 4)
     } else if (dict[fgroup]["widget"] === "date") {
-      $("#"+dict[fgroup]["id"]).datetimepicker({
-           format: 'YYYY-MM-DD'
+      dateafy(dict[fgroup])
       })
     }
   };
