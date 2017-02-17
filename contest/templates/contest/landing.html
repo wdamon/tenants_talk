@@ -1,19 +1,19 @@
 {% extends 'contest/base.html' %}
 {% block content %}
-<h1>Thanks for Using Our Website</h1>
+<h1>Thanks for Using Tenant's Talk</h1>
 <div class="row">
   <div class="col-md-4" style="border: 3px solid; height:100%">
       <p class="lead">
-    <u><b><h3>Report your Tenancy Issue</h3></b></u>
-    <br/>
-    <div style="border: solid .5em; border-radius: 1em">
-      <i class="fa fa-comments  fa-5x"> </i><br/>
-      <i class="fa fa-pencil-square fa-4x" style="margin-right:.25em"> </i>
-      <i class="fa fa-map-marker  fa-4x" style="padding-left: .2em; padding-right: .2em"> </i>
-    </div>
-  </p>
-    Evictions, unpaid security deposits, and other kinds of illegal treatment of renters
-       are epidemic in cities across Canada. Add data to the debate. Share your experience, learn about your rights, and join a movement for social change</p>
+        <u><b><h3>Report your Tenancy Issue</h3></b></u>
+        <br/>
+        <div style="border: solid .5em; border-radius: 1em">
+          <i class="fa fa-comments  fa-5x"> </i><br/>
+          <i class="fa fa-pencil-square fa-4x" style="margin-right:.25em"> </i>
+          <i class="fa fa-map-marker  fa-4x" style="padding-left: .2em; padding-right: .2em"> </i>
+        </div>
+      </p>
+      Evictions, unpaid security deposits, and other kinds of illegal treatment of renters
+      are epidemic in cities across Canada. Add data to the debate. Share your experience, learn about your rights, and join a movement for social change</p>
     <p><a class="btn btn-lg " style="background-color:#ffb74d" href="{% url 'report_form' %}" role="button">REPORT</a></p>
   </div>
   <div class="col-md-4" style="border-style: solid; border-width: 3px 0px 3px 0px; height:100%">
@@ -45,7 +45,4 @@
     <br/>
     <p><a class="btn btn-lg " style="background-color:#ffb74d" href="{% url 'map' %}" role="button">MAP</a></p>
   </div>
-
-</div>
-</div>
   {% endblock %}
