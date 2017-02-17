@@ -93,10 +93,9 @@ function printform(num, dict) {
       textareafy(dict[fgroup], 40, 4)
     } else if (dict[fgroup]["widget"] === "date") {
       dateafy(dict[fgroup])
-      })
+      }
     }
   };
-}
 
 
 var repintroduction = {
