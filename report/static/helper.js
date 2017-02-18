@@ -61,11 +61,16 @@ function textareafy(fgroup, col, row) {
   $input.after($textarea).remove();
 };
 function dateafy(fgroup) {
-  $input = $("#"+fgroup["id"]).attr({
+  $input = $("#"+fgroup["id"])
+  $date = $("<div></div>").attr({
     class: 'input-group date',
-    style: "position: relative"
-  });
-  $input.after("<input type='text' class='form-control'/><span class='input-group-addon'><span class='glyphicon-calendar glyphicon'></span></span>");
+    style: "position: relative",
+    id: $input.attr('id'),
+    name: $input.attr('name'),
+    placeholder: fgroup["pholder"]
+  })
+  $input.after($date).remove();
+  $date.after("<input type='text' class='form-control'/><span class='input-group-addon'><span class='glyphicon-calendar glyphicon'></span></span>");
   $("#"+fgroup["id"]).datetimepicker({format: 'YYYY-MM-DD'});
 };
 
