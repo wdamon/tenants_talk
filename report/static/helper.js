@@ -61,13 +61,11 @@ function textareafy(fgroup, col, row) {
   $input.after($textarea).remove();
 };
 function dateafy(fgroup) {
-  $input = $("#"+fgroup["id"]);
-  $dategroup = $("<div></div>").attr({
+  $input = $("#"+fgroup["id"]).attr({
     class: 'input-group date',
-    id: $input.attr('id'),
-    placeholder: fgroup["pholder"],
+    style: "position: relative"
   });
-  $input.after($dategroup).append("<input type='text' class='form-control'/><span class='input-group-addon'><span class='glyphicon-calendar glyphicon'></span></span>");
+  $input.after("<input type='text' class='form-control'/><span class='input-group-addon'><span class='glyphicon-calendar glyphicon'></span></span>");
   $("#"+fgroup["id"]).datetimepicker({format: 'YYYY-MM-DD'});
 };
 
@@ -102,7 +100,7 @@ var repintroduction = {
       "id":"date1",
       "name":"Todays Date",
       "pholder":"YYYY-MM-DD",
-      "widget:":"date"},
+      "widget":"date"},
   "tname":{
       "id":"tname",
       "name":"Your Name",
