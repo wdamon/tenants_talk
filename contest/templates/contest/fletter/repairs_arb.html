@@ -479,7 +479,7 @@
 
 $("a[href='#']").on('shown.bs.tab', function (e) {
   var target = $(e.target).attr("href") // activated tab
-  if((target) === '#nav1')){
+  if((target === '#nav1')){
     alert(target)
     $(".btnPrevious").attr("disabled", true);
   } else {
