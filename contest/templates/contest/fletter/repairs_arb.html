@@ -519,6 +519,7 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
   var evdcount = 0
   $(function(){
     $('.btnEvd').click(function(){
+      alert("Im workin")
       evdcount +=1;
       formattedevd = evidenceblock.replace(/%ecount%/g, evdcount);
       $('#ediv').append(formattedevd);
@@ -527,12 +528,13 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
       for (var i in sections["evidence"+evdcount]) {
         sections["evidence"+evdcount][i]["id"] = sections["evidence"+evdcount][i]["id"].slice(0, -1) + evdcount;
       }
-      printform(Object.keys(sections).length, sections["evidence"+evdcount])
+      printform(forms["evidence"+evdcount], sections["evidence"+evdcount])
     });
   });
 //remove evidence
     $(function(){
       $('.removeEvd').click(function(){
+        alert("i'm working")
         $('#eblock' + evdcount).remove();
         sections.pop();
         forms.pop();
