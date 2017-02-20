@@ -477,11 +477,13 @@
   //form sections
   var forms = {"repintroduction":"formintro", "repbackground":"formbckg", "evidence":"formevd", "repconclusion":"formconc"};
 
-$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+$("a[href='#']").on('shown.bs.tab', function (e) {
   var target = $(e.target).attr("href") // activated tab
-  if($(target).attr('id') == 'nav1'){
+  if((target) === '#nav1')){
+    alert(target)
     $(".btnPrevious").attr("disabled", true);
   } else {
+    alert(target)
     $(".btnPrevious").attr("disabled", false);
   }
 });
