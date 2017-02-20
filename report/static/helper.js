@@ -64,7 +64,7 @@ function textareafy(fgroup, col, row) {
 function dateafy(fgroup) {
   $input = $("#"+fgroup["id"])
   formatteddate = dategroup.replace(/%id%/g, fgroup["id"])
-  $input.after(fromatteddate).remove();
+  $input.after(formatteddate).remove();
   $("#"+fgroup["id"]).datetimepicker({format: 'YYYY-MM-DD'});
 };
 
