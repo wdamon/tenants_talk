@@ -483,6 +483,8 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
   var target = $(e.target).attr("href") // activated tab
   if (target != "#step1") {
     $(".btnPrevious").attr("disabled", false);
+  } else {
+    $(".btnPrevious").attr("disabled", true);
   }
 });
 
