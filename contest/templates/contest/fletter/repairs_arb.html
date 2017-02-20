@@ -477,14 +477,19 @@
   //form sections
   var forms = {"repintroduction":"formintro", "repbackground":"formbckg", "evidence":"formevd", "repconclusion":"formconc"};
 
+$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+  var target = $(e.target).attr("href") // activated tab
+  if($(target).attr('id') == 'nav1'){
+    $(".btnPrevious").attr("disabled", true);
+  } else {
+    $(".btnPrevious").attr("disabled", false);
+});
+
   //nav buttons at the bottom of the screen
   //previous
     $(function(){
       $('.btnPrevious').click(function(e){
         $('#navs > .active').prev('li').find('a').tab('show');
-         if($('#navs > .active').attr('id') == 'nav1'){
-           $(".btnPrevious").attr("disabled", true);
-         }
       }),
   //next
       $('.btnNext').click(function(e){
@@ -497,7 +502,6 @@
           location.href='/contest/landing/';
         } else {
         $('#navs > .active').next('li').find('a').tab('show');
-        $(".btnPrevious").attr("disabled", false);
         }
       });
     });
