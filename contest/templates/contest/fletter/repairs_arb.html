@@ -299,7 +299,9 @@
                     <div id="bodyEleven" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingEleven">
                       <div class="panel-body" style="padding-left: 2em; font-family:Work Sans; font-size: 21px; font-weight: 200">
                         <!--into auto form -->
-                        <div id="autoformintro">
+                        <div class="col-sm-6">
+                          <div id="autoformintro">
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -477,16 +479,15 @@
   //form sections
   var forms = {"repintroduction":"formintro", "repbackground":"formbckg", "evidence":"formevd", "repconclusion":"formconc"};
 
-$("a[href='#']").on('shown.bs.tab', function (e) {
+$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
   var target = $(e.target).attr("href") // activated tab
-  if((target === '#nav1')){
-    alert(target)
-    $(".btnPrevious").attr("disabled", true);
-  } else {
-    alert(target)
-    $(".btnPrevious").attr("disabled", false);
-  }
+  alert(target);
 });
+//$("a[href='#']").on('shown.bs.tab', function (e) {
+//  var target = $(e.target).attr("href") // activated tab
+//    $(".btnPrevious").attr("disabled", false);
+//  }
+//});
 
   //nav buttons at the bottom of the screen
   //previous
