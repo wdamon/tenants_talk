@@ -526,7 +526,9 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
           sections["evidence"+evdcount][i]["id"] = sections["evidence"+evdcount][i]["id"].slice(0, -1) + evdcount;
         }
       } else {
-        sections["evidence"+evdcount][i]["id"] = sections["evidence"+evdcount][i]["id"] + evdcount;
+        for (var i in sections["evidence"+evdcount]) {
+          sections["evidence"+evdcount][i]["id"] = sections["evidence"+evdcount][i]["id"] + evdcount;
+        }  
       }
       printform("evidence"+evdcount, sections["evidence"+evdcount])
       return evdcount
