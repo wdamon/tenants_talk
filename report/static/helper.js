@@ -46,19 +46,7 @@ var repairsdict = {
     "id":"rdate",
     "name": "Reasonable Date for Completion of Repairs",
     "pholder": "Provide a deadline for the repairs to be finished by."}
-  };
-
-//remove evidence
-  function removeEvidence(evdcount){
-      $('.removeEvd').click(function(e){
-        var oid = "evidence" + e.target.parentNode.id.slice(-1)
-        delete sections[oid]
-        delete forms[oid]
-        e.target.parentNode.remove();
-        evdcount -=1;
-        return evdcount;
-      })
-    };
+  };  
 
 function textareafy(fgroup, col, row) {
   $input = $("#"+fgroup["id"]);

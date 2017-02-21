@@ -514,6 +514,7 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
     for (var dict in sections) {
       printform(dict,sections[dict]);
     }
+    var evdcount = 0
     $( "#ediv").on("click", ".btnEvd", function (e) {
       evdcount +=1;
       formattedevd = evidenceblock.replace(/%ecount%/g, evdcount);
@@ -528,13 +529,17 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
         sections["evidence"+evdcount][i]["id"] = sections["evidence"+evdcount][i]["id"] + evdcount;
       }
       printform("evidence"+evdcount, sections["evidence"+evdcount])
-      removeEvidence(evdcount);
-      addEvidence(evdcount);
       return evdcount
-    } )
-    var evdcount = 0
-    addEvidence(evdcount);
-  };
+    })
+    $( "#ediv").on("click", ".removeEvd", function (e) {
+            var oid = "evidence" + e.target.parentNode.id.slice(-1)
+            delete sections[oid]
+            delete forms[oid]
+            e.target.parentNode.remove();
+            evdcount -=1;
+            return evdcount;
+      })
+    };
 
 
   function printDiv(divName) {
