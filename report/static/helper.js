@@ -49,6 +49,33 @@ var repairsdict = {
   };
 //I need more textareafy fields but I want to do it programmatically. I.e, given a list of ids to textarfy it'll just do it.
 
+function addEvidence(){
+  $('.btnEvd').click(function(){
+    evdcount +=1;
+    formattedevd = evidenceblock.replace(/%ecount%/g, evdcount);
+    $('#ediv').append(formattedevd);
+    sections["evidence"+evdcount] = sections["evidence"];
+    forms["evidence"+evdcount] = "formevd"+evdcount;
+    for (var i in sections["evidence"+evdcount]) {
+      sections["evidence"+evdcount][i]["id"] = sections["evidence"+evdcount][i]["id"].slice(0, -1) + evdcount;
+    }
+    printform(forms["evidence"+evdcount], sections["evidence"+evdcount])
+    removeEvidence();
+    addEvidence();
+  });
+}
+
+//remove evidence
+  function removeEvidence(){
+      $('.removeEvd').click(function(){
+        alert("i'm working")
+        $('#eblock' + evdcount).remove();
+        sections.pop();
+        forms.pop();
+        evdcount -=1;
+      })
+    };
+
 function textareafy(fgroup, col, row) {
   $input = $("#"+fgroup["id"]);
   $textarea = $("<textarea></textarea>").attr({

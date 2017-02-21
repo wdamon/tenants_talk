@@ -514,33 +514,11 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
     for (var dict in sections) {
       printform(dict,sections[dict]);
     }
+    var evdcount = 0
+    addEvidence();
   };
-//Add additional evidence
-  var evdcount = 0
-  $(function(){
-    $('.btnEvd').click(function(){
-      alert("Im workin")
-      evdcount +=1;
-      formattedevd = evidenceblock.replace(/%ecount%/g, evdcount);
-      $('#ediv').append(formattedevd);
-      sections["evidence"+evdcount] = sections["evidence"];
-      forms["evidence"+evdcount] = "formevd"+evdcount;
-      for (var i in sections["evidence"+evdcount]) {
-        sections["evidence"+evdcount][i]["id"] = sections["evidence"+evdcount][i]["id"].slice(0, -1) + evdcount;
-      }
-      printform(forms["evidence"+evdcount], sections["evidence"+evdcount])
-    });
-  });
-//remove evidence
-    $(function(){
-      $('.removeEvd').click(function(){
-        alert("i'm working")
-        $('#eblock' + evdcount).remove();
-        sections.pop();
-        forms.pop();
-        evdcount -=1;
-      })
-    })
+
+
   function printDiv(divName) {
    var printContents = document.getElementById(divName).innerHTML;
    w=window.open();
