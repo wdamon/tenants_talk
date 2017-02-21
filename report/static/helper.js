@@ -49,7 +49,7 @@ var repairsdict = {
   };
 //I need more textareafy fields but I want to do it programmatically. I.e, given a list of ids to textarfy it'll just do it.
 
-function addEvidence(){
+function addEvidence(evdcount){
   $('.btnEvd').click(function(){
     evdcount +=1;
     formattedevd = evidenceblock.replace(/%ecount%/g, evdcount);
