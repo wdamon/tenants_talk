@@ -47,24 +47,6 @@ var repairsdict = {
     "name": "Reasonable Date for Completion of Repairs",
     "pholder": "Provide a deadline for the repairs to be finished by."}
   };
-//I need more textareafy fields but I want to do it programmatically. I.e, given a list of ids to textarfy it'll just do it.
-
-function addEvidence(evdcount){
-  $('.btnEvd').click(function(){
-    evdcount +=1;
-    formattedevd = evidenceblock.replace(/%ecount%/g, evdcount);
-    $('#ediv').append(formattedevd);
-    sections["evidence"+evdcount] = sections["evidence"];
-    forms["evidence"+evdcount] = "formevd"+evdcount;
-    for (var i in sections["evidence"+evdcount]) {
-      sections["evidence"+evdcount][i]["id"] = sections["evidence"+evdcount][i]["id"].slice(0, -1) + evdcount;
-    }
-    printform("evidence"+evdcount, sections["evidence"+evdcount])
-    removeEvidence(evdcount);
-    addEvidence(evdcount);
-    return evdcount
-  });
-}
 
 //remove evidence
   function removeEvidence(evdcount){

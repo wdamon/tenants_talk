@@ -514,6 +514,24 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
     for (var dict in sections) {
       printform(dict,sections[dict]);
     }
+    $( "#ediv").on("click", ".btnEvd", function (e) {
+      evdcount +=1;
+      formattedevd = evidenceblock.replace(/%ecount%/g, evdcount);
+      $('#ediv').append(formattedevd);
+      sections["evidence"+evdcount] = (JSON.parse(JSON.stringify(sections["evidence"])));
+      forms["evidence"+evdcount] = "formevd"+evdcount;
+      if (evdcount > 1) {
+        for (var i in sections["evidence"+evdcount]) {
+          sections["evidence"+evdcount][i]["id"] = sections["evidence"+evdcount][i]["id"].slice(0, -1) + evdcount;
+        }
+      } else {
+        sections["evidence"+evdcount][i]["id"] = sections["evidence"+evdcount][i]["id"] + evdcount;
+      }
+      printform("evidence"+evdcount, sections["evidence"+evdcount])
+      removeEvidence(evdcount);
+      addEvidence(evdcount);
+      return evdcount
+    } )
     var evdcount = 0
     addEvidence(evdcount);
   };
