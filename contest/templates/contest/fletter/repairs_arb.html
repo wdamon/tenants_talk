@@ -375,12 +375,10 @@
               </div>
               <div id="bodySubm" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingSubm">
                 <div class="panel-body" style="padding-left: 2em; font-family:Work Sans; font-size: 21px; font-weight: 200">
-                  <p>Send this form to your landlord. Copy and paste the text or just print it.</p>
+                  <p>Submit this form as part of your evidence to the RTB.</p>
                   <!--written submission -->
                   <div id="printarea">
-                    <h4>Written Submission</h4>
-                    <hr/>
-                    <div id="dateprint">Date: %text%</div>
+                    <div id="date1print">Date: %text%</div>
                       <br/>
                     <div class="tnameprint">Tenant's Name: %text%</div>
                       <br/>
@@ -398,15 +396,14 @@
                       <div class="lcityprint">%text%, BC</div>
                       <div class="lpostalprint">%text%</div>
                       <br/>
-                      <h4>Introduction<h4>
+                      <u><h2>Introduction</h2></u>
                       <br/>
-                      On <div class="idateprint"> %text% </div> <div id="issuesummaryprint">%text%</div>.
+                      On <div class="idateprint"> %text% </div> <div class="issuesummaryprint">%text%</div>.
                       In response, on <div class="ldateprint">%text%</div> we sent a letter requesting repairs specifying <div class="ddateprint">%text%</div> as a deadline for repairs to be finished by.
                       The deadline has passed and the landlord has not finished repars. At this point, we request that the RTB take action to encourage repairs.
                       <br/>
-
-                      <h4>Background</h4>
-                      <div class="bckgroundprint"> %text% </div>
+                      <br/>
+                      <u><h2>Background</h2></u>
                       <p>Section 32(1) of the Residential Tenancy Act (RTA) (www.bclaws.ca/EPLibraries/bclaws_new/document/ID/freeside/00_02078_01#section32) states
                       <br/><br/>
                       <div style="margin-left:5%">
@@ -420,10 +417,22 @@
                       <br/>
                       Furthermore, the Residential Tenancy Branch Policy Guideline #1: “Landlord and Tenant – Responsibility for Residential Premises” clearly states these repairs are the landlord's responsibility.
                       <br/> <br/></p>
-                      These repairs are not trivial. As a result of the landlord's neglect <div class="impactsprint">%text%</div>.
+                      <div class="bckgroundprint"> %text% </div>
+                      These repairs are not trivial. As a result of the landlord's neglect <div class="impactprint">%text%</div>.
 
                     <h4>Evidence</h4>
-                    To coroborate our claims we
+                    To coroborate these claims the following evidence has been attached to this letter.
+                    <div style="margin-left:5%">
+                      <div id="evidenceLetter">
+                          <h1>#<div class="eindexprint">%text%</div></h1><br/>
+                          <hr/>
+                          <br/>
+                          <h2>Date:<div class="edateprint">%text%</div></h2><br/>
+                          <h2>Name:<div class="enameprint">%text%</div></h2><br/>
+                          <br/>
+                          <hr/>
+                      </div>
+                    </div>
 
 
                       Thank you, <br/><br/><br/>
@@ -531,6 +540,8 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
         }
       }
       printform("evidence"+evdcount, sections["evidence"+evdcount])
+      formattedEvidenceLetterBlock = evidenceletterblock.replace(/%ecount%/g, evdcount);
+      $("#evidenceLetter").append(formattedEvidenceLetterBlock);
       return evdcount
     })
     $( "#ediv").on("click", ".removeEvd", function (e) {
@@ -539,6 +550,7 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
             delete sections['evidence' + id]
             delete forms['evidence' + id]
             $('#bodyid' + id).parent().remove();
+            $('#evidenceLetter' + id).remove();
             evdcount -=1;
             return evdcount;
       })

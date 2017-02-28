@@ -1,6 +1,7 @@
 var formgroup = '<div class="form-group"><label class="control-label" for="%id%">%name%</label> <input class="form-control" id="%id%" name="%name%" placeholder="%pholder%" title="" type="text" required /></div>';
 var dategroup = '<div class="form-group"><div class="input-group date" id="%id%"><input type="text" class="form-control" /><span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span></div></div>'
 var evidenceblock = '<div id="eblock%ecount%"><div class="panel panel-default" style="border:1px solid black; font-family:Work Sans"><div class="panel-heading" role="tab" id="heading%ecount%"><h4><span>Evidence</span><button type="button"class="btn btn-default pull-right" data-toggle="collapse" data-target="bodyid%ecount%" aria-expanded="false" aria-controls="Minimize"><i class="fa fa-minus" aria-hidden="true"></i></button></h4></div><div id="bodyid%ecount%" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading%ecount%"><div class="panel-body" style="padding-left: 2em; font-family:Work Sans; font-size: 21px; font-weight: 200"><div id="autoformevd%ecount%"></div><button type="button" class="btn btn-lg btn-danger removeEvd" id = "%ecount%" aria-expanded="false" aria-controls="remove evidence"><i class="fa fa-window-close fa-lg" aria-hidden="true"></i> Remove evidence</button> <button type="button"class="btn btn-lg btn-primary btnEvd" aria-expanded="false" aria-controls="addMore"><i class="fa fa-plus-circle fa-lg" aria-hidden="true"></i> Add more evidence</button></div></div></div></div>'
+var evidenceletterblock = '<div id="evidenceLetter%ecount%"><h1>#<div class="eindex%ecount%print">%text%</div></h1><br/><hr/><br/><h2>Date:<div class="edate%ecount%print">%text%</div></h2><br/><h2>Name:<div class="ename%ecount%print">%text%</div></h2><br/><br/><hr/></div>'
 var repairsdict = {
   "tname":{
     "id":"tname",
@@ -71,12 +72,15 @@ function dateafy(fgroup) {
 
 function saveform(dictionary) {
   for (var fgroup in dictionary) {
-    dictionary[fgroup]["var"] = $("#"+dictionary[fgroup]["id"]).val();
+    if (dictionary[fgroup]["widget"] === "date") {
+      dictionary[fgroup]["var"] = $("#"+dictionary[fgroup]["id"]).children().val();
+    } else {
+      dictionary[fgroup]["var"] = $("#"+dictionary[fgroup]["id"]).val();
+    }
     $("." + dictionary[fgroup]["id"]+"print").each(function(){
-      $(this).text(function(){
-        return $(this).text().replace(/%text%/, dictionary[fgroup]["var"]);
+    $(this).text(function(){
+    return $(this).text().replace(/%text%/, dictionary[fgroup]["var"]);
       });
-
     });
   }
 };
@@ -157,7 +161,7 @@ var repbackground = {
   "bckground":{
     "id": "bckground",
     "name":"Background",
-    "pholder":"Provide any additional background you'd like to add to this complaint. You can leave this blank. Be specific and give dates. Less is usually more.",
+    "pholder":"Provide any additional background you'd like to add to this complaint. You can leave this blank. Be specific and give dates. Less is usually more. For example: \'Throughout this process the landlord was very combative\'",
     "widget":"textarea"},
   "impact":{
     "id":"impact",
@@ -189,6 +193,7 @@ var repconclusion = {
   "damages":{
     "id":"damages",
     "name":"Damages",
-    "pholder":"Amount of money you are asking to get re-imbursed for. If you are asking for money back you should submit a Monetary order worksheet (http://www2.gov.bc.ca/assets/gov/housing-and-tenancy/residential-tenancies/forms/rtb21.pdf)"
+    "pholder":"Amount of money you are asking to get re-imbursed for. If you are asking for money back you should submit a Monetary order worksheet (http://www2.gov.bc.ca/assets/gov/housing-and-tenancy/residential-tenancies/forms/rtb21.pdf)",
+    "widget":"textarea"
   }
 };
