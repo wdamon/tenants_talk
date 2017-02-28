@@ -528,12 +528,13 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
       } else {
         for (var i in sections["evidence"+evdcount]) {
           sections["evidence"+evdcount][i]["id"] = sections["evidence"+evdcount][i]["id"] + evdcount;
-        }  
+        }
       }
       printform("evidence"+evdcount, sections["evidence"+evdcount])
       return evdcount
     })
     $( "#ediv").on("click", ".removeEvd", function (e) {
+            console.log(e.target.parentNode.id);
             var oid = "evidence" + e.target.parentNode.id.slice(-1)
             delete sections[oid]
             delete forms[oid]
