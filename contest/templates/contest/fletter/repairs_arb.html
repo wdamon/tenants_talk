@@ -514,7 +514,7 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
     for (var dict in sections) {
       printform(dict,sections[dict]);
     }
-    var evdcount = 0
+    var evdcount = 0;
     $( "#ediv").on("click", ".btnEvd", function (e) {
       evdcount +=1;
       formattedevd = evidenceblock.replace(/%ecount%/g, evdcount);
@@ -534,8 +534,8 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
       return evdcount
     })
     $( "#ediv").on("click", ".removeEvd", function (e) {
-            console.log(e.target.parentNode.id);
-            var oid = "evidence" + e.target.parentNode.id.slice(-1)
+            id =jQuery(this).attr('id') || '';
+            console.log(id);
             delete sections[oid]
             delete forms[oid]
             e.target.parentNode.remove();
