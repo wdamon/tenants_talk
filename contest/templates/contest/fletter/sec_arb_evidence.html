@@ -89,7 +89,7 @@
               </div>
               <div id="bodyOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                 <div class="panel-body" style="padding-left: 2em; font-family:Work Sans; font-size: 21px; font-weight: 200">
-                  <p> So, you've tried to get your landlord to make repairs, even given them a deadline, and now the deadline has passed.</>
+                  <p> So, you've tried to get your landlord to return your security deposit, even given them a deadline, and now the deadline has passed.</>
                   <p> Your next step is to apply for dispute resolution through B.C's <a href="http://www2.gov.bc.ca/gov/content/housing-tenancy/residential-tenancies"> Residential Tenancy Branch</a>.
                   <p> You can apply for dispute resolution:</p>
                   <div class="panel panel-primary" style="font-size: 21px; font-weight: 200">
@@ -126,11 +126,7 @@
                 <div class="panel-body" style="padding-left: 2em; font-family:Work Sans; font-size: 21px; font-weight: 200">
                 <p> If successful you can get the Residential Tenancy Branch to:</p>
                   <p class="text-center"><ul class="well well-lg" style="padding-left: 2em; font-family:Work Sans; font-size: 21px; font-weight: 200">
-                    <li>order your landlord to fix the problem,
-                    <li>order your landlord to lower your rent until the problem is fixed,
-                    <li>give you permission to pay for the repairs yourself and to deduct the cost of the repair from your rent, or
-                    <li>order you to pay your rent to the Residential Tenancy Branch instead of to your landlord, until the repairs are done; this is called a "re-direction of rent."
-                    <li>compensate you for your time spent without something essential like a stove, fridge, or toilet
+                    <li>Order your landlord to return up to double the amount of your security deposit.
                     <br/>
                     <ul class="list-unstyled" style="font-size: 14px; font-weight: 100" >
                       -see <a href="http://wiki.clicklaw.bc.ca/index.php?title=Repairs_and_Services_When_Renting">The Tenant's Survival Guide</a> for more info.
@@ -275,9 +271,40 @@
               </div>
             </div>
             <div class="panel panel-default" style="border:1px solid black; font-family:Work Sans">
+              <div class="panel-heading" role="tab" id="surveyHeading">
+                <h1>
+                  <span>Check all that apply:</span>
+                  <button type="button"class="btn btn-default pull-right" data-toggle="collapse" data-target="#surveyBody" aria-expanded="false" aria-controls="Minimize">
+                    <i class="fa fa-minus" aria-hidden="true"></i>
+                  </button>
+                </h1>
+              </div>
+              <div id="surveyBody" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="surveyHeading">
+                <div class="panel-body" style="padding-left: 2em; font-family:Work Sans; font-size: 21px; font-weight: 200">
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" value="" id="initialInspection" data-toggle="toggle">
+                      Did your landlord do an initial inspection of your unit with you when you first moved in?
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" value=""id="secondInspection" data-toggle="toggle">
+                      Did your landlord inspect your unit with you when you moved out?
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" value="" id="letterResponse" data-toggle="toggle">
+                      Did your landlord reply to the letter within 15 days or file for dispute resolution?
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
               <div class="panel-heading" role="tab" id="headingTen">
                 <h1>
-                <span>Your Written Submission for Repairs</span>
+                <span>Your Written Submission for Dispute Resolution</span>
                 <button type="button"class="btn btn-default pull-right" data-toggle="collapse" data-target="#bodyTen" aria-expanded="false" aria-controls="Minimize">
                   <i class="fa fa-minus" aria-hidden="true"></i>
                 </button>
@@ -398,28 +425,35 @@
                       <br/>
                       <u><h2>Introduction</h2></u>
                       <br/>
-                      <p><div class="idateprint">On %text% </div><div class="issuesummaryprint">%text%.</div></p>
-                      <p>In response, on <div class="ldateprint">%text%</div> we sent a letter requesting repairs specifying <div class="ddateprint">%text%</div> as a deadline for repairs to be finished by.
-                      The deadline has passed and the landlord has not finished repairs. At this point, we request that the RTB take action to encourage repairs.
-                      <br/>
+                      <p>On <div class="idateprint"> %text% </div> I moved into the unit. When I moved in I paid <div class="secdepamountprint">$%text%</div> as a security deposit. <div class="hidden iniInspdateprint initialInspection" >The initial inspection occured on %text%. </div><div class="hidden iniFindingsprint initialInspection">The initial inspection found %text%. </div>
+                      <div class="moveoutdateprint">I moved out of the unit on %text%. </div><div class="hidden insp2dateprint secondInspection">The move-out inspection occured on %text%. </div><div class="hidden insp2findingsprint secondInspection">The second inspection found %text%.</div>
+                      </p>
+                      <p>On <div class="ldateprint">%text%</div> I sent a letter indicating my forwarding address and requesting the return of the security deposit.
+                      <div class ="hidden letterResponse">Fifteen days have passed and the landlord has not acted on the letter.</div> At this point, we request that the RTB take steps to ensure the security deposit is returned.
+                      </p>
                       <br/>
                       <u><h2>Background</h2></u>
-                      <p>Section 32(1) of the Residential Tenancy Act (RTA) (www.bclaws.ca/EPLibraries/bclaws_new/document/ID/freeside/00_02078_01#section32) states
-                      <br/><br/>
-                      <div style="margin-left:5%">
-                      (1)	A landlord must provide and maintain residential property in a state of decoration and repair that
-                        <br/><div style="margin-left:5%">
-                        (a)	complies with the health, safety and housing standards required by law, and
-                        <br/>
-                        (b)	having regard to the age, character and location of the rental unit, makes it suitable for occupation by a tenant.
-                        </div>
-                      </div><br/>
+                      <p>The landlord alleges <div class="landlordAllegationprint">%text%</div>. However, <div class="tenantResponseprint">%text%</div>.
+                      <P>
+                      According to B.C's Residential Tenancy Policy Guideline #17(http://www2.gov.bc.ca/assets/gov/housing-and-tenancy/residential-tenancies/policy-guidelines/gl17.pdf):
+                      <br/></p>
+                      <div class="hidden letterResponse"
+                        <blockquote class="blockquote">
+                          <p class="mb-0">"The landlord has 15 days, from the later of the day the tenancy ends or the date
+                          the landlord receives the tenant's forwarding address in writing to return the
+                          security deposit plus interest to the tenant, reach written agreement with the
+                          tenant to keep some or all of the security deposit, or make an application for
+                          dispute resolution claiming against the deposit"</p>
+                        </blockquote>
+                      </div>
+                      <div class="hidden initialInspection secondInspection">
+                        <blockquote class="blockquote">
+                          <p class="mb-0">"The right of a landlord to obtain the tenant’s consent to retain or file a claim against a security deposit for damage to the rental unit is extinguished if:<ul>
+                              <li>the landlord does not offer the tenant at least two opportunities for inspection as required (the landlord must use Notice of Final Opportunity to Schedule a Condition Inspection (form RTB-22) to propose a second opportunity); and/or</li>
+                              <li>having made an inspection does not complete the condition inspection report, in the form required by the Regulation, or provide the tenant with a copy of it."</li></ul></p>
+                        </blockquote>
+                      </div>
                       <br/>
-                      Furthermore, the Residential Tenancy Branch Policy Guideline #1: “Landlord and Tenant – Responsibility for Residential Premises” clearly states these repairs are the landlord's responsibility.
-                      <br/> <br/></p>
-                      <div class="bckgroundprint"> %text% </div>
-                      These repairs are not trivial. As a result of the landlord's neglect <div class="impactprint">%text%</div>.
-
                     <h4>Evidence</h4>
                     To coroborate these claims the following evidence has been attached to this letter.
                     <div style="margin-left:5%">
@@ -482,7 +516,7 @@
         $( this ).removeClass( "active" );
       });
   //populates forms based on dicts
-  var sections = {"repintroduction":repintroduction, "repbackground":repbackground, "evidence":evidence, "repconclusion":repconclusion};
+  var sections = {"secintroduction":secintroduction, "secbackground":secbackground, "evidence":evidence, "secconclusion":secconclusion};
 
   //form sections
   var forms = {"repintroduction":"formintro", "repbackground":"formbckg", "evidence":"formevd", "repconclusion":"formconc"};
@@ -495,7 +529,16 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
     $(".btnPrevious").attr("disabled", true);
   }
 });
+// when you click on a checkbox in the initial survey on the written submission form it adds or removes content from the form letter and questions.
+$('input:checkbox').change(function() {
+  if ($(this).prop('checked')) {
+    $('.'+this.id).removeClass('hidden')
+    iniInspdate iniFindings
+  } else if (!$(this).prop('checked')){
+    $('.'+this.id).addClass('hidden')
+  }
 
+})
   //nav buttons at the bottom of the screen
   //previous
     $(function(){
@@ -563,7 +606,7 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
    w.print();
    w.close();
   }
-  var repintroduction = {
+  var secintroduction = {
     "date1":{
         "id":"date1",
         "name":"Todays Date",
@@ -603,35 +646,55 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
         "pholder":"V5Y1J2"},
     "idate":{
         "id":"idate",
-        "name": "Date the issue started",
+        "name": "Move in Date",
         "pholder": "YYYY-MM-DD",
         "widget": "date"},
-    "issuesummary":{
-        "id":"issuesummary",
-        "name":"Issue summary",
-        "pholder": "Brief summary of the issue, in complete sentences. The sink was broken.",
+    "secdepamount":{
+        "id":"secdepamount",
+        "name":"Amount of security deposit",
+        "pholder": "The amount paiud for security deposit."
+        },
+    "iniInspdate":{
+        "id":"iniInspdate",
+        "name": "Date of the initial inspection of your unit with the landlord",
+        "pholder": "MM/DD/YYYY",
+        "widget": "date"},
+    "iniFindings":{
+        "id":"iniFindings",
+        "name": "Findings of the initial inspection of your unit",
+        "pholder": "Nothing or Damage to the floor",
+        "widget": "textarea"},
+    "moveoutdate":{
+        "id":"moveoutdate",
+        "name": "Date you moved out of the unit",
+        "pholder": "MM/DD/YYYY",
+        "widget": "date"},
+    "insp2date":{
+        "id":"insp2date",
+        "name": "Date of the second inspection of your unit",
+        "pholder": "MM/DD/YYYY",
+        "widget": "date"},
+    "insp2findings":{
+        "id":"insp2findings",
+        "name": "Findings of the second inspection of your unit",
+        "pholder": "Nothing or Damage to the floor",
         "widget": "textarea"},
     "ldate":{
         "id":"ldate",
-        "name": "Date letter was sent to landlord",
-        "pholder": "MM/DD/YYYY",
-        "widget": "date"},
-    "ddate":{
-        "id":"ddate",
-        "name": "Deadline Given Landlord for Completion of Repairs",
+        "name": "Date you send your landlord your forwarding address",
         "pholder": "MM/DD/YYYY",
         "widget": "date"},
     };
-  var repbackground = {
-    "bckground":{
-      "id": "bckground",
-      "name":"Background",
-      "pholder":"Provide any additional background you'd like to add to this complaint. You can leave this blank. Be specific and give dates. Less is usually more. For example: \'Throughout this process the landlord was very combative\'",
+  var secbackground = {
+    "landlordAllegation":{
+      "id": "landlordAllegation",
+      "name":"Landlord Allegations",
+      "pholder":"Summarize the landlord's reasons for withholding the security deposit. Try and be specific and un-biased. For example, \'The landlord claimed the carpet was damaged\'. If no reason was given write something like \' The landlord did not provide a reason for witholding the deposit\'",
       "widget":"textarea"},
-    "impact":{
-      "id":"impact",
-      "name":"Impact",
-      "pholder":"In a few short sentences describe how your landlord's neglegence has negatively effected you. These impacts can be physical, mental, or financial. Be as specific as possible and give dates and full names of witnesses wherever possible.",
+    "tenantResponse":{
+      "id":"tenantResponse",
+      "name":"Tenant Response",
+      "pholder":"In a few short sentences describe your reasons for why the landlord should return your security deposit. You should reference evidence wherever possible.",
       "widget":"textarea"}
     };
   var evidence = {
@@ -654,7 +717,7 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
       "pholder":"A short description of the evidence that includes its signifcance. E.g A photo of the flooding damage caused by the leaking sink",
       "widget":"textarea"}
   };
-  var repconclusion = {
+  var secconclusion = {
     "damages":{
       "id":"damages",
       "name":"Damages",
@@ -662,7 +725,6 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
       "widget":"textarea"
     }
   };
-
    </script>
    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
   <script src="{% static 'ie10-viewport-bug-workaround.js' %}"></script>
