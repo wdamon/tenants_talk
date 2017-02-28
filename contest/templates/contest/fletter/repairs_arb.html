@@ -534,11 +534,11 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
       return evdcount
     })
     $( "#ediv").on("click", ".removeEvd", function (e) {
-            id =jQuery(this).attr('id') || '';
+            id = jQuery(this).attr('id');
             console.log(id);
-            delete sections[oid]
-            delete forms[oid]
-            e.target.parentNode.remove();
+            delete sections['evidence' + id]
+            delete forms['evidence' + id]
+            $('#bodyid' + id).parent().remove();
             evdcount -=1;
             return evdcount;
       })
