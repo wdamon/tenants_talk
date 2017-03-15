@@ -166,7 +166,7 @@
         $('#dateprint').append(date);
 
         for (var fgroup in dict) {
-          if (dictionary[fgroup]["widget"] === "date") {
+          if (dict[fgroup]["widget"] === "date") {
             dict[fgroup]["var"] = $("#"+dict[fgroup]["id"]).children().val();
           } else {
               dict[fgroup]["var"] = $("#"+dict[fgroup]["id"]).val();
