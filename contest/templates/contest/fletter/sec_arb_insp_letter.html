@@ -58,19 +58,17 @@
             <br/>
             <div class="lnameprint">Dear %text%,</div>
             <br/>
-            <p>This is a formal request for a return of the <div class="secdepamountprint">$%text%</div> security deposit paid on <div class="idateprint">%text%</div></p>
-            <br/>
-            <div class="repairsprint">%text%</div>
+            <div class="secdepamountprint idateprint"<p>This is a formal request for a return of the $%secdepamountprint% security deposit paid on %idateprint%</div></p>
             <br/><P>
             According to B.C's Residential Tenancy Policy Guideline #17(http://www2.gov.bc.ca/assets/gov/housing-and-tenancy/residential-tenancies/policy-guidelines/gl17.pdf):
             <br/></p>
             <blockquote class="blockquote">
-              <p class="mb-0">"The right of a landlord to obtain the tenant’s consent to retain or file a claim against a security deposit for damage to the rental unit is extinguished if:<ul>
+              <p>"The right of a landlord to obtain the tenant’s consent to retain or file a claim against a security deposit for damage to the rental unit is extinguished if:<ul>
                   <li>the landlord does not offer the tenant at least two opportunities for inspection as required (the landlord must use Notice of Final Opportunity to Schedule a Condition Inspection (form RTB-22) to propose a second opportunity); and/or</li>
                   <li>having made an inspection does not complete the condition inspection report, in the form required by the Regulation, or provide the tenant with a copy of it."</li></ul></p>
             </blockquote>
             <br/>
-            I am hoping that we can resolve the above issue on or before <b><div class="rdateprint">%text%</div></b> without having to apply for dispute resolution with the Residential Tenancy Branch (RTB). If not completed by the requested date, I have the right to take legal action through the RTB.
+            <div class="rdateprint">I am hoping that we can resolve the above issue on or before <b>%rdateprint%</b> without having to apply for dispute resolution with the Residential Tenancy Branch (RTB). If not completed by the requested date, I have the right to take legal action through the RTB.</div>
           <br/><br/>
 
             Thank you, <br/><br/><br/>
@@ -136,20 +134,31 @@
       },"idate":{
         "id":"idate",
         "name": "Move-in or Security Deposit Payment Date",
-        "pholder": "The Move-in Date or Date Security Deposit was paid."
+        "pholder": "The Move-in Date or Date Security Deposit was paid.",
+        "widget": "date"
       },"secdepamount":{
         "id":"secdepamount",
         "name": "Amount of security deposit",
-        "pholder": "The amount paiud for security deposit"
-      }};
+        "pholder": "The amount paid for security deposit"
+      },"rdate":{
+        "id":"rdate",
+        "name": "Deadline for return of the security deposit",
+        "pholder": "In most cases leave two weeks to a month for the landlord to retun the funds",
+        "widget": "date"
+      }
+    };
 
     window.onload = function() {
         for (var fgroup in dict) {
           formattedgroup = formgroup.replace(/%name%/g, dict[fgroup]["name"]).replace(/%id%/g, dict[fgroup]["id"]).replace(/%pholder%/g, dict[fgroup]["pholder"]);
           $("#autoform").append(formattedgroup);
-        };
-        textareafy(dict["repairs"], 40, 4);
-      };
+          if fgroup["widget"] === "textarea") {
+            textareafy(dict[fgroup], 40, 4)
+          } else if (fgroup["widget"] === "date") {
+            dateafy(dict[fgroup])
+          }
+        }
+    };
     var clicks = 0;
     document.getElementById("next").addEventListener("click", function( event ) {
       if (clicks == 0) {
@@ -158,9 +167,10 @@
 
         for (var fgroup in dict) {
           dict[fgroup]["var"] = $("#"+dict[fgroup]["id"]).val();
+          var re = new RegExp("%" + dict[fgroup]["id"]+"print%")
           $("." + dict[fgroup]["id"]+"print").each(function(){
             $(this).text(function(){
-            return $(this).text().replace(/%text%/, dict[fgroup]["var"]);
+            return $(this).text().replace(re, dict[fgroup]["var"]);
             });
           });
           }
