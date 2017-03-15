@@ -152,9 +152,9 @@
         for (var fgroup in dict) {
           formattedgroup = formgroup.replace(/%name%/g, dict[fgroup]["name"]).replace(/%id%/g, dict[fgroup]["id"]).replace(/%pholder%/g, dict[fgroup]["pholder"]);
           $("#autoform").append(formattedgroup);
-          if fgroup["widget"] === "textarea") {
+          if (dict[fgroup]["widget"] === "textarea") {
             textareafy(dict[fgroup], 40, 4)
-          } else if (fgroup["widget"] === "date") {
+          } else if ([dict][fgroup]["widget"] === "date") {
             dateafy(dict[fgroup])
           }
         }
