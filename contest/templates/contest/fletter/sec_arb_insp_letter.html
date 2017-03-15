@@ -39,26 +39,26 @@
           <hr/>
           <div id="dateprint">Date: </div>
             <br/>
-          <div class="tnameprint">Tenant's Name: %text%</div>
+          <div class="tnameprint">Tenant's Name: %tnameprint%</div>
             <br/>
             <u> Tenant's Address</u>:
             <br/>
-            <div class="taddressprint">%text%</div>
-            <div class="tcityprint">%text%, BC</div>
-            <div class="tpostalprint">%text%</div>
+            <div class="taddressprint">%taddressprint%</div>
+            <div class="tcityprint">%tcityprint%, BC</div>
+            <div class="tpostalprint">%tpostalprint%</div>
 
             <br/>
-            <div class="lnameprint">Landlord's Name: %text%</div>
+            <div class="lnameprint">Landlord's Name: %lnameprint%</div>
             <br/>
             <u> Landlord's Address</u>:
             <br/>
-            <div class="laddressprint">%text%</div>
-            <div class="lcityprint">%text%, BC</div>
-            <div class="lpostalprint">%text%</div>
+            <div class="laddressprint">%laddressprint%</div>
+            <div class="lcityprint">%lcityprint%, BC</div>
+            <div class="lpostalprint">%lpostalprint%</div>
             <br/>
-            <div class="lnameprint">Dear %text%,</div>
+            <div class="lnameprint">Dear %lnameprint%,</div>
             <br/>
-            <div class="secdepamountprint idateprint"<p>This is a formal request for a return of the $%secdepamountprint% security deposit paid on %idateprint%</div></p>
+            <div class="secdepamountprint idateprint"><p>This is a formal request for a return of the $%secdepamountprint% security deposit paid on %idateprint%</div></p>
             <br/><P>
             According to B.C's Residential Tenancy Policy Guideline #17(http://www2.gov.bc.ca/assets/gov/housing-and-tenancy/residential-tenancies/policy-guidelines/gl17.pdf):
             <br/></p>
@@ -166,7 +166,11 @@
         $('#dateprint').append(date);
 
         for (var fgroup in dict) {
-          dict[fgroup]["var"] = $("#"+dict[fgroup]["id"]).val();
+          if (dictionary[fgroup]["widget"] === "date") {
+            dict[fgroup]["var"] = $("#"+dict[fgroup]["id"]).children().val();
+          } else {
+              dict[fgroup]["var"] = $("#"+dict[fgroup]["id"]).val();
+          }
           var re = new RegExp("%" + dict[fgroup]["id"]+"print%")
           $("." + dict[fgroup]["id"]+"print").each(function(){
             $(this).text(function(){
