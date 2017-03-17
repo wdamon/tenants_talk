@@ -42,8 +42,8 @@ def formletter(request, page_slug):
 def arb(request):
     walkins = advocates.objects.filter(walkins__iexact='yes')
     arb_serialized = serialize('geojson', walkins, geometry_field='geometry')
-    advocates = advocates.objects.all()
-    return render(request, 'contest/fletter/arb.html', {'arb_serialized':arb_serialized, 'advocates':advocates})
+    advocateList = advocates.objects.all()
+    return render(request, 'contest/fletter/arb.html', {'arb_serialized':arb_serialized, 'advocates':advocateList})
 
 def filter(request):
     filter_val = request.GET.get('filter', None);
