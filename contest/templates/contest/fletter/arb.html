@@ -191,6 +191,7 @@
                     var marker = L.marker(latlng).bindPopup("Category: Name" + feature.properties.name + "<br>Address: "+ feature.properties.address +"<br>Phone: " +feature.properties.phone);
                     feature.layer = marker;
                     refGroup.addLayer(marker);
+                }
               },
             });
 
