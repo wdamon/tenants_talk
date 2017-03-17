@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^(?P<question_id>[0-9]+)/choose/$', views.choose, name='choose'),
     url(r'^fletter/(?P<page_slug>[\w]+)/$', views.formletter, name='formletter'),
     url(r'^landing/$', views.landing, name='landing'),
+    url(r'^fletter/arb', views.arb, name='arb')
     ]
