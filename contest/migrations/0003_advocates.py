@@ -9,6 +9,7 @@ import djgeojson.fields
 class Migration(migrations.Migration):
 
     dependencies = [
+        ('contest', '0002_delete_advocates'),
     ]
 
     operations = [
