@@ -42,7 +42,7 @@ class cform(models.Model):
 class advocates(models.Model):
     category = models.CharField(max_length=100)
     name = models.CharField(max_length=100)
-    walk-ins = models.CharField(max_length=100)
+    walkins = models.CharField(max_length=100)
     phone = models.CharField(max_length=100)
     schedule = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
