@@ -1,0 +1,259 @@
+[
+{
+  "model": "contest.advocates",
+  "pk":1,
+  "fields":{
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-123.134, 49.284]
+    },
+    "properties": {
+      "name":"St. Pauls Anglican Church",
+      "walk-ins?":"Yes",
+      "phone":"(604) 683-4287",
+      "schedule":"Monday and Wednesday: 9:30am - 4:00pm. Thursday: 10:00am - 2:30pm",
+      "address": "1130 Jervis St. Vancouver, BC V6E 2C7",
+      "url":"http://stpaulsanglican.bc.ca/site1/outreach-2/advocacy-outreach/",
+      "note":"Open to all",
+      "category":"general"
+    }
+  }
+},{
+"model": "contest.advocates",
+"pk":2,
+"fields":{
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [-123.127, 49.279]
+  },
+  "properties": {
+     "name":"Vancouver Justice Access Centre",
+     "walk-ins?":"Yes",
+     "phone":"No",
+     "schedule":"Monday, Tuesday, Thursday, Friday: 8:00 - 5pm. Wednesday: 8:00 - 7pm",
+     "address":"800 Hornby St, Vancouver, BC V6Z",
+     "url":"http://www2.gov.bc.ca/gov/content/justice/about-bcs-justice-system/jac/how-to-find-us/vancouver",
+     "note":"",
+     "category":"general"
+    }
+  }
+},{
+  "model": "contest.advocates",
+  "pk":3,
+  "fields": {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-123.097, 49.281]
+    },
+    "properties": {
+      "name":"First United",
+      "walk-ins?":"yes",
+      "phone":"(604) 681-8365",
+      "schedule":"Monday, Wednesday, Friday: 9:00-11:00 AM. Tuesday, Thursday: 12:30-2:30 PM",
+      "address":"320 Hastings Street East",
+      "url":"https://firstunited.ca/advocacy/",
+      "note":"Capacity is limited, so please arrive at the start of the intake period. Please bring along any paperwork you have related to your issue.",
+      "category":"general"
+    }
+  }
+},{
+  "model": "contest.advocates",
+  "pk":4,
+  "fields":{
+    "type": "Feature",
+    "geometry": {
+    "type": "Point",
+    "coordinates": [-123.070, 49.277]
+    },
+    "properties": {
+      "name": "Kettle Friends Society",
+      "walk-ins?": "Yes",
+      "phone": "(604) 253-0669",
+      "schedule": "Monday, Tuesday, Thursday: 9:30 - 4:00",
+      "address": "1725 Venables Street Vancouver, BC V5L 2H3",
+      "url": "http://www.thekettle.ca/our-programs/community-services/advocacy/",
+      "note": "No appointment is needed as our service is available on a drop-in basis.  Our office is on the second floor of 1725 Venables Street and is wheelchair accessible.",
+      "category":"general"
+    }
+  }
+},{
+  "model": "contest.advocates",
+  "pk":5,
+  "fields":{
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-123.072, 49.232]
+    },
+    "properties": {
+        "name": "Wilson Heights United Church Advocacy Program",
+        "walk-ins?":"Yes",
+        "phone":"(604) 325-9944 Ext. 224)",
+        "schedule": "Tuesday-Friday 10-am-4pm",
+        "address":"1634 East 41st Avenue. Vancouver, BC V5P 1K5",
+        "url": "http://www.whuc.net/",
+        "note":"",
+        "category":"general"
+    }
+  }
+},{
+  "model": "contest.advocates",
+  "pk":6,
+  "fields":{
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [-123.103, 49.281]
+    },
+    "properties": {
+      "name":"ATIRA Women's Advocacy",
+      "walk-ins?":"Yes",
+      "phone": "(604) 428-9202",
+      "schedule":"By appointment only",
+      "address":"56 East Hastings Street, Vancouver, BC",
+      "url":"http://www.atira.bc.ca/legal-advocacy",
+      "note":"The Legal Advocacy Program is for low-income women (inclusive of transwomen) in the Downtown Eastside to obtain free legal advocacy in a safe and confidential, women’s only space.",
+      "category": "women"
+      }
+    }
+  },{
+    "model": "contest.advocates",
+    "pk":7,
+    "fields":{
+      "type": "Feature",
+      "geometry": {
+      "type": "Point",
+      "coordinates": [-123.087, 49.281]
+      },
+      "properties": {
+        "name":"AIDS Vancouver Case Management",
+        "walk-ins?":"Yes",
+        "phone": "(604) 893-2201",
+        "schedule":"Drop-in",
+        "address":"803 East Hastings Street, Vancouver, BC",
+        "url":"http://www.atira.bc.ca/legal-advocacy",
+        "note":"You can drop in to our Office at 803 East Hasting Street between the hours of 10:00am and 4:00pm, Monday through Friday. Call 604-893-2201 for more information.",
+        "category": "HIV/AIDS"
+      }
+    }
+  }, {
+    "model": "contest.advocates",
+    "pk":8,
+    "fields":{
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-123.1020, 49.2821]
+      },
+      "properties": {
+        "name":"Downtown Eastside Women's Centre Drop-in",
+        "walk-ins?": "yes",
+        "phone":"604-681-8480",
+        "schedule": "Monday, Tuesday, Thursday & Friday from 10:00 am to 5:00 pm. Wednesday from 11:00 am to 5:00 pm. Saturday and Sunday and statutory Holidays from 12:00 pm to 5:00 pm",
+        "address": "302 Columbia Street Vancouver, BC V6A 4J1",
+        "url":"http://dewc.ca/drop-in-centre",
+        "note": "Daily, the Centre offers a refuge for women and children in the Downtown Eastside of Vancouver.  We provide basic-needs, as well as counseling, advocacy, social, educational and referral services",
+        "category": "women"
+        }
+      }
+    },{
+      "model": "contest.advocates",
+      "pk":9,
+      "fields":{
+          "name":"LSLAP Clinics",
+          "walk-ins?":"no",
+          "phone":"(604) 822-5791",
+          "schedule":"Varies by location, please see website",
+          "address":"Multiple Locations across Vancouver",
+          "url":"http://www.lslap.bc.ca/clinics.html",
+          "note":"Please call for information on our availability.",
+          "category": "general"}
+      },{
+      "model": "contest.advocates",
+      "pk":10,
+      "fields":{
+          "name": "TRAC Tenant Resource & Advisory Centre",
+          "walk-ins?":"No",
+          "phone":"604-255-0546",
+          "schedule":"TRAC provides free representation to tenants at dispute resolution hearings only in limited situations.",
+          "address":"Provides support and information online and over the phone",
+          "url":"http://tenants.bc.ca/direct-representation/",
+          "note":"Primarily online and phone based resource",
+          "category": "general"}
+      },{
+      "model": "contest.advocates",
+      "pk":11,
+      "fields":{
+         "name":"Battered Women Support Society",
+         "walk-ins?": "Unknown",
+         "phone":"604-687-1867",
+         "schedule": "",
+         "address": "",
+         "url":"http://www.bwss.org/services/programs/legal-advocacy/",
+         "note": "The Legal Advocacy Program at BWSS provides support, advocacy, information and accompaniment to women who have experienced violence and who are involved in the legal system. For more information or to make an appointment, call or email legaladvocacy@bwss.org",
+         "category":"women"}
+      },{
+        "model": "contest.advocates",
+        "pk":12,
+        "fields":{
+         "name":"YWCA Legal Educator",
+         "walk-ins?": "Unknown",
+         "phone":"604 734 5517 ext 2",
+         "schedule": "Unknown",
+         "address": "535 Hornby Street Vancouver, BC V6C 2E8",
+         "url":"https://ywcavan.org/programs/legal-education",
+         "note": "The YWCA legal educator provides one-to-one legal support and group workshops on a range of legal matters for women in need, including family law, poverty law, custody agreements, peace bonds and affidavits. *Please note: The legal educator is not a lawyer and does not offer legal advice, but offers education, resources, referrals and support around legal issues.",
+         "category": "women"}
+      },{
+        "model": "contest.advocates",
+        "pk":13,
+        "fields":{
+          "name":"Disability Alliance B.C",
+          "walk-ins?": "No",
+          "phone":"Phone: 604-872-1278 in the Lower Mainland. Toll Free: 1-800-663-1278",
+          "schedule": "By Appointment",
+          "address": "Unknown",
+          "url":"http://www.disabilityalliancebc.org/advocacypartners.htm",
+          "note": "We host legal clinics for people with disabilities who need legal advice on civil law issues. This is made possible through our community partner, Access Pro Bono Society. To find out more or schedule an appointment, contact Janis at 604-872-1278.",
+          "category": "disability"}
+      },{
+        "model": "contest.advocates",
+        "pk":14,
+        "fields":{
+          "name":"Jewish Family Services",
+          "walk-ins?": "No",
+          "phone":"604-637-3317",
+          "schedule": "By Appointment",
+          "address": "Unknown",
+          "url":"http://jfsa.ca/basic-resources/",
+          "note": "If you are paying more than 30% of your monthly income on rent and your household income is below $35,000, you should make an appointment to see JFSA’s Housing Coordinator.",
+          "category": "jewish"}
+      },{
+        "model": "contest.advocates",
+        "pk":15,
+        "fields":{
+          "name":"MOSAIC Legal Advocacy Program",
+          "walk-ins?": "No",
+          "phone":"604-254-9626",
+          "schedule": "By Appointment",
+          "address": "2nd Floor – 1720 Grant Street, Vancouver",
+          "url":"https://www.mosaicbc.org/services/settlement/legal-advocacy-program/",
+          "note": "MOSAIC’s Legal Advocacy Program provides information, summary advice, referrals and legal representation to low-income immigrants and refugees. We help newcomers navigate the Canadian legal system, ensuring that they are informed of their legal rights and responsibilities. All advocacy services are provided free of charge to eligible individuals.",
+          "category": "immigrant/refugees"}
+      },{
+        "model": "contest.advocates",
+        "pk":16,
+        "fields":{
+          "name":"Multicultural Helping Housing",
+          "walk-ins?": "Unknown",
+          "phone":"604.879.3277",
+          "schedule": "Open Monday to Saturday from 9:00 am - 5:00 pm, lunch break from 12:30 pm - 1:30 pm",
+          "address": "4802 Fraser Street Vancouver BC V5V 4H4",
+          "url":"https://www.mosaicbc.org/services/settlement/legal-advocacy-program/",
+          "note": "MOSAIC’s Legal Advocacy Program provides information, summary advice, referrals and legal representation to low-income immigrants and refugees. We help newcomers navigate the Canadian legal system, ensuring that they are informed of their legal rights and responsibilities. All advocacy services are provided free of charge to eligible individuals.",
+          "category": "immigrant/refugees"}
+      }
+]

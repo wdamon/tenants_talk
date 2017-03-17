@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
-
+from jsonfield import JSONField
+from  djgeojson.fields import PointField
 from django.db import models
 
 class Question(models.Model):
@@ -36,3 +37,18 @@ class cform(models.Model):
 
     def __str__(self):
         return self.address
+
+
+class advocates(models.Model):
+    category = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
+    walk-ins = models.BooleanField()
+    phone = models.CharField(max_length=100)
+    schedule = models.CharField(max_length=100)
+    address = models.CharField(max_length=100)
+    url = models.CharField(max_length=500)
+    note = models.CharField(max_length=500)
+    geometry = PointField(blank=True, null=True)
+
+    def __str__(self):
+        return self.name
