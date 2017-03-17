@@ -40,7 +40,8 @@ def formletter(request, page_slug):
         return render(request, bytes, {'form':form})
 
 def arb(request):
-    arb_serialized = GeoJSONSerializer().serialize(advocates.objects.all(), use_natural_keys=True, with_modelname=False)
+    walkins = advocates.objects.filter(walkins__iexact=yes)
+    arb_serialized = serialize('geojson', walkins, geometry_field='geometry')
     return render(request, 'contest/fletter/arb.html', {'arb_serialized':arb_serialized})
 
 def filter(request):

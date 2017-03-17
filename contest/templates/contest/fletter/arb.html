@@ -82,26 +82,33 @@
               var layers = {},
                   masterLayer = L.layerGroup();
 
-              var evcGroup = L.featureGroup();
-              masterLayer.addLayer(evcGroup);
-              var repGroup = L.featureGroup();
-              masterLayer.addLayer(repGroup);
-              var secGroup = L.featureGroup();
-              masterLayer.addLayer(secGroup);
-              var othGroup = L.featureGroup();
-              masterLayer.addLayer(othGroup);
+            var genGroup = L.featureGroup();
+              masterLayer.addLayer(genGroup);
+              var womGroup = L.featureGroup();
+              masterLayer.addLayer(womGroup);
+              var disGroup = L.featureGroup();
+              masterLayer.addLayer(disGroup);
+              var jewGroup = L.featureGroup();
+              masterLayer.addLayer(jewGroup);
+              var refGroup = L.featureGroup();
+              masterLayer.addLayer(refGroup);
+              var walGroup = L.featureGroup();
+              masterLayer.addLayer(walGroup);
+              var hivGroup = L.featureGroup();
+              masterLayer.addLayer(hivGroup);
 
               var baseMaps = {
                 "Basemap": mq
               };
 
               var overlayMaps = {
-                "General" : evcGroup,
-                "Womens": repGroup,
-                "Disability": secGroup,
+                "General" : genGroup,
+                "Womens": womGroup,
+                "Disability": disGroup,
                 "HIV/AIDS": othGroup,
-                "Jewish": jewish,
-                "Immigrant/Refugee":immigrant/refugee
+                "Jewish": jewGroup,
+                "Immigrant/Refugee":refGroup,
+                "Walk-ins":walGroup
               };
               L.control.layers(baseMaps, overlayMaps, {hideSingleBase: 'true', position: 'bottomright'}).addTo(m);
 
@@ -110,7 +117,7 @@
             var searchCtrl = L.control.fuseSearch();
             searchCtrl.addTo(m);
 
-              var geojsonPointLayer = ;
+              var geojsonPointLayer = {{ evc_serialized|safe }};
 
               var evcIcon = L.AwesomeMarkers.icon({
                   icon: 'home',
@@ -160,28 +167,35 @@
 
               var geojsonPointLayerJSON = new L.geoJson(geojsonPointLayer, {
                 pointToLayer: function(feature, latlng) {
-                  if (feature.properties.category === "EVC") {
-                    var marker = L.marker(latlng, getMarker(feature.properties.category, feature.properties.evictreason)).bindPopup("Category: Eviction<br>Address: "+ feature.properties.address +"<br>Description: " +feature.properties.evictreason);
+                  if (feature.properties.category === "general") {
+                    var marker = L.marker(latlng).bindPopup("Category: Name" + feature.properties.name + "<br>Address: "+ feature.properties.address +"<br>Phone: " +feature.properties.phone);
                     feature.layer = marker;
-                    evcGroup.addLayer(marker);
-                  }  else if (feature.properties.category === "REP") {
-                    var marker = L.marker(latlng, getMarker(feature.properties.category, feature.properties.evictreason)).bindPopup("Category: Repairs<br>Address: "+ feature.properties.address +"<br>Description: " +feature.properties.evictreason);
+                    genGroup.addLayer(marker);
+                  }  else if (feature.properties.category === "women") {
+                    var marker = L.marker(latlng).bindPopup("Category: Name" + feature.properties.name + "<br>Address: "+ feature.properties.address +"<br>Phone: " +feature.properties.phone);
                     feature.layer = marker;
-                    repGroup.addLayer(marker);
-                    } else if (feature.properties.category === "SEC") {
-                    var marker = L.marker(latlng, getMarker(feature.properties.category, feature.properties.evictreason)).bindPopup("Category: Security Deposit<br>Address: "+ feature.properties.address +"<br>Description: " +feature.properties.evictreason);
+                    womGroup.addLayer(marker);
+                    } else if (feature.properties.category === "HIV/AIDS") {
+                    var marker = L.marker(latlng).bindPopup("Category: Name" + feature.properties.name + "<br>Address: "+ feature.properties.address +"<br>Phone: " +feature.properties.phone);
                     feature.layer = marker;
-                    secGroup.addLayer(marker);
-                  } else if (feature.properties.category === "OTH") {
-                    var marker = L.marker(latlng, getMarker(feature.properties.category, feature.properties.evictreason)).bindPopup("Category: Other<br>Address: "+ feature.properties.address +"<br>Description: " +feature.properties.evictreason);
+                    hivGroup.addLayer(marker);
+                  } else if (feature.properties.category === "disability") {
+                    var marker = L.marker(latlng).bindPopup("Category: Name" + feature.properties.name + "<br>Address: "+ feature.properties.address +"<br>Phone: " +feature.properties.phone);
                     feature.layer = marker;
-                    othGroup.addLayer(marker);
-                  }
+                    disGroup.addLayer(marker);
+                  } else if (feature.properties.category === "jewish") {
+                    var marker = L.marker(latlng).bindPopup("Category: Name" + feature.properties.name + "<br>Address: "+ feature.properties.address +"<br>Phone: " +feature.properties.phone);
+                    feature.layer = marker;
+                    jewGroup.addLayer(marker);
+                  } else if (feature.properties.category === "immigrant/refugees") {
+                    var marker = L.marker(latlng).bindPopup("Category: Name" + feature.properties.name + "<br>Address: "+ feature.properties.address +"<br>Phone: " +feature.properties.phone);
+                    feature.layer = marker;
+                    refGroup.addLayer(marker);
               },
             });
 
 
-            searchCtrl.indexFeatures(geojsonPointLayer, ['address', 'evictreason']);
+            searchCtrl.indexFeatures(geojsonPointLayer, ['name', 'address', 'phone']);
 
 
               </script>
