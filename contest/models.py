@@ -48,6 +48,8 @@ class advocates(models.Model):
     address = models.CharField(max_length=100)
     url = models.CharField(max_length=500)
     note = models.CharField(max_length=500)
+    lon = models.FloatField()
+    lat = models.FloatField()
     geometry = PointField(blank=True, null=True)
 
     def __str__(self):
