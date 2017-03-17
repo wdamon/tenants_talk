@@ -42,7 +42,7 @@ class advocates(models.Model):
     name = models.CharField(max_length=100)
     walkins = models.CharField(max_length=100)
     phone = models.CharField(max_length=100)
-    schedule = models.CharField(max_length=100)
+    schedule = models.CharField(max_length=200)
     address = models.CharField(max_length=100)
     url = models.CharField(max_length=500)
     note = models.CharField(max_length=500)
