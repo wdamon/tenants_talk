@@ -44,15 +44,15 @@ def arb(request):
     return render(request, 'contest/fletter/arb.html', {'arb_serialized':arb_serialized})
 
 def filter(request):
-    filter_val = request.GET.get(‘filter’, None);
-    
+    filter_val = request.GET.get('filter', None);
+
     if (filter_val != None):
         results = []
         advocates = advocates.objects.filter(category_icontains=filter_val)
         for advocate in advocates:
-            json = {‘name’: advocates.name}
+            json = {'name': advocates.name}
             results.append(json)
 
-        return JsonResponse({‘results’:results})
+        return JsonResponse({'results':results})
     else:
-        return render(request, ‘search.html’);
+        return render(request, 'search.html');
