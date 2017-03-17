@@ -9,7 +9,6 @@ import djgeojson.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('contest'),
     ]
 
     operations = [
