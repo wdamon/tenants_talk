@@ -36,7 +36,49 @@
 
   </head>
   <body>
-
+  <div class="container">
+     <div class= "row">
+         {% for advocate in advocates %}
+         <div class="col-md-4">
+           <div class="card">
+             <div class="header">
+               <h4 class="title">{{ advocate.name }}</h4>
+               <p><a href= {{ advocate.url }} >{{ advocate.url }}</a></p>
+             </div>
+             <div class="content">
+               {% if advocate.category == "general"  %}
+               <div class='panel panel-info'>
+                 <div class='panel-heading'>
+                {% elif advocate.category == "women" %}
+                <div class='panel panel-default'>
+                  <div class='panel-heading'>
+                {% elif advocate.category =="HIV/AIDS" %}
+                <div class='panel panel-default'>
+                  <div class='panel-heading panel-heading-custom'>
+                {% elif advocate.category =="disability" %}
+                <div class='panel panel-success'>
+                  <div class='panel-heading'>
+                {% elif advocate.category =="immigrant/refugees" %}
+                <div class='panel panel-warning'>
+                  <div class='panel-heading'>
+                {% endif %}
+               <h4 class="title"> {{advocate.name}} </h4></div>
+               <div class='panel-body'><p> {{advocate.note}} </p>
+               <ul class="list-group">
+                   <li class="list-group-item"><i class="fa fa-calendar" aria-hidden="true"></i>Schedule: {{advocate.schedule}}</li>
+                   <li class="list-group-item"><i class="fa fa-phone-square" aria-hidden="true"></i> Phone: {{advocate.phone}}</li>
+                   <li class="list-group-item"><i class="fa fa-info-circle" aria-hidden="true"></i> Website: <a href={{advocate.url}}>{{advocate.url}}</a></li>
+                   <li class="list-group-item"><i class="fa fa-map-marker" aria-hidden="true"></i>Address: {{advocate.address}} =</li>
+              </ul>
+            </div>
+          </div>
+         </div>
+         {% if forloop.counter|divisibleby: 3 %}
+          </div><div class="row">
+         {% endif %}
+        {% endfor %}
+      </div>
+</main>
     <div class="container">
       <div class="header clearfix">
         <nav style="background-color: black" class="navbar navbar-inverse">
@@ -82,18 +124,10 @@
               var layers = {},
                   masterLayer = L.layerGroup();
 
-            var genGroup = L.featureGroup();
+              var genGroup = L.featureGroup();
               masterLayer.addLayer(genGroup);
               var womGroup = L.featureGroup();
               masterLayer.addLayer(womGroup);
-              var disGroup = L.featureGroup();
-              masterLayer.addLayer(disGroup);
-              var jewGroup = L.featureGroup();
-              masterLayer.addLayer(jewGroup);
-              var refGroup = L.featureGroup();
-              masterLayer.addLayer(refGroup);
-              var walGroup = L.featureGroup();
-              masterLayer.addLayer(walGroup);
               var hivGroup = L.featureGroup();
               masterLayer.addLayer(hivGroup);
 
@@ -104,11 +138,7 @@
               var overlayMaps = {
                 "General" : genGroup,
                 "Womens": womGroup,
-                "Disability": disGroup,
                 "HIV/AIDS": hivGroup,
-                "Jewish": jewGroup,
-                "Immigrant/Refugee":refGroup,
-                "Walk-ins":walGroup
               };
               L.control.layers(baseMaps, overlayMaps, {hideSingleBase: 'true', position: 'bottomright'}).addTo(m);
 
@@ -119,79 +149,56 @@
 
               var geojsonPointLayer = {{ arb_serialized|safe }};
 
-              var evcIcon = L.AwesomeMarkers.icon({
-                  icon: 'home',
+              var genIcon = L.AwesomeMarkers.icon({
+                  icon: 'briefcase',
                   prefix: 'fa',
-                  markerColor: 'red',
+                  markerColor: 'blue',
                   iconColor: 'white',
                   riseOnHover: 'True'
 
                 });
-              var secIcon = L.AwesomeMarkers.icon({
-                    icon: 'usd',
+              var womIcon = L.AwesomeMarkers.icon({
+                    icon: 'briefcase',
                     prefix: 'fa',
                     markerColor: 'white',
                     iconColor: 'green',
                     riseOnHover: 'True'
                 });
-              var repIcon = L.AwesomeMarkers.icon({
-                    icon: 'hammer',
-                    prefix: 'ion',
+              var hivIcon = L.AwesomeMarkers.icon({
+                    icon: 'briefcase',
+                    prefix: 'fa',
                     markerColor: 'black',
                     iconColor: 'white',
                     riseOnHover: 'True'
                 });
-              var othIcon = L.AwesomeMarkers.icon({
-                    icon: 'question-circle-o',
-                    prefix: 'fa',
-                    markerColor: 'blue',
-                    iconColor: 'white',
-                    riseOnHover: 'True'
-                });
-              function getMarker(f, evc) {
-                if (f === 'EVC') {
-                    return {icon: evcIcon,
-                            title: "\""+evc.slice(0,25)+"...\""}
-                } else if (f === 'SEC') {
-                    return {icon: secIcon,
-                            title: "\""+evc.slice(0,25)+"...\""}
-                } else if (f === 'REP') {
-                    return {icon: repIcon,
-                            title: "\""+evc.slice(0,25)+"...\""}
-                } else
-                    return {icon: othIcon,
-                            title: "\""+evc.slice(0,25)+"...\""}
+              function getMarker(f, name) {
+                if (f === 'general') {
+                    return {icon: genIcon,
+                            title: name}
+                } else if (f === 'women') {
+                    return {icon: womIcon,
+                            title: name}
+                } else if (f === 'HIV/AIDS') {
+                    return {icon: hivIcon,
+                            title: name}
                 }
               var popup = L.DomUtil.create('div', 'tiny-popup', m.getContainer());
-
+              var popupcontents =   "<div class='panel panel-info'><div class='panel-heading'>" + feature.properties.name + "</div><div class='panel-body'><p>" + feature.properties.note + '</p></div><ul class="list-group"><li class="list-group-item">Schedule: ' + feature.properties.schedule + '</li><li class="list-group-item">Phone: ' + feature.properties.phone +  '</li><li class="list-group-item">Website: <a href=' + feature.properties.url + '>' + feature.properties.url + '</a></li><li class="list-group-item">Address: ' + feature.properties.address + '</li></ul></div>';
 
               var geojsonPointLayerJSON = new L.geoJson(geojsonPointLayer, {
                 pointToLayer: function(feature, latlng) {
                   if (feature.properties.category === "general") {
-                    var marker = L.marker(latlng).bindPopup("Category: Name" + feature.properties.name + "<br>Address: "+ feature.properties.address +"<br>Phone: " +feature.properties.phone);
+                    var marker = L.marker(latlng, getMarker(feature.properties.category, feature.properties.name)).bindPopup(popupcontents);
                     feature.layer = marker;
                     genGroup.addLayer(marker);
                   }  else if (feature.properties.category === "women") {
-                    var marker = L.marker(latlng).bindPopup("Category: Name" + feature.properties.name + "<br>Address: "+ feature.properties.address +"<br>Phone: " +feature.properties.phone);
+                    var marker = L.marker(latlng, getMarker(feature.properties.category, feature.properties.name)).bindPopup(popupcontents);
                     feature.layer = marker;
                     womGroup.addLayer(marker);
                     } else if (feature.properties.category === "HIV/AIDS") {
-                    var marker = L.marker(latlng).bindPopup("Category: Name" + feature.properties.name + "<br>Address: "+ feature.properties.address +"<br>Phone: " +feature.properties.phone);
+                    var marker = L.marker(latlng, getMarker(feature.properties.category, feature.properties.name)).bindPopup(popupcontents);
                     feature.layer = marker;
                     hivGroup.addLayer(marker);
-                  } else if (feature.properties.category === "disability") {
-                    var marker = L.marker(latlng).bindPopup("Category: Name" + feature.properties.name + "<br>Address: "+ feature.properties.address +"<br>Phone: " +feature.properties.phone);
-                    feature.layer = marker;
-                    disGroup.addLayer(marker);
-                  } else if (feature.properties.category === "jewish") {
-                    var marker = L.marker(latlng).bindPopup("Category: Name" + feature.properties.name + "<br>Address: "+ feature.properties.address +"<br>Phone: " +feature.properties.phone);
-                    feature.layer = marker;
-                    jewGroup.addLayer(marker);
-                  } else if (feature.properties.category === "immigrant/refugees") {
-                    var marker = L.marker(latlng).bindPopup("Category: Name" + feature.properties.name + "<br>Address: "+ feature.properties.address +"<br>Phone: " +feature.properties.phone);
-                    feature.layer = marker;
-                    refGroup.addLayer(marker);
-                }
               },
             });
 
