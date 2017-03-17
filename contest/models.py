@@ -34,10 +34,8 @@ class cform(models.Model):
     lcity = models.CharField(max_length=100, blank=True)
     lpostal = models.CharField(max_length=100, blank=True)
 
-
     def __str__(self):
         return self.address
-
 
 class advocates(models.Model):
     category = models.CharField(max_length=100)
