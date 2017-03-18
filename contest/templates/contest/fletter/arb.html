@@ -63,7 +63,7 @@
   <div class="container" style="max-width:100%">
      <div class= "row">
          {% for advocate in advocates %}
-         <div class="col-md-4 card" id={{advocate.pk}} style="padding-right: 15px, padding-left: 15px">
+         <div class="col-md-3 card" id={{advocate.pk}} style="margin-right: 15px, margin-left: 15px">
                {% if advocate.category == "general"  %}
                <div class='panel panel-info'>
                  <div class='panel-heading'>
@@ -179,8 +179,9 @@
                     return {icon: hivIcon,
                             title: name}
                 }
+              }
               var popup = L.DomUtil.create('div', 'tiny-popup', m.getContainer());
-              var popupcontents =   "<div class='panel panel-info'><div class='panel-heading'>" + feature.properties.name + "</div><div class='panel-body'><p>" + feature.properties.note + '</p></div><ul class="list-group"><li class="list-group-item">Schedule: ' + feature.properties.schedule + '</li><li class="list-group-item">Phone: ' + feature.properties.phone +  '</li><li class="list-group-item">Website: <a href=' + feature.properties.url + '>' + feature.properties.url + '</a></li><li class="list-group-item">Address: ' + feature.properties.address + '</li></ul></div>';
+              var popupcontents = "<div class='panel panel-info'><div class='panel-heading'>" + feature.properties.name + "</div><div class='panel-body'><p>" + feature.properties.note + '</p></div><ul class="list-group"><li class="list-group-item">Schedule: ' + feature.properties.schedule + '</li><li class="list-group-item">Phone: ' + feature.properties.phone +  '</li><li class="list-group-item">Website: <a href=' + feature.properties.url + '>' + feature.properties.url + '</a></li><li class="list-group-item">Address: ' + feature.properties.address + '</li></ul></div>';
 
               var geojsonPointLayerJSON = new L.geoJson(geojsonPointLayer, {
                 pointToLayer: function(feature, latlng) {
@@ -192,12 +193,12 @@
                     var marker = L.marker(latlng, getMarker(feature.properties.category, feature.properties.name)).bindPopup(popupcontents);
                     feature.layer = marker;
                     womGroup.addLayer(marker);
-                    } else if (feature.properties.category === "HIV/AIDS") {
+                  } else if (feature.properties.category === "HIV/AIDS") {
                     var marker = L.marker(latlng, getMarker(feature.properties.category, feature.properties.name)).bindPopup(popupcontents);
                     feature.layer = marker;
                     hivGroup.addLayer(marker);
                   }
-              }
+              },
             });
 
           searchCtrl.indexFeatures(geojsonPointLayer, ['name', 'address', 'phone']);
