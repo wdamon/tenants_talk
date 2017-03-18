@@ -60,16 +60,10 @@
       </nav>
     </div>
   </div>
-  <div class="container">
+  <div class="container" style="max-width:100%">
      <div class= "row">
          {% for advocate in advocates %}
          <div class="col-md-4">
-           <div class="card">
-             <div class="header">
-               <h4 class="title">{{ advocate.name }}</h4>
-               <p><a href= {{ advocate.url }} >{{ advocate.url }}</a></p>
-             </div>
-             <div class="content">
                {% if advocate.category == "general"  %}
                <div class='panel panel-info'>
                  <div class='panel-heading'>
@@ -96,13 +90,13 @@
               </ul>
             </div>
           </div>
-         </div>
+        </div>
          {% if forloop.counter|divisibleby:"3" %}
           </div><div class="row">
          {% endif %}
         {% endfor %}
       </div>
-    </main>
+    </div>
       <div class="container" style="max-width:100%">
         <div class="jumbotron">
           <h1>Find an Advocate</h1>
