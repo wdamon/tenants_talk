@@ -63,7 +63,7 @@
   <div class="container" style="max-width:100%">
      <div class= "row">
          {% for advocate in advocates %}
-         <div class="col-md-4">
+         <div class="col-md-4 card" id={{advocate.pk}}>
                {% if advocate.category == "general"  %}
                <div class='panel panel-info'>
                  <div class='panel-heading'>
@@ -79,14 +79,17 @@
                 {% elif advocate.category == "immigrant/refugees" %}
                 <div class='panel panel-warning'>
                   <div class='panel-heading'>
+                {% elif advocate.category == "jewish" %}
+                <div class='panel panel-danger'>
+                  <div class='panel-heading'>
                 {% endif %}
                <h4 class="title"> {{advocate.name}} </h4></div>
                <div class='panel-body'><p> {{advocate.note}} </p>
                <ul class="list-group">
-                   <li class="list-group-item"><i class="fa fa-calendar" aria-hidden="true"></i>Schedule: {{advocate.schedule}}</li>
+                   <li class="list-group-item"><i class="fa fa-calendar" aria-hidden="true"></i> Schedule: {{advocate.schedule}}</li>
                    <li class="list-group-item"><i class="fa fa-phone-square" aria-hidden="true"></i> Phone: {{advocate.phone}}</li>
-                   <li class="list-group-item"><i class="fa fa-info-circle" aria-hidden="true"></i> Website: <a href={{advocate.url}}>{{advocate.url}}</a></li>
-                   <li class="list-group-item"><i class="fa fa-map-marker" aria-hidden="true"></i>Address: {{advocate.address}} =</li>
+                   <li class="list-group-item"><i class="fa fa-info-circle" aria-hidden="true"></i> Website: <a style="color:blue" href={{advocate.url}}>{{advocate.url}}</a></li>
+                   <li class="list-group-item"><i class="fa fa-map-marker" aria-hidden="true"></i> Address: {{advocate.address}} </li>
               </ul>
             </div>
           </div>
@@ -193,11 +196,11 @@
                     var marker = L.marker(latlng, getMarker(feature.properties.category, feature.properties.name)).bindPopup(popupcontents);
                     feature.layer = marker;
                     hivGroup.addLayer(marker);
-              },
+                  }
             });
+          }
 
-
-            searchCtrl.indexFeatures(geojsonPointLayer, ['name', 'address', 'phone']);
+          searchCtrl.indexFeatures(geojsonPointLayer, ['name', 'address', 'phone']);
 
 
               </script>
