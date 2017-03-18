@@ -63,7 +63,7 @@
   <div class="container" style="max-width:100%">
      <div class= "row">
          {% for advocate in advocates %}
-         <div class="col-md-4 card" id={{advocate.pk}}>
+         <div class="col-md-4 card" id={{advocate.pk}} style="padding-right: 15px, padding-left: 15px">
                {% if advocate.category == "general"  %}
                <div class='panel panel-info'>
                  <div class='panel-heading'>
@@ -197,8 +197,8 @@
                     feature.layer = marker;
                     hivGroup.addLayer(marker);
                   }
+              }
             });
-          }
 
           searchCtrl.indexFeatures(geojsonPointLayer, ['name', 'address', 'phone']);
 
