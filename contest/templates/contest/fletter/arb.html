@@ -60,8 +60,51 @@
       </nav>
     </div>
   </div>
-  <div class="container" style="max-width:100%">
-     <div class= "row">
+  <div class="row">
+    <div class="col-sm-3 col-md-2 sidebar">
+      <ul class="nav nav-sidebar">
+        <li class="active"><a href="#">Filters:<span class="sr-only">(current)</span></a></li>
+        <li>Accepts Walk-ins
+          <div class="checkbox">
+              <label>
+                <input type="checkbox">
+              </label>
+          </li>
+        <li>Women Only
+          <div class="checkbox">
+              <label>
+                <input type="checkbox">
+              </label>
+          </li>
+        <li>People with Disabilities Only
+          <div class="checkbox">
+              <label>
+                <input type="checkbox">
+              </label>
+          </li>
+        <li>Refugees/Immigrants Only
+          <div class="checkbox">
+              <label>
+                <input type="checkbox">
+              </label>
+          </li>
+        <li>People with HIV/AIDS Only
+          <div class="checkbox">
+              <label>
+                <input type="checkbox">
+              </label>
+          </li>
+        <li>People of Jewish Descent Only
+          <div class="checkbox">
+              <label>
+                <input type="checkbox">
+              </label>
+          </li>
+      </ul>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+      <h1 class="page-header">Find an Advocate</h1>
+        <div class= "row">
          {% for advocate in advocates %}
          <div class="col-md-3 card" id={{advocate.pk}} style="margin-right: 15px, margin-left: 15px">
                {% if advocate.category == "general"  %}
@@ -181,10 +224,10 @@
                 }
               }
               var popup = L.DomUtil.create('div', 'tiny-popup', m.getContainer());
-              var popupcontents = "<div class='panel panel-info'><div class='panel-heading'>" + feature.properties.name + "</div><div class='panel-body'><p>" + feature.properties.note + '</p></div><ul class="list-group"><li class="list-group-item">Schedule: ' + feature.properties.schedule + '</li><li class="list-group-item">Phone: ' + feature.properties.phone +  '</li><li class="list-group-item">Website: <a href=' + feature.properties.url + '>' + feature.properties.url + '</a></li><li class="list-group-item">Address: ' + feature.properties.address + '</li></ul></div>';
 
               var geojsonPointLayerJSON = new L.geoJson(geojsonPointLayer, {
                 pointToLayer: function(feature, latlng) {
+                  var popupcontents = "<div class='panel panel-info'><div class='panel-heading'>" + feature.properties.name + "</div><div class='panel-body'><p>" + feature.properties.note + '</p></div><ul class="list-group"><li class="list-group-item">Schedule: ' + feature.properties.schedule + '</li><li class="list-group-item">Phone: ' + feature.properties.phone +  '</li><li class="list-group-item">Website: <a href=' + feature.properties.url + '>' + feature.properties.url + '</a></li><li class="list-group-item">Address: ' + feature.properties.address + '</li></ul></div>';
                   if (feature.properties.category === "general") {
                     var marker = L.marker(latlng, getMarker(feature.properties.category, feature.properties.name)).bindPopup(popupcontents);
                     feature.layer = marker;
