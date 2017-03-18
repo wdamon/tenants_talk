@@ -36,6 +36,30 @@
 
   </head>
   <body>
+    <div class="container">
+      <div class="header clearfix">
+        <nav style="background-color: black" class="navbar navbar-inverse">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <h3 style="color: white">Tenants Talk</h3>
+            </div>
+
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav nav-pills pull-right">
+                    <input type="hidden" id="selected_menu_item" value="=$selectedMenuId; ?>" />
+                    <li role="presentation" ><a href="{% url 'index' %}">Report a Landlord</a></li>
+                    <li role="presentation" class="active"><a href="{% url 'map' %}">Tenant Complaint Registry</a></li>
+                    <li role="presentation"><a href="/contest">Tenant Robot Lawyer</a></li>
+                </ul>
+          </div>
+      </nav>
+    </div>
+  </div>
   <div class="container">
      <div class= "row">
          {% for advocate in advocates %}
@@ -78,31 +102,7 @@
          {% endif %}
         {% endfor %}
       </div>
-</main>
-    <div class="container">
-      <div class="header clearfix">
-        <nav style="background-color: black" class="navbar navbar-inverse">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <h3 style="color: white">Tenants Talk</h3>
-            </div>
-
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav nav-pills pull-right">
-                    <input type="hidden" id="selected_menu_item" value="=$selectedMenuId; ?>" />
-                    <li role="presentation" ><a href="{% url 'index' %}">Report a Landlord</a></li>
-                    <li role="presentation" class="active"><a href="{% url 'map' %}">Tenant Complaint Registry</a></li>
-                    <li role="presentation"><a href="/contest">Tenant Robot Lawyer</a></li>
-                </ul>
-          </div>
-      </nav>
-    </div>
-  </div>
+    </main>
       <div class="container" style="max-width:100%">
         <div class="jumbotron">
           <h1>Find an Advocate</h1>
