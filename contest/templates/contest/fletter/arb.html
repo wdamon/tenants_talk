@@ -62,85 +62,104 @@
 
     <div class="container-fluid">
       <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-         <ul class="nav nav-sidebar">
-           <li class="active"><a href="#">Filters:<span class="sr-only">(current)</span></a></li>
-           <li>
-            <div class="checkbox">
-               <label>Accepts Walk-ins
-                 <input type="checkbox">
-               </label>
-             </div>
-           </li>
-           <li>
-             <div class="checkbox">
-              <label>Women Only
-                <input type="checkbox">
-              </label>
-             </div>
-           </li>
-           <li>
-            <div class="checkbox">
-                <label>People with Disabilities Only
-                  <input type="checkbox">
-                </label>
-               </div>
-            </li>
-           <li>
-            <div class="checkbox">
-                <label>Refugees/Immigrants Only
-                  <input type="checkbox">
-                </label>
-               </div>
-            </li>
-           <li>
-            <div class="checkbox">
-                <label>People with HIV/AIDS Only
-                  <input type="checkbox">
-                </label>
+        <div class="col-sm-9 col-md-10 main-panel">
+       <h1 class="page-header header" style="text-align:center">Find an Advocate</h1>
+       <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Filters:</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li>
+                          <div class="checkbox">
+                            <label for="walkins">
+                              <span>Accepts Walk-ins</span>
+                            </label>
+                           <input type="checkbox" id="walkins" class="checkbox style-2 pull-right">
+                         </div>
+                        </li>
+                        <li >
+                          <div class="checkbox">
+                            <label for="women">
+                              <span>Women Only</span>
+                            </label>
+                           <input type="checkbox" id="women" class="checkbox style-2 pull-right">
+                         </div>
+                        </li>
+                        <li>
+                          <div class="checkbox">
+                            <label for="disabled">
+                              <span>People with Disabilities Only</span>
+                            </label>
+                           <input type="checkbox" id="disabled" class="checkbox style-2 pull-right">
+                         </div>
+                        </li>
+                        <li>
+                          <div class="checkbox">
+                            <label for="immigrants">
+                              <span>Immigrants/Refugees Only</span>
+                            </label>
+                           <input type="checkbox" id="immigrants" class="checkbox style-2 pull-right">
+                         </div>
+                        </li>
+                        <li>
+                          <div class="checkbox">
+                            <label for="hiv">
+                              <span>People with HIV/AIDS only</span>
+                            </label>
+                           <input type="checkbox" id="hiv" class="checkbox style-2 pull-right">
+                         </div>
+
+                        </li>
+                        <li>
+                          <div class="checkbox">
+                            <label for="jewish">
+                              <span>People of Jewish Descent</span>
+                            </label>
+                           <input type="checkbox" id="jewish" class="checkbox style-2 pull-right">
+                         </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
-           </li>
-           <li>
-            <div class="checkbox">
-                <label>People of Jewish Descent Only
-                  <input type="checkbox">
-                </label>
-             </div>
-            </li>
-         </ul>
-        </div>
-    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main-panel">
-       <h1 class="page-header">Find an Advocate</h1>
+        </nav>
            <div class= "row">
             {% for advocate in advocates %}
                <div class="col-md-4">
                 <div class="card" id={{advocate.pk}}>
                    {% if advocate.category == "general"  %}
                    <div class='panel panel-info'>
-                     <div class='panel-heading header'>
+                     <div class='panel-heading panel-heading-gen header'>
                     {% elif advocate.category == "women" %}
                     <div class='panel panel-default'>
-                      <div class='panel-heading header'>
+                      <div class='panel-heading panel-heading-wom header'>
                     {% elif advocate.category == "HIV/AIDS" %}
                     <div class='panel panel-default'>
-                      <div class='panel-heading panel-heading-custom header'>
+                      <div class='panel-heading panel-heading-hiv header'>
                     {% elif advocate.category == "disability" %}
                     <div class='panel panel-success'>
-                      <div class='panel-heading header'>
+                      <div class='panel-heading panel-heading-dis header'>
                     {% elif advocate.category == "immigrant/refugees" %}
                     <div class='panel panel-warning'>
-                      <div class='panel-heading header'>
+                      <div class='panel-heading panel-heading-imm header'>
                     {% elif advocate.category == "jewish" %}
                     <div class='panel panel-danger'>
-                      <div class='panel-heading header'>
+                      <div class='panel-heading panel-heading-jew header'>
                         {% endif %}
-                       <h4 class="title"> {{advocate.name}} </h4>
+                       <h4 class="title" style="padding:1em"> {{advocate.name}} </h4>
                       </div>
-                      <div class='panel-body content'><p> {{advocate.note}} </p>
+                      <div class='panel-body content' style="padding-left:1em"><p> {{advocate.note}} </p>
                          <ul class="list-group">
                            <li class="list-group-item"><i class="fa fa-calendar" aria-hidden="true"></i> Schedule: {{advocate.schedule}}</li>
                            <li class="list-group-item"><i class="fa fa-phone-square" aria-hidden="true"></i> Phone: {{advocate.phone}}</li>
-                           <li class="list-group-item"><i class="fa fa-info-circle" aria-hidden="true"></i> Website: <a style="color:blue" href={{advocate.url}}>{{advocate.url}}</a></li>
+                           <li class="list-group-item"><i class="fa fa-info-circle" aria-hidden="true"></i><a style="color:blue" href={{advocate.url}}>WEBSITE</a></li>
                            <li class="list-group-item"><i class="fa fa-map-marker" aria-hidden="true"></i> Address: {{advocate.address}} </li>
                        </ul>
                       </div>

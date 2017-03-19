@@ -1,11 +1,11 @@
 .main-panel {
-  background: rgba(203, 203, 210, 0.15);
+  background: #f7f7f8;
   position: relative;
   z-index: 2;
-  float: right;
-  width: calc(100% - 260px);
+  width: 100%;
   min-height: 100%;
-  padding: 30px 15px;
+  padding: 15px 15px;
+  border-radius: 2em
 }
 
 
@@ -16,10 +16,40 @@
   margin-bottom: 30px;
 }
 
-.panel-heading-custom {
+.panel-heading-hiv {
     background: black; color: #fff;
+    border-top-left-radius: 2em;
+    border-top-right-radius: 2em
+}
+.panel-heading-gen {
+    background: #3f51b5; color: #fff;
+    border-top-left-radius: 2em;
+    border-top-right-radius: 2em
 }
 
+.panel-heading-wom {
+    background: #3f51b5; color: #fff;
+    border-top-left-radius: 2em;
+    border-top-right-radius: 2em
+}
+
+.panel-heading-dis{
+    background: #9c27b0; color: #fff;
+    border-top-left-radius: 2em;
+    border-top-right-radius: 2em
+}
+
+.panel-heading-imm{
+    background: #ffeb3b; color: #fff;
+    border-top-left-radius: 2em;
+    border-top-right-radius: 2em
+}
+
+.panel-heading-jew{
+    background: #673ab7; color: #fff;
+    border-top-left-radius: 2em;
+    border-top-right-radius: 2em
+}
 /*
  * Sidebar
  */
