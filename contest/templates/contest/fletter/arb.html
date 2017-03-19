@@ -36,8 +36,8 @@
 
   </head>
   <body>
-    <div class="container">
-      <div class="header clearfix">
+
+     <div class="header clearfix">
         <nav style="background-color: black" class="navbar navbar-inverse">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -57,96 +57,104 @@
                     <li role="presentation"><a href="/contest">Tenant Robot Lawyer</a></li>
                 </ul>
           </div>
-      </nav>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-3 col-md-2 sidebar">
-      <ul class="nav nav-sidebar">
-        <li class="active"><a href="#">Filters:<span class="sr-only">(current)</span></a></li>
-        <li>Accepts Walk-ins
-          <div class="checkbox">
-              <label>
+        </nav>
+     </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+         <ul class="nav nav-sidebar">
+           <li class="active"><a href="#">Filters:<span class="sr-only">(current)</span></a></li>
+           <li>
+            <div class="checkbox">
+               <label>Accepts Walk-ins
+                 <input type="checkbox">
+               </label>
+             </div>
+           </li>
+           <li>
+             <div class="checkbox">
+              <label>Women Only
                 <input type="checkbox">
               </label>
-          </li>
-        <li>Women Only
-          <div class="checkbox">
-              <label>
-                <input type="checkbox">
-              </label>
-          </li>
-        <li>People with Disabilities Only
-          <div class="checkbox">
-              <label>
-                <input type="checkbox">
-              </label>
-          </li>
-        <li>Refugees/Immigrants Only
-          <div class="checkbox">
-              <label>
-                <input type="checkbox">
-              </label>
-          </li>
-        <li>People with HIV/AIDS Only
-          <div class="checkbox">
-              <label>
-                <input type="checkbox">
-              </label>
-          </li>
-        <li>People of Jewish Descent Only
-          <div class="checkbox">
-              <label>
-                <input type="checkbox">
-              </label>
-          </li>
-      </ul>
-    </div>
-    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-      <h1 class="page-header">Find an Advocate</h1>
-        <div class= "row">
-         {% for advocate in advocates %}
-         <div class="col-md-3 card" id={{advocate.pk}} style="margin-right: 15px, margin-left: 15px">
-               {% if advocate.category == "general"  %}
-               <div class='panel panel-info'>
-                 <div class='panel-heading'>
-                {% elif advocate.category == "women" %}
-                <div class='panel panel-default'>
-                  <div class='panel-heading'>
-                {% elif advocate.category == "HIV/AIDS" %}
-                <div class='panel panel-default'>
-                  <div class='panel-heading panel-heading-custom'>
-                {% elif advocate.category == "disability" %}
-                <div class='panel panel-success'>
-                  <div class='panel-heading'>
-                {% elif advocate.category == "immigrant/refugees" %}
-                <div class='panel panel-warning'>
-                  <div class='panel-heading'>
-                {% elif advocate.category == "jewish" %}
-                <div class='panel panel-danger'>
-                  <div class='panel-heading'>
-                {% endif %}
-               <h4 class="title"> {{advocate.name}} </h4></div>
-               <div class='panel-body'><p> {{advocate.note}} </p>
-               <ul class="list-group">
-                   <li class="list-group-item"><i class="fa fa-calendar" aria-hidden="true"></i> Schedule: {{advocate.schedule}}</li>
-                   <li class="list-group-item"><i class="fa fa-phone-square" aria-hidden="true"></i> Phone: {{advocate.phone}}</li>
-                   <li class="list-group-item"><i class="fa fa-info-circle" aria-hidden="true"></i> Website: <a style="color:blue" href={{advocate.url}}>{{advocate.url}}</a></li>
-                   <li class="list-group-item"><i class="fa fa-map-marker" aria-hidden="true"></i> Address: {{advocate.address}} </li>
-              </ul>
+             </div>
+           </li>
+           <li>
+            <div class="checkbox">
+                <label>People with Disabilities Only
+                  <input type="checkbox">
+                </label>
+               </div>
+            </li>
+           <li>
+            <div class="checkbox">
+                <label>Refugees/Immigrants Only
+                  <input type="checkbox">
+                </label>
+               </div>
+            </li>
+           <li>
+            <div class="checkbox">
+                <label>People with HIV/AIDS Only
+                  <input type="checkbox">
+                </label>
             </div>
-          </div>
+           </li>
+           <li>
+            <div class="checkbox">
+                <label>People of Jewish Descent Only
+                  <input type="checkbox">
+                </label>
+             </div>
+            </li>
+         </ul>
         </div>
-         {% if forloop.counter|divisibleby:"3" %}
-          </div><div class="row">
-         {% endif %}
-        {% endfor %}
-      </div>
-    </div>
-      <div class="container" style="max-width:100%">
-        <div class="jumbotron">
-          <h1>Find an Advocate</h1>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main-panel">
+       <h1 class="page-header">Find an Advocate</h1>
+           <div class= "row">
+            {% for advocate in advocates %}
+               <div class="col-md-4">
+                <div class="card" id={{advocate.pk}}>
+                   {% if advocate.category == "general"  %}
+                   <div class='panel panel-info'>
+                     <div class='panel-heading header'>
+                    {% elif advocate.category == "women" %}
+                    <div class='panel panel-default'>
+                      <div class='panel-heading header'>
+                    {% elif advocate.category == "HIV/AIDS" %}
+                    <div class='panel panel-default'>
+                      <div class='panel-heading panel-heading-custom header'>
+                    {% elif advocate.category == "disability" %}
+                    <div class='panel panel-success'>
+                      <div class='panel-heading header'>
+                    {% elif advocate.category == "immigrant/refugees" %}
+                    <div class='panel panel-warning'>
+                      <div class='panel-heading header'>
+                    {% elif advocate.category == "jewish" %}
+                    <div class='panel panel-danger'>
+                      <div class='panel-heading header'>
+                        {% endif %}
+                       <h4 class="title"> {{advocate.name}} </h4>
+                      </div>
+                      <div class='panel-body content'><p> {{advocate.note}} </p>
+                         <ul class="list-group">
+                           <li class="list-group-item"><i class="fa fa-calendar" aria-hidden="true"></i> Schedule: {{advocate.schedule}}</li>
+                           <li class="list-group-item"><i class="fa fa-phone-square" aria-hidden="true"></i> Phone: {{advocate.phone}}</li>
+                           <li class="list-group-item"><i class="fa fa-info-circle" aria-hidden="true"></i> Website: <a style="color:blue" href={{advocate.url}}>{{advocate.url}}</a></li>
+                           <li class="list-group-item"><i class="fa fa-map-marker" aria-hidden="true"></i> Address: {{advocate.address}} </li>
+                       </ul>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            {% if forloop.counter|divisibleby:"3" %}
+            </div>
             <div class="row">
+            {% endif %}
+            {% endfor %}
+          </div>
+             <h1>Find an Advocate</h1>
+          <div class="row">
             <div id="mapid" style="height:80%">
               <script>
               //initialize map
@@ -251,7 +259,6 @@
 
             </div>
           </div>
-
 </div>
       </div>
 
