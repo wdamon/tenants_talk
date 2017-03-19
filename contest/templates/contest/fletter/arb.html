@@ -65,71 +65,57 @@
         <div class="col-sm-9 col-md-10 main-panel">
        <h1 class="page-header header" style="text-align:center">Find an Advocate</h1>
        <nav class="navbar navbar-default navbar-fixed">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">Filters:</a>
-                </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav navbar-left">
-                        <li>
-                          <div class="checkbox">
-                            <label for="walkins">
-                              <span>Accepts Walk-ins</span>
-                            </label>
-                           <input type="checkbox" id="walkins" class="checkbox style-2 pull-right">
-                         </div>
-                        </li>
-                        <li >
-                          <div class="checkbox">
-                            <label for="women">
-                              <span>Women Only</span>
-                            </label>
-                           <input type="checkbox" id="women" class="checkbox style-2 pull-right">
-                         </div>
-                        </li>
-                        <li>
-                          <div class="checkbox">
-                            <label for="disabled">
-                              <span>People with Disabilities Only</span>
-                            </label>
-                           <input type="checkbox" id="disabled" class="checkbox style-2 pull-right">
-                         </div>
-                        </li>
-                        <li>
-                          <div class="checkbox">
-                            <label for="immigrants">
-                              <span>Immigrants/Refugees Only</span>
-                            </label>
-                           <input type="checkbox" id="immigrants" class="checkbox style-2 pull-right">
-                         </div>
-                        </li>
-                        <li>
-                          <div class="checkbox">
-                            <label for="hiv">
-                              <span>People with HIV/AIDS only</span>
-                            </label>
-                           <input type="checkbox" id="hiv" class="checkbox style-2 pull-right">
-                         </div>
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#filters">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Filters:</a>
+          </div>
 
-                        </li>
-                        <li>
-                          <div class="checkbox">
-                            <label for="jewish">
-                              <span>People of Jewish Descent</span>
-                            </label>
-                           <input type="checkbox" id="jewish" class="checkbox style-2 pull-right">
-                         </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+          <div class="collapse navbar-collapse" id="filters">
+                  <form class="nav navbar-nav navbar-left">
+                      <div class="checkbox navbar-btn">
+                          <label for="walkins">
+                            <span>Accepts Walk-ins</span>
+                          </label>
+                         <input type="checkbox" id="walkins" class="checkbox style-2 pull-right">
+                       </div>
+                      <div class="checkbox navbar-btn">
+                          <label for="women">
+                            <span>Women Only</span>
+                          </label>
+                         <input type="checkbox" id="women" class="checkbox style-2 pull-right">
+                       </div>
+                      <div class="checkbox navbar-btn">
+                          <label for="disabled">
+                            <span>People with Disabilities Only</span>
+                          </label>
+                         <input type="checkbox" id="disabled" class="checkbox style-2 pull-right">
+                       </div>
+                      <div class="checkbox navbar-btn">
+                          <label for="immigrants">
+                            <span>Immigrants/Refugees Only</span>
+                          </label>
+                         <input type="checkbox" id="immigrants" class="checkbox style-2 pull-right">
+                       </div>
+                      <div class="checkbox navbar-btn">
+                          <label for="hiv">
+                            <span>People with HIV/AIDS only</span>
+                          </label>
+                         <input type="checkbox" id="hiv" class="checkbox style-2 pull-right">
+                       </div>
+                      <div class="checkbox navbar-btn">
+                        <label for="jewish">
+                          <span>People of Jewish Descent</span>
+                        </label>
+                       <input type="checkbox" id="jewish" class="checkbox style-2 pull-right">
+                      </div>
+                  </form>
+              </div>
+       </nav>
            <div class= "row">
             {% for advocate in advocates %}
                <div class="col-md-4">

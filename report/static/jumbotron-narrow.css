@@ -17,12 +17,12 @@
 }
 
 .panel-heading-hiv {
-    background: black; color: #fff;
+    background: #018642; color: #fff;
     border-top-left-radius: 2em;
     border-top-right-radius: 2em
 }
 .panel-heading-gen {
-    background: #3f51b5; color: #fff;
+    background: #ffb74d; color: #fff;
     border-top-left-radius: 2em;
     border-top-right-radius: 2em
 }
@@ -40,7 +40,7 @@
 }
 
 .panel-heading-imm{
-    background: #ffeb3b; color: #fff;
+    background: #ff5722; color: #fff;
     border-top-left-radius: 2em;
     border-top-right-radius: 2em
 }
