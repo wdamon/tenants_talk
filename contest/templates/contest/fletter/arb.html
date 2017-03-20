@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{% static 'leaflet.awesome-markers.css' %}" />
     <script src="{% static 'leaflet.awesome-markers.min.js' %}"></script>
     <script src="https://use.fontawesome.com/2c3856b3e5.js"></script>
+    <link rel="stylesheet" href="{% static 'awesome-bootstrap-checkbox.css' %}">
 
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -63,8 +64,8 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-9 col-md-10 main-panel">
-       <h1 class="page-header header" style="text-align:center">Find an Advocate</h1>
-       <nav class="navbar navbar-default navbar-fixed">
+         <h1 class="page-header header" style="text-align:center">Find an Advocate</h1>
+         <nav class="navbar navbar-default navbar-fixed">
           <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#filters">
                   <span class="sr-only">Toggle navigation</span>
@@ -74,47 +75,52 @@
               </button>
               <a class="navbar-brand" href="#">Filters:</a>
           </div>
-
           <div class="collapse navbar-collapse" id="filters">
-                  <form class="nav navbar-nav navbar-left">
-                      <div class="checkbox navbar-btn">
+            <form class="nav navbar-nav navbar-left" role="form">
+                      <div class="checkbox checkbox-inline">
+                        <input type="checkbox" class="styled" id="walkins">
                           <label for="walkins">
-                            <span>Accepts Walk-ins</span>
+                            ::before
+                            " Accepts Walk-ins ""
                           </label>
-                         <input type="checkbox" id="walkins" class="checkbox style-2 pull-right">
                        </div>
-                      <div class="checkbox navbar-btn">
+                      <div class="checkbox checkbox-primary checkbox-inline">
+                        <input type="checkbox" class="styled" id="women">
                           <label for="women">
-                            <span>Women Only</span>
+                            ::before
+                            " Women Only "
                           </label>
-                         <input type="checkbox" id="women" class="checkbox style-2 pull-right">
                        </div>
-                      <div class="checkbox navbar-btn">
-                          <label for="disabled">
-                            <span>People with Disabilities Only</span>
-                          </label>
-                         <input type="checkbox" id="disabled" class="checkbox style-2 pull-right">
+                      <div class="checkbox checkbox-danger checkbox-inline">
+                         <input type="checkbox" id="disabled" class="styled">
+                       <label for="disabled">
+                         ::before
+                         " People with Disabilities Only ""
+                       </label>
+                      </div>
+                      <div class="checkbox checkbox-warning checkbox-inline">
+                         <input type="checkbox" id="immigrants" class="styled">
+                         <label for="immigrants">
+                           ::before
+                           " Immigrants/Refugees Only "
+                         </label>
                        </div>
-                      <div class="checkbox navbar-btn">
-                          <label for="immigrants">
-                            <span>Immigrants/Refugees Only</span>
-                          </label>
-                         <input type="checkbox" id="immigrants" class="checkbox style-2 pull-right">
-                       </div>
-                      <div class="checkbox navbar-btn">
+                      <div class="checkbox checkbox-success checkbox-inline">
+                        <input type="checkbox" id="hiv" class="styled">
                           <label for="hiv">
-                            <span>People with HIV/AIDS only</span>
+                            ::before
+                          "  People with HIV/AIDS only "
                           </label>
-                         <input type="checkbox" id="hiv" class="checkbox style-2 pull-right">
                        </div>
-                      <div class="checkbox navbar-btn">
+                      <div class="checkbox checkbox-jewish checkbox-inline">
+                        <input type="checkbox" id="jewish" class="styled">
                         <label for="jewish">
-                          <span>People of Jewish Descent</span>
+                          ::before
+                          " People of Jewish Descent "
                         </label>
-                       <input type="checkbox" id="jewish" class="checkbox style-2 pull-right">
                       </div>
                   </form>
-              </div>
+          </div>
        </nav>
            <div class= "row">
             {% for advocate in advocates %}
