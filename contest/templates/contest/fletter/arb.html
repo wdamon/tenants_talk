@@ -77,43 +77,37 @@
                       <div class="checkbox checkbox-inline">
                         <input type="checkbox" class="styled" id="walkins">
                           <label for="walkins">
-                            ::before
-                            " Accepts Walk-ins ""
+                            Accepts Walk-ins
                           </label>
                        </div>
                       <div class="checkbox checkbox-primary checkbox-inline">
                         <input type="checkbox" class="styled" id="women">
                           <label for="women">
-                            ::before
-                            " Women Only "
+                            Women Only
                           </label>
                        </div>
                       <div class="checkbox checkbox-danger checkbox-inline">
                          <input type="checkbox" id="disabled" class="styled">
                        <label for="disabled">
-                         ::before
-                         " People with Disabilities Only ""
+                         People with Disabilities Only
                        </label>
                       </div>
                       <div class="checkbox checkbox-warning checkbox-inline">
                          <input type="checkbox" id="immigrants" class="styled">
                          <label for="immigrants">
-                           ::before
-                           " Immigrants/Refugees Only "
+                           Immigrants/Refugees Only
                          </label>
                        </div>
                       <div class="checkbox checkbox-success checkbox-inline">
                         <input type="checkbox" id="hiv" class="styled">
                           <label for="hiv">
-                            ::before
-                          "  People with HIV/AIDS only "
+                          People with HIV/AIDS only
                           </label>
                        </div>
                       <div class="checkbox checkbox-jewish checkbox-inline">
                         <input type="checkbox" id="jewish" class="styled">
                         <label for="jewish">
-                          ::before
-                          " People of Jewish Descent "
+                          People of Jewish Descent
                         </label>
                       </div>
                   </form>
@@ -234,19 +228,19 @@
 //on clicking a filter button ajax returns json data that matches the filte
 //maybe element.id?
 
-$(‘button’).on(‘click’, function(event){
-    event.preventDefault();
+$('#checkbox').on('click', function(event){
     var element = $(this);
     $.ajax({
-        url: ‘/filter/‘,
-        method : ‘GET’,
+        url: '/filter/',
+        method : 'GET',
         data : { filter : element.id};
         success : function(json){
-          var element = $(‘#advocates’);
-          element.empty()
-          for (var i=0, l=json.results.length; i<l; i++{
-            element.append(‘<li>’ + son.results[i].name + ‘</li>’)
+          $('#advocates.replace').html(data)
     });
+    /*data: {'name': 'me', 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+       success : function(data) {
+            $('.row.replace').html(data);
+        } */
 </script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="{% static 'ie10-viewport-bug-workaround.js' %}"></script>

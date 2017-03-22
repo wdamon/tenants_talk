@@ -50,6 +50,6 @@ def filter(request):
 
     if (filter_val != None):
         advocates = advocates.objects.filter(category_icontains=filter_val)
-        return render(request,"contest/fletter/arb.html", {"advocates":advocates})
+        return render(request,"contest/fletter/advocatelist.html", {"advocates":advocates})
     else:
         return render(request, 'contest/fletter/arb.html');

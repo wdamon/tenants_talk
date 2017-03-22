@@ -92,6 +92,10 @@
 .checkbox-primary input[type="radio"]:checked + label::after {
   color: #fff;
 }
+.checkbox-jewish input[type="checkbox"]:checked + label::after,
+.checkbox-jewish input[type="radio"]:checked + label::after {
+  color: #fff;
+}
 .checkbox-jewish input[type="checkbox"]:checked + label::before,
 .checkbox-jewish input[type="radio"]:checked + label::before {
   background-color:#673ab7;
@@ -124,8 +128,8 @@
 
 .checkbox-warning input[type="checkbox"]:checked + label::before,
 .checkbox-warning input[type="radio"]:checked + label::before {
-  background-color: #f0ad4e;
-  border-color: #f0ad4e;
+  background-color: #ff5722;
+  border-color: #ff5722;
 }
 .checkbox-warning input[type="checkbox"]:checked + label::after,
 .checkbox-warning input[type="radio"]:checked + label::after {
