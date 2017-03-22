@@ -1,0 +1,45 @@
+<div id="advocates">
+ <div class= "row">
+  {% for advocate in advocates %}
+   <div class="col-md-4">
+      <div class="card" id={{advocate.pk}}>
+         {% if advocate.category == "general"  %}
+         <div class='panel panel-info'>
+           <div class='panel-heading panel-heading-gen header'>
+          {% elif advocate.category == "women" %}
+          <div class='panel panel-default'>
+            <div class='panel-heading panel-heading-wom header'>
+          {% elif advocate.category == "HIV/AIDS" %}
+          <div class='panel panel-default'>
+            <div class='panel-heading panel-heading-hiv header'>
+          {% elif advocate.category == "disability" %}
+          <div class='panel panel-success'>
+            <div class='panel-heading panel-heading-dis header'>
+          {% elif advocate.category == "immigrant/refugees" %}
+          <div class='panel panel-warning'>
+            <div class='panel-heading panel-heading-imm header'>
+          {% elif advocate.category == "jewish" %}
+          <div class='panel panel-danger'>
+            <div class='panel-heading panel-heading-jew header'>
+              {% endif %}
+             <h4 class="title" style="padding:1em"> {{advocate.name}} </h4>
+            </div>
+            <div class='panel-body content' style="padding:1em"><p> {{advocate.note}} </p>
+               <ul class="list-group">
+                 <li class="list-group-item"><i class="fa fa-calendar" aria-hidden="true"></i> Schedule: {{advocate.schedule}}</li>
+                 <li class="list-group-item"><i class="fa fa-phone-square" aria-hidden="true"></i> Phone: {{advocate.phone}}</li>
+                 <li class="list-group-item"><i class="fa fa-info-circle" aria-hidden="true"></i><a style="color:blue" href={{advocate.url}}> WEBSITE</a></li>
+                 <li class="list-group-item"><i class="fa fa-map-marker" aria-hidden="true"></i> Address: {{advocate.address}} </li>
+             </ul>
+            </div>
+          </div>
+      </div>
+     </div>
+  {% if forloop.counter|divisibleby:"3" %}
+   </div>
+  <div class="row">
+  {% endif %}
+  {% endfor %}
+  </div>
+ </div>
+</div>

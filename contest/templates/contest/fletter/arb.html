@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="Add data to the debate, report your eviction">
     <meta name="author" content="William Damon">
-    <! <link rel="icon" href="{% static 'favicon.ico' %}">
+    <!--link rel="icon" href="{% static 'favicon.ico' %}"-->
     <link rel="stylesheet"  href="{% static 'bootstrap.min.css' %}">
     <link rel="stylesheet"  href="{% static 'jumbotron-narrow.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
@@ -20,10 +20,9 @@
     <link rel="stylesheet" href="{% static 'leaflet-fusesearch-master/src/leaflet.fusesearch.css' %}">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"/>
     <link rel="stylesheet" href="{% static 'leaflet.awesome-markers.css' %}" />
+    <link rel="stylesheet"  href="{% static 'awesome-bootstrap-checkbox.css' %}" />
     <script src="{% static 'leaflet.awesome-markers.min.js' %}"></script>
     <script src="https://use.fontawesome.com/2c3856b3e5.js"></script>
-    <link rel="stylesheet" href="{% static 'awesome-bootstrap-checkbox.css' %}">
-
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="{% static 'ie10-viewport-bug-workaround.css' %}" rel="stylesheet">
@@ -37,8 +36,7 @@
 
   </head>
   <body>
-
-     <div class="header clearfix">
+    <div class="header clearfix">
         <nav style="background-color: black" class="navbar navbar-inverse">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -59,8 +57,7 @@
                 </ul>
           </div>
         </nav>
-     </div>
-
+    </div>
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-9 col-md-10 main-panel">
@@ -121,156 +118,111 @@
                       </div>
                   </form>
           </div>
-       </nav>
-           <div class= "row">
-            {% for advocate in advocates %}
-               <div class="col-md-4">
-                <div class="card" id={{advocate.pk}}>
-                   {% if advocate.category == "general"  %}
-                   <div class='panel panel-info'>
-                     <div class='panel-heading panel-heading-gen header'>
-                    {% elif advocate.category == "women" %}
-                    <div class='panel panel-default'>
-                      <div class='panel-heading panel-heading-wom header'>
-                    {% elif advocate.category == "HIV/AIDS" %}
-                    <div class='panel panel-default'>
-                      <div class='panel-heading panel-heading-hiv header'>
-                    {% elif advocate.category == "disability" %}
-                    <div class='panel panel-success'>
-                      <div class='panel-heading panel-heading-dis header'>
-                    {% elif advocate.category == "immigrant/refugees" %}
-                    <div class='panel panel-warning'>
-                      <div class='panel-heading panel-heading-imm header'>
-                    {% elif advocate.category == "jewish" %}
-                    <div class='panel panel-danger'>
-                      <div class='panel-heading panel-heading-jew header'>
-                        {% endif %}
-                       <h4 class="title" style="padding:1em"> {{advocate.name}} </h4>
-                      </div>
-                      <div class='panel-body content' style="padding-left:1em"><p> {{advocate.note}} </p>
-                         <ul class="list-group">
-                           <li class="list-group-item"><i class="fa fa-calendar" aria-hidden="true"></i> Schedule: {{advocate.schedule}}</li>
-                           <li class="list-group-item"><i class="fa fa-phone-square" aria-hidden="true"></i> Phone: {{advocate.phone}}</li>
-                           <li class="list-group-item"><i class="fa fa-info-circle" aria-hidden="true"></i><a style="color:blue" href={{advocate.url}}>WEBSITE</a></li>
-                           <li class="list-group-item"><i class="fa fa-map-marker" aria-hidden="true"></i> Address: {{advocate.address}} </li>
-                       </ul>
-                      </div>
-                    </div>
-                </div>
-              </div>
-            {% if forloop.counter|divisibleby:"3" %}
-            </div>
-            <div class="row">
-            {% endif %}
-            {% endfor %}
-          </div>
-             <h1>Find an Advocate</h1>
+         </nav>
+          {% include "advocatelist.html" %}
+          <h1>Find an Advocate</h1>
           <div class="row">
             <div id="mapid" style="height:80%">
               <script>
-              //initialize map
-              var m  = L.map('mapid').setView([49.251624, -123.081344], 11);
+                  //initialize map
+                  var m  = L.map('mapid').setView([49.251624, -123.081344], 11);
 
-              var mopt = {
-                  url:'https://api.tiles.mapbox.com/v4/wdamon.1c70m0jc/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoid2RhbW9uIiwiYSI6InFVV1VLMFUifQ.2Zx0T9w01EK6E-v76-z85Q',
-                  options: {attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>, Icons: Font Awesome by Dave Gandy - http://fontawesome.io, Search Box: Antoine Riche - https://github.com/naomap/leaflet-fusesearch'}
-                };
+                  var mopt = {
+                      url:'https://api.tiles.mapbox.com/v4/wdamon.1c70m0jc/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoid2RhbW9uIiwiYSI6InFVV1VLMFUifQ.2Zx0T9w01EK6E-v76-z85Q',
+                      options: {attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>, Icons: Font Awesome by Dave Gandy - http://fontawesome.io, Search Box: Antoine Riche - https://github.com/naomap/leaflet-fusesearch'}
+                    };
 
-              var mq=L.tileLayer(mopt.url,mopt.options);
+                  var mq=L.tileLayer(mopt.url,mopt.options);
 
-              mq.addTo(m);
-              //organize layers
-              var layers = {},
-                  masterLayer = L.layerGroup();
+                  mq.addTo(m);
+                  //organize layers
+                  var layers = {},
+                      masterLayer = L.layerGroup();
 
-              var genGroup = L.featureGroup();
-              masterLayer.addLayer(genGroup);
-              var womGroup = L.featureGroup();
-              masterLayer.addLayer(womGroup);
-              var hivGroup = L.featureGroup();
-              masterLayer.addLayer(hivGroup);
+                  var genGroup = L.featureGroup();
+                  masterLayer.addLayer(genGroup);
+                  var womGroup = L.featureGroup();
+                  masterLayer.addLayer(womGroup);
+                  var hivGroup = L.featureGroup();
+                  masterLayer.addLayer(hivGroup);
 
-              var baseMaps = {
-                "Basemap": mq
-              };
+                  var baseMaps = {
+                    "Basemap": mq
+                  };
 
-              var overlayMaps = {
-                "General" : genGroup,
-                "Womens": womGroup,
-                "HIV/AIDS": hivGroup,
-              };
-              L.control.layers(baseMaps, overlayMaps, {hideSingleBase: 'true', position: 'bottomright'}).addTo(m);
+                  var overlayMaps = {
+                    "General" : genGroup,
+                    "Womens": womGroup,
+                    "HIV/AIDS": hivGroup,
+                  };
+                  L.control.layers(baseMaps, overlayMaps, {hideSingleBase: 'true', position: 'bottomright'}).addTo(m);
 
-              masterLayer.addTo(m);
+                  masterLayer.addTo(m);
 
-              var searchCtrl = L.control.fuseSearch();
-              searchCtrl.addTo(m);
+                  var searchCtrl = L.control.fuseSearch();
+                  searchCtrl.addTo(m);
 
-              var geojsonPointLayer = {{ arb_serialized|safe }};
+                  var geojsonPointLayer = {{ arb_serialized|safe }};
 
-              var genIcon = L.AwesomeMarkers.icon({
-                  icon: 'briefcase',
-                  prefix: 'fa',
-                  markerColor: 'blue',
-                  iconColor: 'white',
-                  riseOnHover: 'True'
+                  var genIcon = L.AwesomeMarkers.icon({
+                      icon: 'briefcase',
+                      prefix: 'fa',
+                      markerColor: 'blue',
+                      iconColor: 'white',
+                      riseOnHover: 'True'
 
-                });
-              var womIcon = L.AwesomeMarkers.icon({
-                    icon: 'briefcase',
-                    prefix: 'fa',
-                    markerColor: 'white',
-                    iconColor: 'green',
-                    riseOnHover: 'True'
-                });
-              var hivIcon = L.AwesomeMarkers.icon({
-                    icon: 'briefcase',
-                    prefix: 'fa',
-                    markerColor: 'black',
-                    iconColor: 'white',
-                    riseOnHover: 'True'
-                });
-              function getMarker(f, name) {
-                if (f === 'general') {
-                    return {icon: genIcon,
-                            title: name}
-                } else if (f === 'women') {
-                    return {icon: womIcon,
-                            title: name}
-                } else if (f === 'HIV/AIDS') {
-                    return {icon: hivIcon,
-                            title: name}
-                }
-              }
-              var popup = L.DomUtil.create('div', 'tiny-popup', m.getContainer());
-
-              var geojsonPointLayerJSON = new L.geoJson(geojsonPointLayer, {
-                pointToLayer: function(feature, latlng) {
-                  var popupcontents = "<div class='panel panel-info'><div class='panel-heading'>" + feature.properties.name + "</div><div class='panel-body'><p>" + feature.properties.note + '</p></div><ul class="list-group"><li class="list-group-item">Schedule: ' + feature.properties.schedule + '</li><li class="list-group-item">Phone: ' + feature.properties.phone +  '</li><li class="list-group-item">Website: <a href=' + feature.properties.url + '>' + feature.properties.url + '</a></li><li class="list-group-item">Address: ' + feature.properties.address + '</li></ul></div>';
-                  if (feature.properties.category === "general") {
-                    var marker = L.marker(latlng, getMarker(feature.properties.category, feature.properties.name)).bindPopup(popupcontents);
-                    feature.layer = marker;
-                    genGroup.addLayer(marker);
-                  }  else if (feature.properties.category === "women") {
-                    var marker = L.marker(latlng, getMarker(feature.properties.category, feature.properties.name)).bindPopup(popupcontents);
-                    feature.layer = marker;
-                    womGroup.addLayer(marker);
-                  } else if (feature.properties.category === "HIV/AIDS") {
-                    var marker = L.marker(latlng, getMarker(feature.properties.category, feature.properties.name)).bindPopup(popupcontents);
-                    feature.layer = marker;
-                    hivGroup.addLayer(marker);
+                    });
+                  var womIcon = L.AwesomeMarkers.icon({
+                        icon: 'briefcase',
+                        prefix: 'fa',
+                        markerColor: 'white',
+                        iconColor: 'green',
+                        riseOnHover: 'True'
+                    });
+                  var hivIcon = L.AwesomeMarkers.icon({
+                        icon: 'briefcase',
+                        prefix: 'fa',
+                        markerColor: 'black',
+                        iconColor: 'white',
+                        riseOnHover: 'True'
+                    });
+                  function getMarker(f, name) {
+                    if (f === 'general') {
+                        return {icon: genIcon,
+                                title: name}
+                    } else if (f === 'women') {
+                        return {icon: womIcon,
+                                title: name}
+                    } else if (f === 'HIV/AIDS') {
+                        return {icon: hivIcon,
+                                title: name}
+                    }
                   }
-              },
-            });
+                  var popup = L.DomUtil.create('div', 'tiny-popup', m.getContainer());
 
-          searchCtrl.indexFeatures(geojsonPointLayer, ['name', 'address', 'phone']);
-
-
+                  var geojsonPointLayerJSON = new L.geoJson(geojsonPointLayer, {
+                    pointToLayer: function(feature, latlng) {
+                      var popupcontents = "<div class='panel panel-info'><div class='panel-heading'>" + feature.properties.name + "</div><div class='panel-body'><p><li class='list-group-item'>Address: " + feature.properties.address + '</li></ul></div>';
+                      if (feature.properties.category === "general") {
+                        var marker = L.marker(latlng, getMarker(feature.properties.category, feature.properties.name)).bindPopup(popupcontents);
+                        feature.layer = marker;
+                        genGroup.addLayer(marker);
+                      }  else if (feature.properties.category === "women") {
+                        var marker = L.marker(latlng, getMarker(feature.properties.category, feature.properties.name)).bindPopup(popupcontents);
+                        feature.layer = marker;
+                        womGroup.addLayer(marker);
+                      } else if (feature.properties.category === "HIV/AIDS") {
+                        var marker = L.marker(latlng, getMarker(feature.properties.category, feature.properties.name)).bindPopup(popupcontents);
+                        feature.layer = marker;
+                        hivGroup.addLayer(marker);
+                      }
+                  },
+                });
+                searchCtrl.indexFeatures(geojsonPointLayer, ['name', 'address', 'phone']);
               </script>
-
+            </div>
             </div>
           </div>
-</div>
       </div>
 
       <footer class="footer">
@@ -278,8 +230,24 @@
       </footer>
 
     </div> <!-- /container -->
+<script>
+//on clicking a filter button ajax returns json data that matches the filte
+//maybe element.id?
 
-
+$(‘button’).on(‘click’, function(event){
+    event.preventDefault();
+    var element = $(this);
+    $.ajax({
+        url: ‘/filter/‘,
+        method : ‘GET’,
+        data : { filter : element.id};
+        success : function(json){
+          var element = $(‘#advocates’);
+          element.empty()
+          for (var i=0, l=json.results.length; i<l; i++{
+            element.append(‘<li>’ + son.results[i].name + ‘</li>’)
+    });
+</script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="{% static 'ie10-viewport-bug-workaround.js' %}"></script>
   </body>

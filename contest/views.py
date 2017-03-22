@@ -49,12 +49,7 @@ def filter(request):
     filter_val = request.GET.get('filter', None);
 
     if (filter_val != None):
-        results = []
         advocates = advocates.objects.filter(category_icontains=filter_val)
-        for advocate in advocates:
-            json = {'name': advocates.name}
-            results.append(json)
-
-        return JsonResponse({'results':results})
+        return render(request,"contest/fletter/arb.html", {"advocates":advocates})
     else:
-        return render(request, 'search.html');
+        return render(request, 'contest/fletter/arb.html');
