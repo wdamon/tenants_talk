@@ -233,9 +233,10 @@ $('#checkbox').on('click', function(event){
     $.ajax({
         url: '/filter/',
         method : 'GET',
-        data : { filter : element.id};
+        data : { filter : element.id},
         success : function(json){
           $('#advocates.replace').html(data)
+        }
     });
     /*data: {'name': 'me', 'csrfmiddlewaretoken': '{{ csrf_token }}'},
        success : function(data) {
