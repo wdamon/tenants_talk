@@ -231,7 +231,7 @@ $('.filter').change(function(){
   var element = $(this);
   var id = element.attr('id');
   var checked = $(".filter").children("input:checked").map(function(){
-    return this.('id');
+    return this.id;
   }).get();
   console.log("element.id:" + id);
   //checked should return a list of ids of checked boxes. Double check this is the case.
