@@ -241,7 +241,7 @@ $('.filter').change(function(){
   $.ajax({
       url: '/contest/filter/',
       method : 'GET',
-      data : { checked:checked },
+      data : { "checked":checked },
       success : function(json){
         alert(data);
         //render the #advocates with the new results.
