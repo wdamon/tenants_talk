@@ -48,7 +48,7 @@ def arb(request):
 def filter(request):
     checked = request.GET.get('checked', None);
     #should receive a list of id's for checked filters. then
-    if (filter_val != None):
+    if (checked.length > 0):
         for id in checked:
             if (id == 'walkins'):
                 filteredAdvocates += advocates.objects.filter(walkins__iexact="yes");
