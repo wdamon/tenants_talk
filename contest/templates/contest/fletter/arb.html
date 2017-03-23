@@ -75,38 +75,38 @@
           <div class="collapse navbar-collapse" id="filters" style="padding-top: 15px;">
             <form class="nav navbar-nav navbar-left" role="form">
                       <div class="checkbox checkbox-inline filter">
-                        <input type="checkbox" class="styled" id="walkins">
-                          <label for="walkins">
+                        <input type="checkbox" class="styled" id="walkins" checked="checked">
+                          <label for="walkins" class="active">
                             Accepts Walk-ins
                           </label>
                        </div>
                       <div class="checkbox checkbox-primary checkbox-inline filter">
-                        <input type="checkbox" class="styled" id="women">
-                          <label for="women">
+                        <input type="checkbox" class="styled" id="women" checked="checked">
+                          <label for="women" class="active">
                             Women Only
                           </label>
                        </div>
                       <div class="checkbox checkbox-danger checkbox-inline filter">
-                         <input type="checkbox" id="disablity" class="styled">
-                       <label for="disability">
+                         <input type="checkbox" id="disablity" class="styled" checked="checked">
+                       <label for="disability" class="active">
                          People with Disabilities Only
                        </label>
                       </div>
                       <div class="checkbox checkbox-warning checkbox-inline filter">
-                         <input type="checkbox" id="immigrant/refugees" class="styled">
-                         <label for="immigrant/refugees">
+                         <input type="checkbox" id="immigrant/refugees" class="styled" checked="checked">
+                         <label for="immigrant/refugees" class="active">
                            Immigrants/Refugees Only
                          </label>
                        </div>
                       <div class="checkbox checkbox-success checkbox-inline filter">
-                        <input type="checkbox" id="hiv" class="styled">
-                          <label for="hiv">
+                        <input type="checkbox" id="hiv" class="styled" checked="checked">
+                          <label for="hiv" class="active">
                           People with HIV/AIDS only
                           </label>
                        </div>
                       <div class="checkbox checkbox-jewish checkbox-inline filter">
-                        <input type="checkbox" id="jewish" class="styled">
-                        <label for="jewish">
+                        <input type="checkbox" id="jewish" class="styled" checked="checked">
+                        <label for="jewish" class="active">
                           People of Jewish Descent
                         </label>
                       </div>
@@ -241,7 +241,7 @@ $('.filter').change(function(){
   $.ajax({
       url: '/contest/filter/',
       method : 'GET',
-      data : { "checked":checked },
+      data : { checked:checked },
       success : function(json){
         alert(data);
         //render the #advocates with the new results.
