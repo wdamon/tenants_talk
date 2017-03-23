@@ -227,14 +227,6 @@
 <script>
 //on clicking a filter button ajax returns json data that matches the filter
 //map loads with values set to clicked.  On 'unclick' divs removed from map.
-$('#checkbox1').change(function() {
-       if($(this).is(":checked")) {
-           var returnVal = confirm("Are you sure?");
-           $(this).attr("checked", returnVal);
-       }
-       $('#textbox1').val($(this).is(':checked'));
-   });
-});
 $('.filter').change(function(){
   var element = $(this);
   var checked = $('filter:checkbox:checked').map(function(){
@@ -243,8 +235,7 @@ $('.filter').change(function(){
   console.log("element.id:" + element.id);
   //checked should return a list of ids of checked boxes. Double check this is the case.
   console.log("checked:" + checked);
-  // overlayadd method to add map overlay
-  //if ([obj w/ layer names/element ids].contains(element.id)
+  // overlayadd method to add map overlay if ([obj w/ layer names/element ids].contains(element.id)
   //pass the server a list of checked boxes
   $.ajax({
       url: '/contest/filter/',
@@ -255,7 +246,7 @@ $('.filter').change(function(){
         //render the #advocates with the new results.
         $('#advocates').html(data);
       }
-  });
+    })
 });
 
 
