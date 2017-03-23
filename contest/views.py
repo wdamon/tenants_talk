@@ -46,10 +46,14 @@ def arb(request):
     return render(request, 'contest/fletter/arb.html', {'arb_serialized':arb_serialized, 'advocates':advocateList})
 
 def filter(request):
-    filter_val = request.GET.get('filter', None);
-
+    checked = request.GET.get('checked', None);
+    #should receive a list of id's for checked filters. then
     if (filter_val != None):
-        advocates = advocates.objects.filter(category_icontains=filter_val)
-        return render(request,"contest/fletter/advocatelist.html", {"advocates":advocates})
+        for id in checked:
+            if (id == 'walkins'):
+                filteredAdvocates += advocates.objects.filter(walkins__iexact="yes");
+            else:
+                filteredAdvocates += advocates.objects.filter(category__icontains=id)
+        return render(request,"contest/fletter/arb.html", {"advocates":filteredAdvocates})
     else:
         return render(request, 'contest/fletter/arb.html');

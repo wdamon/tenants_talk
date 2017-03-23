@@ -72,39 +72,39 @@
               </button>
               <a class="navbar-brand" href="#">Filters:</a>
           </div>
-          <div class="collapse navbar-collapse" id="filters">
+          <div class="collapse navbar-collapse" id="filters" style="padding-top: 15px;">
             <form class="nav navbar-nav navbar-left" role="form">
-                      <div class="checkbox checkbox-inline">
+                      <div class="checkbox checkbox-inline filter">
                         <input type="checkbox" class="styled" id="walkins">
                           <label for="walkins">
                             Accepts Walk-ins
                           </label>
                        </div>
-                      <div class="checkbox checkbox-primary checkbox-inline">
+                      <div class="checkbox checkbox-primary checkbox-inline filter">
                         <input type="checkbox" class="styled" id="women">
                           <label for="women">
                             Women Only
                           </label>
                        </div>
-                      <div class="checkbox checkbox-danger checkbox-inline">
-                         <input type="checkbox" id="disabled" class="styled">
-                       <label for="disabled">
+                      <div class="checkbox checkbox-danger checkbox-inline filter">
+                         <input type="checkbox" id="disablity" class="styled">
+                       <label for="disability">
                          People with Disabilities Only
                        </label>
                       </div>
-                      <div class="checkbox checkbox-warning checkbox-inline">
-                         <input type="checkbox" id="immigrants" class="styled">
-                         <label for="immigrants">
+                      <div class="checkbox checkbox-warning checkbox-inline filter">
+                         <input type="checkbox" id="immigrant/refugees" class="styled">
+                         <label for="immigrant/refugees">
                            Immigrants/Refugees Only
                          </label>
                        </div>
-                      <div class="checkbox checkbox-success checkbox-inline">
+                      <div class="checkbox checkbox-success checkbox-inline filter">
                         <input type="checkbox" id="hiv" class="styled">
                           <label for="hiv">
                           People with HIV/AIDS only
                           </label>
                        </div>
-                      <div class="checkbox checkbox-jewish checkbox-inline">
+                      <div class="checkbox checkbox-jewish checkbox-inline filter">
                         <input type="checkbox" id="jewish" class="styled">
                         <label for="jewish">
                           People of Jewish Descent
@@ -161,7 +161,7 @@
                   var genIcon = L.AwesomeMarkers.icon({
                       icon: 'briefcase',
                       prefix: 'fa',
-                      markerColor: 'blue',
+                      markerColor: '#ffb74d',
                       iconColor: 'white',
                       riseOnHover: 'True'
 
@@ -169,7 +169,7 @@
                   var womIcon = L.AwesomeMarkers.icon({
                         icon: 'briefcase',
                         prefix: 'fa',
-                        markerColor: 'white',
+                        markerColor: '#3f51b5',
                         iconColor: 'green',
                         riseOnHover: 'True'
                     });
@@ -177,7 +177,7 @@
                         icon: 'briefcase',
                         prefix: 'fa',
                         markerColor: 'black',
-                        iconColor: 'white',
+                        iconColor: '#018642',
                         riseOnHover: 'True'
                     });
                   function getMarker(f, name) {
@@ -225,24 +225,31 @@
 
     </div> <!-- /container -->
 <script>
-//on clicking a filter button ajax returns json data that matches the filte
-//maybe element.id?
+//on clicking a filter button ajax returns json data that matches the filter
+//map loads with values set to clicked.  On 'unclick' divs removed from map.
 
 $('#checkbox').on('click', function(event){
     var element = $(this);
-    $.ajax({
-        url: '/filter/',
-        method : 'GET',
-        data : { filter : element.id},
-        success : function(json){
-          $('#advocates.replace').html(data)
-        }
-    });
-    /*data: {'name': 'me', 'csrfmiddlewaretoken': '{{ csrf_token }}'},
-       success : function(data) {
-            $('.row.replace').html(data);
-        } */
-  });      
+    //checked should return a list of ids of checked boxes. Double check this is the case.
+    var checked = $('filter:checkbox:checked').map(function(){
+      return this.id;
+    }).get();
+      console.log("element.id:" + element.id);
+      console.log("checked:" + checked);
+      // overlayadd method to add map overlay
+      //if ([obj w/ layer names/element ids].contains(element.id)
+      //pass the server a list of checked boxes
+      $.ajax({
+          url: '/filter/',
+          method : 'GET',
+          data : { checked:checked },
+          success : function(json){
+            alert(data);
+            //render the #advocates with the new results.
+            $('#advocates').html(data);
+          }
+      });
+  });
 </script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="{% static 'ie10-viewport-bug-workaround.js' %}"></script>

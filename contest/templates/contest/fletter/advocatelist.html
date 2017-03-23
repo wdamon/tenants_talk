@@ -1,7 +1,7 @@
 <div id="advocates">
  <div class= "row">
   {% for advocate in advocates %}
-   <div class="col-md-4">
+   <div class="col-md-4 {{advocate.category}}-panel">
       <div class="card" id={{advocate.pk}}>
          {% if advocate.category == "general"  %}
          <div class='panel panel-info'>
@@ -22,7 +22,7 @@
           <div class='panel panel-danger'>
             <div class='panel-heading panel-heading-jew header'>
               {% endif %}
-             <h4 class="title" style="padding:1em"> {{advocate.name}} </h4>
+             <h4 class="title" style="padding-right: 1em; padding-bottom: 1em; padding-left: 1em;"> {{advocate.name}} </h4>
             </div>
             <div class='panel-body content' style="padding:1em"><p> {{advocate.note}} </p>
                <ul class="list-group">
