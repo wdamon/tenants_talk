@@ -7,7 +7,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from djgeojson.views import GeoJSONLayerView
 from django.core.serializers import serialize
 from djgeojson.serializers import Serializer as GeoJSONSerializer
-from contest.templates.942 import render_block_to_string
+from contest.snippets.942 import render_block_to_string
 
 def contest(request):
     return render(request, 'contest/contest.html')
@@ -56,7 +56,7 @@ def filter(request):
                 filteredAdvocates += advocates.objects.filter(walkins__iexact="yes");
             else:
                 filteredAdvocates += advocates.objects.filter(category__icontains=id)
-        context = Context({"advocates":filteredAdvocates})        
+        context = Context({"advocates":filteredAdvocates})
         html = render_block_to_string("contest/fletter/advocatelist.html", 'advocates', context)
         return HttpResponse(html);
     else:
