@@ -227,29 +227,41 @@
 <script>
 //on clicking a filter button ajax returns json data that matches the filter
 //map loads with values set to clicked.  On 'unclick' divs removed from map.
-
-$('.filter').on('click', function(event){
-    var element = $(this);
-    //checked should return a list of ids of checked boxes. Double check this is the case.
-    var checked = $('filter:checkbox:checked').map(function(){
-      return this.id;
-    }).get();
-      console.log("element.id:" + element.id);
-      console.log("checked:" + checked);
-      // overlayadd method to add map overlay
-      //if ([obj w/ layer names/element ids].contains(element.id)
-      //pass the server a list of checked boxes
-      $.ajax({
-          url: '/filter/',
-          method : 'GET',
-          data : { checked:checked },
-          success : function(json){
-            alert(data);
-            //render the #advocates with the new results.
-            $('#advocates').html(data);
-          }
-      });
+$('#checkbox1').change(function() {
+       if($(this).is(":checked")) {
+           var returnVal = confirm("Are you sure?");
+           $(this).attr("checked", returnVal);
+       }
+       $('#textbox1').val($(this).is(':checked'));
+   });
+});
+$('.filter').change(function(){
+  var element = $(this);
+  var checked = $('filter:checkbox:checked').map(function(){
+    return this.id;
+  }).get();
+  console.log("element.id:" + element.id);
+  //checked should return a list of ids of checked boxes. Double check this is the case.
+  console.log("checked:" + checked);
+  // overlayadd method to add map overlay
+  //if ([obj w/ layer names/element ids].contains(element.id)
+  //pass the server a list of checked boxes
+  $.ajax({
+      url: '/contest/filter/',
+      method : 'GET',
+      data : { checked:checked },
+      success : function(json){
+        alert(data);
+        //render the #advocates with the new results.
+        $('#advocates').html(data);
+      }
   });
+});
+
+
+
+
+
 </script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="{% static 'ie10-viewport-bug-workaround.js' %}"></script>
