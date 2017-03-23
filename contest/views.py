@@ -46,7 +46,7 @@ def arb(request):
     return render(request, 'contest/fletter/arb.html', {'arb_serialized':arb_serialized, 'advocates':advocateList})
 
 def filter(request):
-    checked = request.GET[checked];
+    checked = request.GET.get('checked');
     #should receive a list of id's for checked filters. then
     filteredAdvocates = []
     if (len(checked) > 0):
