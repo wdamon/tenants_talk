@@ -55,6 +55,6 @@ def filter(request):
                 filteredAdvocates += advocates.objects.filter(walkins__iexact="yes");
             else:
                 filteredAdvocates += advocates.objects.filter(category__icontains=id)
-        return render(request,"contest/fletter/advocatelist.html", {"advocates":filteredAdvocates});
+        return render(request,"contest/fletter/advocatelist.html", {"advocatesFiltered":filteredAdvocates});
     else:
         return render(request, 'contest/fletter/arb.html');

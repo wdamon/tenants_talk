@@ -243,9 +243,9 @@ $('.filter').change(function(){
       method : 'GET',
       data : { checked:checked },
       success : function(json){
-        alert(data);
+        alert(advocatesFiltered);
         //render the #advocates with the new results.
-        $('#advocates').html(data);
+        $('#advocates').html(advocatesFiltered);
       }
     })
 });
