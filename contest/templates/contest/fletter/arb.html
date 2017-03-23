@@ -161,7 +161,7 @@
                   var genIcon = L.AwesomeMarkers.icon({
                       icon: 'briefcase',
                       prefix: 'fa',
-                      markerColor: '#ffb74d',
+                      markerColor: 'gold',
                       iconColor: 'white',
                       riseOnHover: 'True'
 
@@ -169,8 +169,8 @@
                   var womIcon = L.AwesomeMarkers.icon({
                         icon: 'briefcase',
                         prefix: 'fa',
-                        markerColor: '#3f51b5',
-                        iconColor: 'green',
+                        markerColor: 'blue',
+                        iconColor: 'white',
                         riseOnHover: 'True'
                     });
                   var hivIcon = L.AwesomeMarkers.icon({
@@ -228,7 +228,7 @@
 //on clicking a filter button ajax returns json data that matches the filter
 //map loads with values set to clicked.  On 'unclick' divs removed from map.
 
-$('#checkbox').on('click', function(event){
+$('.filter').on('click', function(event){
     var element = $(this);
     //checked should return a list of ids of checked boxes. Double check this is the case.
     var checked = $('filter:checkbox:checked').map(function(){
