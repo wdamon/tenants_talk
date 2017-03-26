@@ -58,4 +58,4 @@ def filter(request):
     for adv in filteredAdvocates:
         if adv not in uniqueAdvocates:
             uniqueAdvocates.append(adv)
-    return render(request,"contest/fletter/advocatelist.html", {"advocates":uniqueAdvocates});
+    return render(request,"contest/fletter/advocatelist.html", {'advocates':uniqueAdvocates});

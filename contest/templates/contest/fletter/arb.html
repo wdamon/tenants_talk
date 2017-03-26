@@ -245,6 +245,7 @@ $('.filter').change(function(){
       data : { checked:checked },
       success : function(json){
         console.log(json)
+        $('#advocates').remove();
         $('#advocates').html(json);
       }
     })
