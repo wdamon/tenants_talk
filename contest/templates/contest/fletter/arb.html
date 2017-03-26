@@ -239,16 +239,9 @@ $('.filter').change(function(){
   console.log("checked:" + checked);
   // overlayadd method to add map overlay if ([obj w/ layer names/element ids].contains(element.id)
   //pass the server a list of checked boxes
-  $.ajax({
-      url: '/contest/filter/',
-      method : 'GET',
-      data : { checked:checked },
-      success : function(json){
-        console.log(json)
-        $('#advocates').remove();
-        $('#advocates').html(json);
-      }
-    })
+  $('#advocates').html('').load(
+          "{% url 'filter' %}?checked=" + checked
+      ); //
 });
 
 </script>
