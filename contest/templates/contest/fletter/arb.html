@@ -246,9 +246,6 @@ $('.filter').change(function(){
       success : function(json){
         console.log(json)
         $('#advocates').html(json);
-        //$('.table_body').html('').load(
-        //"{% url 'filter' %}?item_num=" + item_num
-    //); // <--- this code instead of $.ajax(lala)
       }
     })
 });
