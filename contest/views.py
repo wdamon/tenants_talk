@@ -49,12 +49,15 @@ def filter(request):
     checked = request.GET.getlist('checked');
     #should receive a list of id's for checked filters. then
     filteredAdvocates = []
+    uniqueAdvocates = []
     if (len(checked) > 0):
         for id in checked:
             if (id == 'walkins'):
                 filteredAdvocates += advocates.objects.filter(walkins__iexact="yes");
             else:
                 filteredAdvocates += advocates.objects.filter(category__icontains=id)
-        return render(request,"contest/fletter/advocatelist.html", {"advocatesFiltered":filteredAdvocates});
-    else:
-        return render(request, 'contest/fletter/arb.html');
+
+        for adv in filteredAdvocates:
+            if adv not in uniqueAdvocates:
+                uniqueAdvocates.append(adv)
+        return render(request,"contest/fletter/advocatelist.html", {"advocates":uniqueAdvocates});
