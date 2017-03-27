@@ -54,7 +54,7 @@ def filter(request):
     filteredAdvocates = []
 
     if "walkins" in checked:
-        filteredAdvocates = advocates.objects.exclude(walkins__iexact=no).exclude(category__in=checked).values()
+        filteredAdvocates = advocates.objects.exclude(walkins__iexact="no").exclude(category__in=checked).values()
     else:
         filteredAdvocates = advocates.objects.exclude(category__in=checked).values()
 
