@@ -52,6 +52,10 @@ def filter(request):
     checked = request.GET.getlist('checked[]');
     #should receive a list of id's for checked filters. then
     filteredAdvocates = []
-    filteredAdvocates = advocates.objects.exclude(category__in=checked).values()
+
+    if "walkins" in checked:
+        filteredAdvocates = advocates.objects.exclude(walkins__iexact=no).exclude(category__in=checked).values()
+    else:
+        filteredAdvocates = advocates.objects.exclude(category__in=checked).values()
 
     return JsonResponse({'results':list(filteredAdvocates)})
