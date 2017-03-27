@@ -265,11 +265,11 @@ $('.filter').change(function(){
         $('#advocates').remove();
         //projcess json iterate through json recreating the advocatelist.html  block.
         for (var i = 0; i < json.length; i++) {
-            var formmatedHeader = advocateHeader.replace(%category%, panelHeaders.json[i].category).replace(%pk%, panelHeaders.json[i].pk);
+            var formmatedHeader = advocateHeader.replace(/%category%/g, json[i].category).replace(/%pk%/, json[i].pk);
             $('#advocates').append(formmatedHeader)
-            var formattedPanel = advocatePanel.replace(%panel%, panelHeaders.json[i].category);
+            var formattedPanel = advocatePanel.replace(/%panel%/g, panelHeaders.json[i].category);
             $('#advocates').append(formattedPanel)
-            var formattedPanelBody = advocatePanelBody.replace(%name%, ).replace( %note%, ).replace(%schedule%, ).replace(%phone%, ).replace(%url%, )
+            var formattedPanelBody = advocatePanelBody.replace(/%name%/g, json[i].name ).replace(/%note%/, json[i].note).replace(/%schedule%/, json[i].schedule).replace(/%phone%/, json[i].phone).replace(/%url%/, json[i].url)
             $('#advocates').append(formattedPanelBody)
             if (i % 3 === 0)  {
               $('#advocates').append('</div><div class="row">')
