@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404, render
 from django.views import generic
 from contest.models import Question, Choice, advocates
 from contest.forms import CForm
-from django.http import HttpResponseRedirect, HttpResponse, JsonResponse 
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from djgeojson.views import GeoJSONLayerView
 from django.core.serializers import serialize
 from djgeojson.serializers import Serializer as GeoJSONSerializer
@@ -62,4 +62,4 @@ def filter(request):
         if adv not in uniqueAdvocates:
             uniqueAdvocates.append(adv)
     data = serialize('json', uniqueAdvocates);
-    return JsonResponse(data)
+    return JsonResponse(data, safe=False)
