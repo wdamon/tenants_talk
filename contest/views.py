@@ -58,5 +58,4 @@ def filter(request):
     for adv in filteredAdvocates:
         if adv not in uniqueAdvocates:
             uniqueAdvocates.append(adv)
-    data = serializers.serialize("json", uniqueAdvocates)
     return HttpResponse(data, content_type='application/json')
