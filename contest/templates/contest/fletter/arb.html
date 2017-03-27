@@ -247,7 +247,7 @@
     </div> <!-- /container -->
 <script>
 window.onload = function() {
-   $('.addressAnchor').on('click' function(e) {
+   $('.addressAnchor').on('click', function(e) {
       title = e.title;
       $("#collapseOne").collapse("show");
       $(".awesome-marker[title='" + title + "\']").focus();
