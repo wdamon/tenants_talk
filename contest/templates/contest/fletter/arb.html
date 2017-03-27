@@ -265,8 +265,8 @@ $('.filter').change(function(){
         var advList = json.results;
         console.log(advList);
         console.log(advList[0].category);
-        var formattedAdvList = ""
-        for (var i = 0; i < advList; i++) {
+        var formattedAdvList = "";
+        for (var i = 0; i < advList.length; i++) {
             var formmattedHeader = advocateHeader.replace(/%category%/g, advList[i].category).replace(/%pk%/, advList[i].pk);
             formattedAdvList += formattedHeader;
             var formattedPanel = advocatePanel.replace(/%panel%/g, panelHeaders.advList[i].category);
