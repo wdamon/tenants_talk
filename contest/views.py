@@ -62,4 +62,4 @@ def filter(request):
             uniqueAdvocates.append(adv)
     data = serialize('json', uniqueAdvocates);
     jdata = json.dumps(data)
-return HttpResponse(jdata, mimetype="application/json")
+    return HttpResponse(jdata, mimetype="application/json")
