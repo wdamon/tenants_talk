@@ -228,6 +228,23 @@
 
     </div> <!-- /container -->
 <script>
+var panelHeaders = {"general":"panel-heading-gen", "women":"panel-heading-wom", "HIV/AIDS":"panel-heading-hiv", "disability":"panel-heading-dis", "immigrant/refugees":"panel-heading-imm","jewish":"panel-heading-jew"};
+var advcovatePanel = "<div class='panel panel-default'><div class='panel-heading %panel% header'>"
+var advocateHeader = '<div class="col-md-4 %category%-panel"><div class="card" id=%pk%>'
+var advocatePanelBody = `
+  <h4 class="advPanelTitle"> %name% </h4></div><
+  div class='panel-body content' style="padding:1em"><p>%note%</p>
+  <ul class="list-group">
+    <li class="list-group-item"><i class="fa fa-calendar" aria-hidden="true"></i> Schedule: %schedule%</li>
+    <li class="list-group-item"><i class="fa fa-phone-square" aria-hidden="true"></i> Phone: %phone%</li>
+    <li class="list-group-item"><i class="fa fa-info-circle" aria-hidden="true"></i><a style="color:blue" href=%url%> WEBSITE</a></li>
+    <li class="list-group-item"><i class="fa fa-map-marker" aria-hidden="true"></i> Address: %address%</li>
+        </ul>
+       </div>
+     </div>
+ </div>
+</div>
+`
 //on clicking a filter button ajax returns json data that matches the filter
 //map loads with values set to clicked.  On 'unclick' divs removed from map.
 $('.filter').change(function(){
@@ -239,9 +256,28 @@ $('.filter').change(function(){
   console.log("checked:" + checked);
   // overlayadd method to add map overlay if ([obj w/ layer names/element ids].contains(element.id)
   //pass the server a list of checked boxes
-  $('#advocates').html('').load(
-          "{% url 'filter' %}?checked=" + checked
-      ); //
+  $.ajax({
+      url: '/contest/filter/',
+      method : 'GET',
+      data : { checked:checked },
+      success : function(json){
+        console.log(json)
+        $('#advocates').remove();
+        //projcess json iterate through json recreating the advocatelist.html  block.
+        for (var i = 0; i < json.length; i++) {
+            var formmatedHeader = advocateHeader.replace(%category%, panelHeaders.json[i].category).replace(%pk%, panelHeaders.json[i].pk);
+            $('#advocates').append(formmatedHeader)
+            var formattedPanel = advocatePanel.replace(%panel%, panelHeaders.json[i].category);
+            $('#advocates').append(formattedPanel)
+            var formattedPanelBody = advocatePanelBody.replace(%name%, ).replace( %note%, ).replace(%schedule%, ).replace(%phone%, ).replace(%url%, )
+            $('#advocates').append(formattedPanelBody)
+            if (i % 3 === 0)  {
+              $('#advocates').append('</div><div class="row">')
+            }
+        }
+         $('#advocates').append('</div></div></div>')
+        }
+    })
 });
 
 </script>

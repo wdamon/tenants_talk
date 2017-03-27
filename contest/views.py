@@ -58,4 +58,5 @@ def filter(request):
     for adv in filteredAdvocates:
         if adv not in uniqueAdvocates:
             uniqueAdvocates.append(adv)
-    return render(request,"contest/fletter/advocatelist.html", {'advocates':uniqueAdvocates});
+    data = serializers.serialize("json", uniqueAdvocates)
+    return HttpResponse(data, content_type='application/json')
