@@ -262,8 +262,7 @@ $('.filter').change(function(){
       data : { checked:checked },
       success : function(json){
         console.log(json)
-        $('#advocates').replaceWith($(json)) 
-        /*$('#advocates').remove();
+        $('#advocates').remove();
         for (var i = 0; i < json.length; i++) {
             var formmatedHeader = advocateHeader.replace(/%category%/g, json[i].category).replace(/%pk%/, json[i].pk);
             $('#advocates').append(formmatedHeader)
@@ -276,7 +275,6 @@ $('.filter').change(function(){
             }
         }
          $('#advocates').append('</div></div></div>')
-      */
     }
     })
 });
