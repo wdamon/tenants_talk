@@ -124,9 +124,10 @@
          <div id="advocates">
           <div class= "row">
           {% include "contest/fletter/advocatelist.html" %}
-        </div>
-        <footer class="footer text-center navbar-fixed-bottom">
-          <div class="panel-group" style= "position:fixed; bottom:0; width:100%; height:100%; overflow:auto}" id="accordion">
+         </div>
+      </div>
+    </div>
+      <div class="panel-group" style= "position:fixed; bottom:0; width:100%; height:100%; overflow:auto" id="accordion">
             <div class="panel panel-default">
                 <div class="panel-heading">
                   <h4 class="panel-title map-control">
@@ -241,8 +242,12 @@
               </div>
             </div>
           </div>
-          <p>&copy; <a href="www.wgdamon.com">William Damon</a> 2016</p>
-        </footer>
+
+      <footer class="footer">
+        <p>&copy; <a href="www.wgdamon.com">William Damon</a> 2016</p>
+
+      </footer>
+
     </div> <!-- /container -->
 <script>
 $(function(){
@@ -264,7 +269,7 @@ var advocatePanelBody = `
     <li class="list-group-item"><i class="fa fa-calendar" aria-hidden="true"></i> Schedule: %schedule%</li>
     <li class="list-group-item"><i class="fa fa-phone-square" aria-hidden="true"></i> Phone: %phone%</li>
     <li class="list-group-item"><i class="fa fa-info-circle" aria-hidden="true"></i><a style="color:blue" href=%url% > WEBSITE </a></li>
-    <li class="list-group-item addressAnchor" title="%name%"><i class="fa fa-map-marker" aria-hidden="true"></i> Address: %address%</li>
+    <li class="btn list-group-item addressAnchor" title="%name%"><i class="fa fa-map-marker" aria-hidden="true"></i> Address: %address%</li>
         </ul>
        </div>
      </div>
