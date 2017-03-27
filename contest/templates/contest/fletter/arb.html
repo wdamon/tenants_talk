@@ -267,7 +267,7 @@ $('.filter').change(function(){
         console.log(advList[0].category);
         var formattedAdvList = "";
         for (var i = 0; i < advList.length; i++) {
-            var formmattedHeader = advocateHeader.replace(/%category%/g, advList[i].category).replace(/%pk%/, advList[i].pk);
+            var formattedHeader = advocateHeader.replace(/%category%/g, advList[i].category).replace(/%pk%/, advList[i].pk);
             formattedAdvList += formattedHeader;
             var formattedPanel = advocatePanel.replace(/%panel%/g, panelHeaders.advList[i].category);
             formattedAdvList += formattedPanel;
