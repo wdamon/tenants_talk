@@ -269,7 +269,7 @@ $('.filter').change(function(){
         for (var i = 0; i < advList.length; i++) {
             var formattedHeader = advocateHeader.replace(/%category%/g, advList[i].category).replace(/%pk%/, advList[i].pk);
             formattedAdvList += formattedHeader;
-            var formattedPanel = advocatePanel.replace(/%panel%/g, panelHeaders.advList[i].category);
+            var formattedPanel = advocatePanel.replace(/%panel%/g, panelHeaders[advList[i].category]);
             formattedAdvList += formattedPanel;
             var formattedPanelBody = advocatePanelBody.replace(/%name%/g, advList[i].name ).replace(/%note%/, advList[i].note).replace(/%schedule%/, advList[i].schedule).replace(/%phone%/, advList[i].phone).replace(/%url%/, advList[i].url);
             formattedAdvList += formattedPanelBody;
