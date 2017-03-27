@@ -249,7 +249,7 @@ var advocatePanelBody = `
 //map loads with values set to clicked.  On 'unclick' divs removed from map.
 $('.filter').change(function(){
   var element = $(this);
-  var checked = $(".filter").children("input:checked").map(function(){
+  var checked = $(".filter").children("input:checkbox:not(:checked)").map(function(){
     return this.id;
   }).get();
   //checked should return a list of ids of checked boxes. Double check this is the case.
