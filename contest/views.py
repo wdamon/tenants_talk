@@ -7,6 +7,8 @@ from django.http import HttpResponseRedirect, HttpResponse
 from djgeojson.views import GeoJSONLayerView
 from django.core.serializers import serialize
 from djgeojson.serializers import Serializer as GeoJSONSerializer
+from django.shortcuts import render_to_response
+from django.template import RequestContext
 
 def contest(request):
     return render(request, 'contest/contest.html')
@@ -58,4 +60,4 @@ def filter(request):
     for adv in filteredAdvocates:
         if adv not in uniqueAdvocates:
             uniqueAdvocates.append(adv)
-    return HttpResponse(uniqueAdvocates, content_type='application/json')
+    return render_to_response('advocateList.html', {'advocates':uniqueAdvocates}, context_instance=RequestContext(request))
