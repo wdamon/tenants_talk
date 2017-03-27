@@ -60,4 +60,4 @@ def filter(request):
     for adv in filteredAdvocates:
         if adv not in uniqueAdvocates:
             uniqueAdvocates.append(adv)
-    return render_to_response('advocateList.html', {'advocates':uniqueAdvocates}, context_instance=RequestContext(request))
+    return render(request, 'advocateList.html', {'advocates':uniqueAdvocates})
