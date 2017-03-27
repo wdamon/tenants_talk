@@ -263,19 +263,21 @@ $('.filter').change(function(){
       success : function(json){
         console.log(json)
         var advList = json.results;
-        $('#advocates').remove();
+        var formatedAdvList = ""
         for (var i = 0; i < advList; i++) {
             var formmatedHeader = advocateHeader.replace(/%category%/g, advList[i].category).replace(/%pk%/, advList[i].pk);
-            $('#advocates').append(formmatedHeader)
+            formattedAdvList += formattedHeader;
             var formattedPanel = advocatePanel.replace(/%panel%/g, panelHeaders.advList[i].category);
-            $('#advocates').append(formattedPanel)
+            formattedAdvList += formattedPanel;
             var formattedPanelBody = advocatePanelBody.replace(/%name%/g, advList[i].name ).replace(/%note%/, advList[i].note).replace(/%schedule%/, advList[i].schedule).replace(/%phone%/, advList[i].phone).replace(/%url%/, advList[i].url);
-            $('#advocates').append(formattedPanelBody)
+            formattedAdvList += formattedPanelBody;
             if (i % 3 === 0)  {
-              $('#advocates').append('</div><div class="row">')
+               formattedAdvList += '</div><div class="row">';
             }
         }
-         $('#advocates').append('</div></div></div>')
+         formattedAdvList += '</div></div></div>'
+         console.log(formattedAdvList);
+         $('#advocates').html(formattedAdvList);
     }
     })
 });
