@@ -127,7 +127,7 @@
          </div>
       </div>
     </div>
-      <div class="panel-group" style= "position:fixed; bottom:0; width:100%; height:100%; overflow:auto" id="accordion">
+      <div class="panel-group" style= "position:fixed; bottom:0; width:100%; transform: translateZ(0); -webkit-transform: translateZ(0);" id="accordion">
             <div class="panel panel-default">
                 <div class="panel-heading">
                   <h4 class="panel-title map-control">
@@ -252,8 +252,8 @@
 <script>
 $(function(){
    $('.addressAnchor').click(function(e) {
-      console.log("test:" + e.title)
-      title = e.attr('title');
+      console.log("test:" + $(e).attr('title')
+      title = $(e).attr('title');
       $("#collapseOne").collapse("show");
       $(".awesome-marker[title='" + title + "\']").focus();
   });
