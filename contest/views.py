@@ -9,6 +9,7 @@ from django.core.serializers import serialize
 from djgeojson.serializers import Serializer as GeoJSONSerializer
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+import json
 
 def contest(request):
     return render(request, 'contest/contest.html')
