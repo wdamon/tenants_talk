@@ -58,4 +58,4 @@ def filter(request):
     for adv in filteredAdvocates:
         if adv not in uniqueAdvocates:
             uniqueAdvocates.append(adv)
-    return HttpResponse(data, content_type='application/json')
+    return HttpResponse(uniqueAdvocates, content_type='application/json')
