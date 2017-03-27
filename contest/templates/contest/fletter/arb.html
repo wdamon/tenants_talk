@@ -127,7 +127,7 @@
          </div>
       </div>
     </div>
-      <div class="panel-group" style= "position:fixed; bottom:0; width:100%; transform: translateZ(0); -webkit-transform: translateZ(0);" id="accordion">
+      <div class="panel-group" style= "position:fixed; bottom:0; width:100%; z-index: 10000" id="accordion">
             <div class="panel panel-default">
                 <div class="panel-heading">
                   <h4 class="panel-title map-control">
@@ -252,12 +252,24 @@
 <script>
 $(function(){
    $('.addressAnchor').click(function(e) {
-      console.log("test:" + $(e).attr('title')
+      console.log("test:" + $(e).attr('title'))
       title = $(e).attr('title');
       $("#collapseOne").collapse("show");
       $(".awesome-marker[title='" + title + "\']").focus();
   });
 });
+
+$('#collapseOne').on('show.bs.collapse', function () {
+    $('.panel-heading').animate({
+        backgroundColor: "#515151"
+    }, 500);
+})
+
+$('#collapseOne').on('hide.bs.collapse', function () {
+    $('.panel-heading').animate({
+        backgroundColor: "#00B4FF"
+    }, 500);
+})
 
 var panelHeaders = {"general":"panel-heading-gen", "women":"panel-heading-wom", "HIV/AIDS":"panel-heading-hiv", "disability":"panel-heading-dis", "immigrant/refugees":"panel-heading-imm","jewish":"panel-heading-jew"};
 var advocatePanel = "<div class='panel panel-default'><div class='panel-heading %panel% header'>"
