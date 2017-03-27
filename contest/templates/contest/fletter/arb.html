@@ -128,7 +128,7 @@
         <div class="panel-group" style= "position:fixed; bottom:0; width:100%" id="accordion">
           <div class="panel panel-default">
               <div class="panel-heading">
-                <h4 class="panel-title">
+                <h4 class="panel-title map-control">
                   <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
                     Click to View Map
                   </a>
@@ -136,7 +136,7 @@
             </div>
             <div id="collapseOne" class="panel-collapse collapse">
                 <div class="panel-body">
-                  <div id="mapid" style="height:80%">
+                  <div id="mapid" style="height:auto">
                     <script>
                         //initialize map
                         var m  = L.map('mapid').setView([49.251624, -123.081344], 11);
@@ -248,8 +248,9 @@
 
     </div> <!-- /container -->
 <script>
-window.onload = function() {
-   $('.addressAnchor').on('click', function(e) {
+$(function(){
+   $('.addressAnchor').click(function(e) {
+      console.log("test:" + e.title)
       title = e.title;
       $("#collapseOne").collapse("show");
       $(".awesome-marker[title='" + title + "\']").focus();
