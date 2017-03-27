@@ -263,9 +263,11 @@ $('.filter').change(function(){
       success : function(json){
         console.log(json)
         var advList = json.results;
-        var formatedAdvList = ""
+        console.log(advList);
+        console.log(advList[0].category);
+        var formattedAdvList = ""
         for (var i = 0; i < advList; i++) {
-            var formmatedHeader = advocateHeader.replace(/%category%/g, advList[i].category).replace(/%pk%/, advList[i].pk);
+            var formmattedHeader = advocateHeader.replace(/%category%/g, advList[i].category).replace(/%pk%/, advList[i].pk);
             formattedAdvList += formattedHeader;
             var formattedPanel = advocatePanel.replace(/%panel%/g, panelHeaders.advList[i].category);
             formattedAdvList += formattedPanel;
@@ -275,9 +277,9 @@ $('.filter').change(function(){
                formattedAdvList += '</div><div class="row">';
             }
         }
-         formattedAdvList += '</div></div></div>'
-         console.log(formattedAdvList);
-         $('#advocates').html(formattedAdvList);
+        formattedAdvList += '</div></div></div>'
+        console.log(formattedAdvList);
+        $('#advocates').html(formattedAdvList);
     }
     })
 });
