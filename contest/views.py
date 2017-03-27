@@ -53,13 +53,11 @@ def filter(request):
     #should receive a list of id's for checked filters. then
     filteredAdvocates = []
     uniqueAdvocates = []
+
     for id in checked:
        if (id == 'walkins'):
-          filteredAdvocates += advocates.objects.filter(walkins__iexact="yes");
+          filteredAdvocates += advocates.objects.exclude(walkins__iexact="yes").values()
        else:
-          filteredAdvocates += advocates.objects.filter(category__icontains=id)
-    for adv in filteredAdvocates:
-        if adv not in uniqueAdvocates:
-            uniqueAdvocates.append(adv)
-    data = serialize('json', uniqueAdvocates);
-    return JsonResponse(data, safe=False)
+          filteredAdvocates += advocates.objects.exclude(category__icontains=id).values()
+
+    return JsonResponse({'results':list(filteredAdvocates)})
