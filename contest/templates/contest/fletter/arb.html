@@ -262,13 +262,14 @@ $('.filter').change(function(){
       data : { checked:checked },
       success : function(json){
         console.log(json)
+        var advList = json.results;
         $('#advocates').remove();
-        for (var i = 0; i < json.length; i++) {
-            var formmatedHeader = advocateHeader.replace(/%category%/g, json[i].category).replace(/%pk%/, json[i].pk);
+        for (var i = 0; i < advList; i++) {
+            var formmatedHeader = advocateHeader.replace(/%category%/g, advList[i].category).replace(/%pk%/, advList[i].pk);
             $('#advocates').append(formmatedHeader)
-            var formattedPanel = advocatePanel.replace(/%panel%/g, panelHeaders.json[i].category);
+            var formattedPanel = advocatePanel.replace(/%panel%/g, panelHeaders.advList[i].category);
             $('#advocates').append(formattedPanel)
-            var formattedPanelBody = advocatePanelBody.replace(/%name%/g, json[i].name ).replace(/%note%/, json[i].note).replace(/%schedule%/, json[i].schedule).replace(/%phone%/, json[i].phone).replace(/%url%/, json[i].url)
+            var formattedPanelBody = advocatePanelBody.replace(/%name%/g, advList[i].name ).replace(/%note%/, advList[i].note).replace(/%schedule%/, advList[i].schedule).replace(/%phone%/, advList[i].phone).replace(/%url%/, advList[i].url);
             $('#advocates').append(formattedPanelBody)
             if (i % 3 === 0)  {
               $('#advocates').append('</div><div class="row">')
