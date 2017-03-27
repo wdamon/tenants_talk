@@ -232,12 +232,12 @@ var panelHeaders = {"general":"panel-heading-gen", "women":"panel-heading-wom", 
 var advocatePanel = "<div class='panel panel-default'><div class='panel-heading %panel% header'>"
 var advocateHeader = '<div class="col-md-4 %category%-panel"><div class="card" id=%pk%>'
 var advocatePanelBody = `
-  <h4 class="advPanelTitle"> %name% </h4></div><
-  div class='panel-body content' style="padding:1em"><p>%note%</p>
+  <h4 class="advPanelTitle"> %name% </h4></div>
+  <div class='panel-body content' style="padding:1em"><p>%note%</p>
   <ul class="list-group">
     <li class="list-group-item"><i class="fa fa-calendar" aria-hidden="true"></i> Schedule: %schedule%</li>
     <li class="list-group-item"><i class="fa fa-phone-square" aria-hidden="true"></i> Phone: %phone%</li>
-    <li class="list-group-item"><i class="fa fa-info-circle" aria-hidden="true"></i><a style="color:blue" href=%url%> WEBSITE</a></li>
+    <li class="list-group-item"><i class="fa fa-info-circle" aria-hidden="true"></i><a style="color:blue" href=%url% > WEBSITE </a></li>
     <li class="list-group-item"><i class="fa fa-map-marker" aria-hidden="true"></i> Address: %address%</li>
         </ul>
        </div>
@@ -261,19 +261,16 @@ $('.filter').change(function(){
       method : 'GET',
       data : { checked:checked },
       success : function(json){
-        console.log(json)
         var advList = json.results;
-        console.log(advList);
-        console.log(advList[0].category);
         var formattedAdvList = "";
         for (var i = 0; i < advList.length; i++) {
             var formattedHeader = advocateHeader.replace(/%category%/g, advList[i].category).replace(/%pk%/, advList[i].pk);
             formattedAdvList += formattedHeader;
             var formattedPanel = advocatePanel.replace(/%panel%/g, panelHeaders[advList[i].category]);
             formattedAdvList += formattedPanel;
-            var formattedPanelBody = advocatePanelBody.replace(/%name%/g, advList[i].name ).replace(/%note%/, advList[i].note).replace(/%schedule%/, advList[i].schedule).replace(/%phone%/, advList[i].phone).replace(/%url%/, advList[i].url);
+            var formattedPanelBody = advocatePanelBody.replace(/%name%/g, advList[i].name ).replace(/%note%/, advList[i].note).replace(/%schedule%/, advList[i].schedule).replace(/%phone%/, advList[i].phone).replace(/%url%/, advList[i].url).replace(/%address%/, advList[i].address);
             formattedAdvList += formattedPanelBody;
-            if (i % 3 === 0)  {
+            if ((i + 1) % 3 === 0)  {
                formattedAdvList += '</div><div class="row">';
             }
         }
