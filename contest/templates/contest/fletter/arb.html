@@ -125,133 +125,130 @@
           <div class= "row">
           {% include "contest/fletter/advocatelist.html" %}
         </div>
-        <div class="panel-group" style= "position:fixed; bottom:0; width:100%" id="accordion">
-          <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title map-control">
-                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                    Click to View Map
-                  </a>
-                </h4>
-            </div>
-            <div id="collapseOne" class="panel-collapse collapse">
-                <div class="panel-body">
-                  <div id="mapid" style="height:auto">
-                    <script>
-                        //initialize map
-                        var m  = L.map('mapid').setView([49.251624, -123.081344], 11);
+        <footer class="footer text-center navbar-fixed-bottom">
+          <div class="panel-group" style= "position:fixed; bottom:0; width:100%; height:100%; overflow:auto}" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title map-control">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                      Click to View Map
+                    </a>
+                  </h4>
+              </div>
+              <div id="collapseOne" class="panel-collapse collapse">
+                  <div class="panel-body">
+                    <div id="mapid">
+                      <script>
+                          //initialize map
+                          var m  = L.map('mapid').setView([49.251624, -123.081344], 11);
 
-                        var mopt = {
-                            url:'https://api.tiles.mapbox.com/v4/wdamon.1c70m0jc/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoid2RhbW9uIiwiYSI6InFVV1VLMFUifQ.2Zx0T9w01EK6E-v76-z85Q',
-                            options: {attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>, Icons: Font Awesome by Dave Gandy - http://fontawesome.io, Search Box: Antoine Riche - https://github.com/naomap/leaflet-fusesearch'}
+                          var mopt = {
+                              url:'https://api.tiles.mapbox.com/v4/wdamon.1c70m0jc/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoid2RhbW9uIiwiYSI6InFVV1VLMFUifQ.2Zx0T9w01EK6E-v76-z85Q',
+                              options: {attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>, Icons: Font Awesome by Dave Gandy - http://fontawesome.io, Search Box: Antoine Riche - https://github.com/naomap/leaflet-fusesearch'}
+                            };
+
+                          var mq=L.tileLayer(mopt.url,mopt.options);
+
+                          mq.addTo(m);
+                          //organize layers
+                          var layers = {},
+                              masterLayer = L.layerGroup();
+
+                          var genGroup = L.featureGroup();
+                          masterLayer.addLayer(genGroup);
+                          var womGroup = L.featureGroup();
+                          masterLayer.addLayer(womGroup);
+                          var hivGroup = L.featureGroup();
+                          masterLayer.addLayer(hivGroup);
+
+                          var baseMaps = {
+                            "Basemap": mq
                           };
 
-                        var mq=L.tileLayer(mopt.url,mopt.options);
+                          var overlayMaps = {
+                            "General" : genGroup,
+                            "Womens": womGroup,
+                            "HIV/AIDS": hivGroup,
+                          };
+                          L.control.layers(baseMaps, overlayMaps, {hideSingleBase: 'true', position: 'bottomright'}).addTo(m);
 
-                        mq.addTo(m);
-                        //organize layers
-                        var layers = {},
-                            masterLayer = L.layerGroup();
+                          masterLayer.addTo(m);
 
-                        var genGroup = L.featureGroup();
-                        masterLayer.addLayer(genGroup);
-                        var womGroup = L.featureGroup();
-                        masterLayer.addLayer(womGroup);
-                        var hivGroup = L.featureGroup();
-                        masterLayer.addLayer(hivGroup);
+                          var searchCtrl = L.control.fuseSearch();
+                          searchCtrl.addTo(m);
 
-                        var baseMaps = {
-                          "Basemap": mq
-                        };
+                          var geojsonPointLayer = {{ arb_serialized|safe }};
 
-                        var overlayMaps = {
-                          "General" : genGroup,
-                          "Womens": womGroup,
-                          "HIV/AIDS": hivGroup,
-                        };
-                        L.control.layers(baseMaps, overlayMaps, {hideSingleBase: 'true', position: 'bottomright'}).addTo(m);
-
-                        masterLayer.addTo(m);
-
-                        var searchCtrl = L.control.fuseSearch();
-                        searchCtrl.addTo(m);
-
-                        var geojsonPointLayer = {{ arb_serialized|safe }};
-
-                        var genIcon = L.AwesomeMarkers.icon({
-                            icon: 'briefcase',
-                            prefix: 'fa',
-                            markerColor: 'gold',
-                            iconColor: 'white',
-                            riseOnHover: 'True'
-
-                          });
-                        var womIcon = L.AwesomeMarkers.icon({
+                          var genIcon = L.AwesomeMarkers.icon({
                               icon: 'briefcase',
                               prefix: 'fa',
-                              markerColor: 'blue',
+                              markerColor: 'gold',
                               iconColor: 'white',
                               riseOnHover: 'True'
-                          });
-                        var hivIcon = L.AwesomeMarkers.icon({
-                              icon: 'briefcase',
-                              prefix: 'fa',
-                              markerColor: 'black',
-                              iconColor: '#018642',
-                              riseOnHover: 'True'
-                          });
-                        function getMarker(f, name) {
-                          if (f === 'general') {
-                              return {icon: genIcon,
-                                      title: name}
-                          } else if (f === 'women') {
-                              return {icon: womIcon,
-                                      title: name}
-                          } else if (f === 'HIV/AIDS') {
-                              return {icon: hivIcon,
-                                      title: name}
-                          }
-                        }
-                        var popup = L.DomUtil.create('div', 'tiny-popup', m.getContainer());
 
-                        var geojsonPointLayerJSON = new L.geoJson(geojsonPointLayer, {
-                          pointToLayer: function(feature, latlng) {
-                            var popupcontents = "<div class='panel panel-info'><div class='panel-heading'>" + feature.properties.name + "</div><div class='panel-body'><p><li class='list-group-item'>Address: " + feature.properties.address + '</li></ul></div>';
-                            if (feature.properties.category === "general") {
-                              var marker = L.marker(latlng, getMarker(feature.properties.category, feature.properties.name)).bindPopup(popupcontents);
-                              feature.layer = marker;
-                              genGroup.addLayer(marker);
-                            }  else if (feature.properties.category === "women") {
-                              var marker = L.marker(latlng, getMarker(feature.properties.category, feature.properties.name)).bindPopup(popupcontents);
-                              feature.layer = marker;
-                              womGroup.addLayer(marker);
-                            } else if (feature.properties.category === "HIV/AIDS") {
-                              var marker = L.marker(latlng, getMarker(feature.properties.category, feature.properties.name)).bindPopup(popupcontents);
-                              feature.layer = marker;
-                              hivGroup.addLayer(marker);
+                            });
+                          var womIcon = L.AwesomeMarkers.icon({
+                                icon: 'briefcase',
+                                prefix: 'fa',
+                                markerColor: 'blue',
+                                iconColor: 'white',
+                                riseOnHover: 'True'
+                            });
+                          var hivIcon = L.AwesomeMarkers.icon({
+                                icon: 'briefcase',
+                                prefix: 'fa',
+                                markerColor: 'black',
+                                iconColor: '#018642',
+                                riseOnHover: 'True'
+                            });
+                          function getMarker(f, name) {
+                            if (f === 'general') {
+                                return {icon: genIcon,
+                                        title: name}
+                            } else if (f === 'women') {
+                                return {icon: womIcon,
+                                        title: name}
+                            } else if (f === 'HIV/AIDS') {
+                                return {icon: hivIcon,
+                                        title: name}
                             }
-                        },
-                      });
-                      searchCtrl.indexFeatures(geojsonPointLayer, ['name', 'address', 'phone']);
-                    </script>
+                          }
+                          var popup = L.DomUtil.create('div', 'tiny-popup', m.getContainer());
+
+                          var geojsonPointLayerJSON = new L.geoJson(geojsonPointLayer, {
+                            pointToLayer: function(feature, latlng) {
+                              var popupcontents = "<div class='panel panel-info'><div class='panel-heading'>" + feature.properties.name + "</div><div class='panel-body'><p><li class='list-group-item'>Address: " + feature.properties.address + '</li></ul></div>';
+                              if (feature.properties.category === "general") {
+                                var marker = L.marker(latlng, getMarker(feature.properties.category, feature.properties.name)).bindPopup(popupcontents);
+                                feature.layer = marker;
+                                genGroup.addLayer(marker);
+                              }  else if (feature.properties.category === "women") {
+                                var marker = L.marker(latlng, getMarker(feature.properties.category, feature.properties.name)).bindPopup(popupcontents);
+                                feature.layer = marker;
+                                womGroup.addLayer(marker);
+                              } else if (feature.properties.category === "HIV/AIDS") {
+                                var marker = L.marker(latlng, getMarker(feature.properties.category, feature.properties.name)).bindPopup(popupcontents);
+                                feature.layer = marker;
+                                hivGroup.addLayer(marker);
+                              }
+                          },
+                        });
+                        searchCtrl.indexFeatures(geojsonPointLayer, ['name', 'address', 'phone']);
+                      </script>
+                    </div>
                   </div>
-                </div>
-            </div>
+              </div>
+              </div>
             </div>
           </div>
-        </div>
-
-
-      <footer class="footer">
-        <p>&copy; <a href="www.wgdamon.com">William Damon</a> 2016</p>
-      </footer>
-
+          <p>&copy; <a href="www.wgdamon.com">William Damon</a> 2016</p>
+        </footer>
     </div> <!-- /container -->
 <script>
 $(function(){
    $('.addressAnchor').click(function(e) {
       console.log("test:" + e.title)
-      title = e.title;
+      title = e.attr('title');
       $("#collapseOne").collapse("show");
       $(".awesome-marker[title='" + title + "\']").focus();
   });
