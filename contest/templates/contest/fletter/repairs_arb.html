@@ -399,8 +399,8 @@
                       <br/>
                       <u><h2>Introduction</h2></u>
                       <br/>
-                      <p><div class="idateprint">On %idateprint% </div><div class="issuesummaryprint">%issuesummaryprint%.</div></p>
-                      <p>In response, on <div class="ldateprint">%ldateprint%</div> we sent a letter requesting repairs specifying <div class="ddateprint">%ddateprint%</div> as a deadline for repairs to be finished by.
+                      <p><div class="idateprint issuesummaryprint">On %idateprint% %issuesummaryprint%.</div></p>
+                      <p><div class="ldateprint ddateprint">In response, on %ldateprint% we sent a letter requesting repairs specifying %ddateprint% as a deadline for repairs to be finished by.
                       The deadline has passed and the landlord has not finished repairs. At this point, we request that the RTB take action to encourage repairs.
                       <br/>
                       <br/>
@@ -418,8 +418,8 @@
                       <br/>
                       Furthermore, the Residential Tenancy Branch Policy Guideline #1: “Landlord and Tenant – Responsibility for Residential Premises” clearly states these repairs are the landlord's responsibility.
                       <br/> <br/></p>
-                      <div class="bckgroundprint"> %bckgroundprint% </div>
-                      These repairs are not trivial. As a result of the landlord's neglect <div class="impactprint">%impactprint%</div>.
+                      <div class="bckgroundprint impactprint">> %bckgroundprint% These repairs are not trivial. As a result of the landlord's neglect %impactprint%.
+                      </div>
 
                     <h4>Evidence</h4>
                     To coroborate these claims the following evidence has been attached to this letter.
@@ -605,11 +605,15 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
   //next
       $('.btnNext').click(function(e){
          if($('#navs > .active').attr('id') == 'nav4'){
-           for (var section in sections){
-             saveform(sections[section]);
-           };
-           $(".step5").attr("disabled", false);
-         $('#navs > .active').next('li').find('a').tab('show');
+            if (formFilled(sections) === true) {
+               for (var section in sections){
+                 saveform(sections[section]);
+               };
+               $(".step5").attr("disabled", false);
+               $('#navs > .active').next('li').find('a').tab('show');
+            } else {
+               alert("Please complete the form to continue.")
+            }
         } else if($('#navs > .active').attr('id') == 'nav5') {
           location.href='/contest/landing/';
         } else {
