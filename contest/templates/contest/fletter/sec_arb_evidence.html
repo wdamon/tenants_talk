@@ -634,7 +634,7 @@ $('a[data-toggle="tab"]').on('click', function(){
   //previous
     $(function(){
       $('.btnPrevious').click(function(e){
-        if($('#navs > .active').attr('id') == 'nav5')) {
+        if($('#navs > .active').attr('id') == 'nav5') {
           $("#printarea").replaceWith(divClone);
           $('#navs > .active').prev('li').find('a').tab('show');
         } else {
