@@ -69,7 +69,7 @@
               <li role="presentation" class="navstyle" id="nav2"><a href="#step2" aria-controls="step2" role="tab" data-toggle="tab">Serve your landlord</a></li>
               <li role="presentation" class="navstyle" id="nav3"><a href="#step3" aria-controls="step3" role="tab" data-toggle="tab">Prepare Evidence for your hearing</a></li>
               <li role="presentation" class="navstyle" id="nav4"><a href="#step4" aria-controls="step4" role="tab" data-toggle="tab">Write your written submission </a></li>
-              <li role="presentation" class="navstyle" disabled="disabled" id="nav5"><a href="#step5" aria-controls="step5" role="tab" data-toggle="tab">View and print your submission </a></li>
+              <li role="presentation" class="navstyle disabled" id="nav5"><a href="#step5" aria-controls="step5" role="tab" data-toggle="tab">View and print your submission </a></li>
             </ul>
         </div>
       </nav>
@@ -401,7 +401,7 @@
                       <br/>
                       <p><div class="idateprint issuesummaryprint">On %idateprint% %issuesummaryprint%.</div></p>
                       <p><div class="ldateprint ddateprint">In response, on %ldateprint% we sent a letter requesting repairs specifying %ddateprint% as a deadline for repairs to be finished by.
-                      The deadline has passed and the landlord has not finished repairs. At this point, we request that the RTB take action to encourage repairs.
+                      The deadline has passed and the landlord has not finished repairs. At this point, we request that the RTB take action to encourage repairs.</p></div>
                       <br/>
                       <br/>
                       <u><h2>Background</h2></u>
@@ -418,7 +418,7 @@
                       <br/>
                       Furthermore, the Residential Tenancy Branch Policy Guideline #1: “Landlord and Tenant – Responsibility for Residential Premises” clearly states these repairs are the landlord's responsibility.
                       <br/> <br/></p>
-                      <div class="bckgroundprint impactprint">> %bckgroundprint% These repairs are not trivial. As a result of the landlord's neglect %impactprint%.
+                      <div class="bckgroundprint impactprint"> %bckgroundprint% These repairs are not trivial. As a result of the landlord's neglect %impactprint%.
                       </div>
 
                     <h4>Evidence</h4>
@@ -598,14 +598,20 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 
   //nav buttons at the bottom of the screen
   //previous
-    $(function(){
-      $('.btnPrevious').click(function(e){
+  $(function(){
+    $('.btnPrevious').click(function(e){
+      if($('#navs > .active').attr('id') == 'nav5')) {
+        $("#printarea").replaceWith(divClone);
         $('#navs > .active').prev('li').find('a').tab('show');
-      }),
+      } else {
+      $('#navs > .active').prev('li').find('a').tab('show');
+      }
+    }),
   //next
       $('.btnNext').click(function(e){
          if($('#navs > .active').attr('id') == 'nav4'){
             if (formFilled(sections) === true) {
+               var divClone = $('#printarea').clone();
                for (var section in sections){
                  saveform(sections[section]);
                };

@@ -403,7 +403,7 @@
                       </p>
                       <br/>
                       <u><h2>Background</h2></u>
-                      <p><div class="landlordAllegationprint tenantResponseprint">The landlord alleges %landlordAllegationprint%. However, %tenantResponseprint%.</div>
+                      <p><div class="landlordAllegationprint tenantResponseprint">The landlord alleges %landlordAllegationprint% However, %tenantResponseprint%</div>
                       <P>
                       According to B.C's Residential Tenancy Policy Guideline #17(http://www2.gov.bc.ca/assets/gov/housing-and-tenancy/residential-tenancies/policy-guidelines/gl17.pdf):
                       <br/></p>
@@ -634,12 +634,18 @@ $('a[data-toggle="tab"]').on('click', function(){
   //previous
     $(function(){
       $('.btnPrevious').click(function(e){
+        if($('#navs > .active').attr('id') == 'nav5')) {
+          $("#printarea").replaceWith(divClone);
+          $('#navs > .active').prev('li').find('a').tab('show');
+        } else {
         $('#navs > .active').prev('li').find('a').tab('show');
+        }
       }),
   //next
       $('.btnNext').click(function(e){
          if($('#navs > .active').attr('id') == 'nav4'){
            if (formFilled(sections) === true) {
+             var divClone = $('#printarea').clone();
              for (var section in sections) {
                  saveform(sections[section]);
              }
