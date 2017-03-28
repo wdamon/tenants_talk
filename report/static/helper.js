@@ -28,13 +28,13 @@ function formFilled(dictionaries) {
   for (var dictionary in dictionaries) {
     for (var fgroup in dictionaries[dictionary]) {
       if (dictionaries[dictionary][fgroup]["widget"] === "date") {
-        if ($("#"+dictionaries[dictionary][fgroup]["id"]).children().val() === true) {
+        if ($("#"+dictionaries[dictionary][fgroup]["id"]).children().val().length > 0 === true) {
           output = true;
         } else {
           console.log($("#"+dictionaries[dictionary][fgroup]["id"]))
         }
       } else {
-        if ($("#"+dictionaries[dictionary][fgroup]["id"]).val() === true) {
+        if ($("#"+dictionaries[dictionary][fgroup]["id"]).val().length > 0 === true) {
           output = true;
         } else {
             console.log(dictionaries[dictionary][fgroup]["id"])
