@@ -30,17 +30,21 @@ function formFilled(dictionaries) {
       if (dictionary[fgroup]["widget"] === "date") {
         if ($("#"+dictionary[fgroup]["id"]).children().val() === true) {
           output = true;
+        } else {
+          console.log($("#"+dictionary[fgroup]["id"]))
         }
       } else {
         if ($("#"+dictionary[fgroup]["id"]).val() === true) {
           output = true;
-          }
+        } else {
+            console.log($("#"+dictionary[fgroup]["id"]))
+        }
         }
       }
     return output;
     }
   return output;
-}    
+}
 
 
 function saveform(dictionary) {
