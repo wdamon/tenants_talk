@@ -32,7 +32,7 @@ function saveform(dictionary) {
       dictionary[fgroup]["var"] = $("#"+dictionary[fgroup]["id"]).val();
     }
     var re = new RegExp("%" + dictionary[fgroup]["id"]+"print%")
-    $("." + dict[fgroup]["id"]+"print").each(function(){
+    $("." + dictionary[fgroup]["id"]+"print").each(function(){
       $(this).text(function(){
       return $(this).text().replace(re, dictionary[fgroup]["var"]);
       });
