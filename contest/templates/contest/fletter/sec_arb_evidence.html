@@ -403,7 +403,7 @@
                       </p>
                       <br/>
                       <u><h2>Background</h2></u>
-                      <p><div class="landlordAllegationprint tenantResponseprint">The landlord alleges %landlordAllegationprint% However, %tenantResponseprint%</div>
+                      <p><div class="landlordAllegationprint tenantResponseprint">%landlordAllegationprint% However, %tenantResponseprint%</div>
                       <P>
                       According to B.C's Residential Tenancy Policy Guideline #17(http://www2.gov.bc.ca/assets/gov/housing-and-tenancy/residential-tenancies/policy-guidelines/gl17.pdf):
                       <br/></p>
@@ -522,7 +522,7 @@ var secintroduction = {
   "secdepamount":{
       "id":"secdepamount",
       "name":"Amount of security deposit",
-      "pholder": "The amount paid for security deposit."
+      "pholder": "The amount paid for security deposit. No punctuation (e.g '500')"
       },
   "iniInspdate":{
       "id":"iniInspdate",
@@ -532,7 +532,7 @@ var secintroduction = {
   "iniFindings":{
       "id":"iniFindings",
       "name": "Findings of the initial inspection of your unit",
-      "pholder": "Nothing or Damage to the floor",
+      "pholder": "The initial inspection found _______. (For example 'nothing' or 'damage to the floor'",
       "widget": "textarea"},
   "moveoutdate":{
       "id":"moveoutdate",
@@ -547,7 +547,7 @@ var secintroduction = {
   "insp2findings":{
       "id":"insp2findings",
       "name": "Findings of the second inspection of your unit",
-      "pholder": "Nothing or Damage to the floor",
+      "pholder": "The second inspection found ______. (For example 'no damage or holes in the dry wall')",
       "widget": "textarea"},
   "ldate":{
       "id":"ldate",
@@ -632,6 +632,7 @@ $('a[data-toggle="tab"]').on('click', function(){
 });
   //nav buttons at the bottom of the screen
   //previous
+var divClone = $('#printarea').clone();
     $(function(){
       $('.btnPrevious').click(function(e){
         if($('#navs > .active').attr('id') == 'nav5') {
