@@ -44,8 +44,8 @@
             <u> Tenant's Address</u>:
             <br/>
             <div class="taddressprint">%taddressprint%</div>
-            <div class="tcityprint">%taddressprint%, BC</div>
-            <div class="tpostalprint">%taddressprint%</div>
+            <div class="tcityprint">%tcityprint%, BC</div>
+            <div class="tpostalprint">%tpostalprint%</div>
 
             <br/>
             <div class="lnameprint">Landlord's Name: %lnameprint%</div>
@@ -77,7 +77,7 @@
             Thank you, <br/><br/><br/>
 
             _______________
-            <div class="tnameprint">%text%</div>
+            <div class="tnameprint">%tnameprint%</div>
       </div>
       <br/>
       <div style="padding-bottom:5em">
@@ -142,7 +142,7 @@
       },"secdepamount":{
         "id":"secdepamount",
         "name": "Amount of security deposit",
-        "pholder": "The amount paiud for security deposit"
+        "pholder": "The amount paid for security deposit"
       }};
 
     window.onload = function() {
@@ -188,7 +188,7 @@
     }, false);
    $(function () {
        $('#datetimepicker12').datetimepicker({
-            format: 'YYYY-MM-DD'
+            format: 'MM-DD-YYYY'
        });
    });
 
