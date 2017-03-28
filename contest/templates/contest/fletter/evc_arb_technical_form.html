@@ -10,7 +10,7 @@
       <div class="well">
         <div class="panel panel-default">
            <div class="panel-heading">
-             <h3 class="panel-title">CLarifying your Rights Around an Eviction Notice</h3>
+             <h3 class="panel-title">Clarifying your Rights Around an Eviction Notice</h3>
            </div>
         </div>
           <div class="panel-body">
@@ -58,7 +58,7 @@
             <br/>
             <div class="lnameprint">Dear %text%,</div>
             <br/>
-            <p>The eviction notice you sent was did not follow the RTA's guideline regarding lawful notice to end tenancy. Because it is not lawful notice I will not be vacating the property</p><br/>
+            <p>The eviction notice you sent did not follow the RTA's guideline regarding lawful notice to end tenancy. Because it is not lawful notice I will not be vacating the property</p><br/>
             <br/>
             <p>As a landlord you have a responsibility to give me fair notice to end tenancy. You should explain why I am being evicted and give me an opportunity to fix the problem.</p>
             <p>I am hoping that we can resolve this issue without having to apply for dispute resolution with the Residential Tenancy Branch (RTB). Perhaps we could resolve these problems in person, or through some other means</p>
@@ -90,7 +90,42 @@
 </div>
 </div>
 <script>
-    var dict = repairsdict;
+    var dict = {
+      "tname":{
+        "id":"tname",
+        "name":"Your Name",
+        "pholder":"Your First and Last Name"},
+      "address":{
+        "id":"taddress",
+        "name":"Your Address",
+         "pholder":"123 Main Street"},
+      "city":{
+        "id":"tcity",
+        "name":"Your City of Residence",
+        "pholder":"Cityville"},
+      "postal":{
+        "id":"tpostal",
+        "name": "Your Postal Code",
+        "pholder":"V5Y1J2"},
+      "lname":{
+        "id": "lname",
+        "name": "Your Landlords Name",
+        "pholder": "Jane Doe"},
+      "laddress":{
+        "id": "laddress",
+        "name": "You Landlords Address",
+        "pholder": "123 Main Street"
+      },
+      "lcity":{
+        "id":"lcity",
+        "name":"Your Landlords City of Residence",
+        "pholder":"Cityville"
+      },
+      "lpostal":{
+        "id":"lpostal",
+        "name": "Your Postal Code",
+        "pholder":"V5Y1J2"
+      };
 
     window.onload = function() {
         for (var fgroup in dict) {
