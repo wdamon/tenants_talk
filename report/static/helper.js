@@ -26,18 +26,18 @@ function dateafy(fgroup) {
 function formFilled(dictionaries) {
   var output = false;
   for (var dictionary in dictionaries) {
-    for (var fgroup in dictionary) {
-      if (dictionary[fgroup]["widget"] === "date") {
-        if ($("#"+dictionary[fgroup]["id"]).children().val() === true) {
+    for (var fgroup in dictionaries[dictionary]) {
+      if (dictionaries[dictionary][fgroup]["widget"] === "date") {
+        if ($("#"+dictionaries[dictionary][fgroup]["id"]).children().val() === true) {
           output = true;
         } else {
-          console.log($("#"+dictionary[fgroup]["id"]))
+          console.log($("#"+dictionaries[dictionary][fgroup]["id"]))
         }
       } else {
-        if ($("#"+dictionary[fgroup]["id"]).val() === true) {
+        if ($("#"+dictionaries[dictionary][fgroup]["id"]).val() === true) {
           output = true;
         } else {
-            console.log($("#"+dictionary[fgroup]["id"]))
+            console.log(dictionaries[dictionary][fgroup]["id"])
         }
         }
       }
