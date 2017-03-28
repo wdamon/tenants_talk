@@ -145,7 +145,12 @@
 
                           var mopt = {
                               url:'https://api.tiles.mapbox.com/v4/wdamon.1c70m0jc/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoid2RhbW9uIiwiYSI6InFVV1VLMFUifQ.2Zx0T9w01EK6E-v76-z85Q',
-                              options: {attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>, Icons: Font Awesome by Dave Gandy - http://fontawesome.io, Search Box: Antoine Riche - https://github.com/naomap/leaflet-fusesearch'}
+                              options: {
+                                maxZoom: 20,
+                                continuousWorld: true,
+                                tileSize: 128,
+                                test: function() { return Math.random(); }
+                                attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>, Icons: Font Awesome by Dave Gandy - http://fontawesome.io, Search Box: Antoine Riche - https://github.com/naomap/leaflet-fusesearch'}
                             };
 
                           var mq=L.tileLayer(mopt.url,mopt.options);
@@ -255,17 +260,20 @@ $(function(){
       console.log("test:" + $(e).attr('title'))
       title = $(e).attr('title');
       $("#collapseOne").collapse("show");
+      m.invalidateSize();​
       $(".awesome-marker[title='" + title + "\']").focus();
   });
 });
 
 $('#collapseOne').on('show.bs.collapse', function () {
+    m.invalidateSize();​
     $('.panel-heading').animate({
         backgroundColor: "#515151"
     }, 500);
 })
 
 $('#collapseOne').on('hide.bs.collapse', function () {
+    m.invalidateSize();​
     $('.panel-heading').animate({
         backgroundColor: "#00B4FF"
     }, 500);
