@@ -1,3 +1,7 @@
+.disabledTab{
+    pointer-events: none;
+}
+
 .map-control {
     color: #FFFFFF;
     text-align: center;
