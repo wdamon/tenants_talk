@@ -271,37 +271,6 @@
               </div>
             </div>
             <div class="panel panel-default" style="border:1px solid black; font-family:Work Sans">
-              <div class="panel-heading" role="tab" id="surveyHeading">
-                <h1>
-                  <span>Check all that apply:</span>
-                  <button type="button"class="btn btn-default pull-right" data-toggle="collapse" data-target="#surveyBody" aria-expanded="false" aria-controls="Minimize">
-                    <i class="fa fa-minus" aria-hidden="true"></i>
-                  </button>
-                </h1>
-              </div>
-              <div id="surveyBody" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="surveyHeading">
-                <div class="panel-body" style="padding-left: 2em; font-family:Work Sans; font-size: 21px; font-weight: 200">
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="form-check-input" type="checkbox" value="" id="iniInspectdate" data-toggle="toggle">
-                      Did your landlord do an initial inspection of your unit with you when you first moved in?
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="form-check-input" type="checkbox" value=""id="secondInspection" data-toggle="toggle">
-                      Did your landlord inspect your unit with you when you moved out?
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input class="form-check-input" type="checkbox" value="" id="letterResponse" data-toggle="toggle">
-                      Did your landlord reply to the letter within 15 days or file for dispute resolution?
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
               <div class="panel-heading" role="tab" id="headingTen">
                 <h1>
                 <span>Your Written Submission for Dispute Resolution</span>
@@ -530,14 +499,14 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
   }
 });
 // when you click on a checkbox in the initial survey on the written submission form it adds or removes content from the form letter and questions.
-$('input:checkbox').change(function() {
+/*$('input:checkbox').change(function() {
   if ($(this).prop('checked')) {
     $('.'+this.id).removeClass('hidden')
   } else if (!$(this).prop('checked')){
     $('.'+this.id).addClass('hidden')
   }
 
-})
+})*/
   //nav buttons at the bottom of the screen
   //previous
     $(function(){
