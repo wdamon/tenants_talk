@@ -639,15 +639,15 @@ $('a[data-toggle="tab"]').on('click', function(){
   //next
       $('.btnNext').click(function(e){
          if($('#navs > .active').attr('id') == 'nav4'){
-             for (var section in sections){
-               if (formFilled(sections[section]) === true) {
+           if (formFilled(sections) === true) {
+             for (var section in sections) {
                  saveform(sections[section]);
-               } else {
-                 alert("Please complete the form to continue.")
-             };
-             $(".step5").attr("disabled", false);
+             }
+             $(".step5").removeClass('disabled');
+             $('#navs > .active').next('li').find('a').tab('show');
+           } else {
+             alert("Please complete the form to continue.")
           }
-         $('#navs > .active').next('li').find('a').tab('show');
         } else if($('#navs > .active').attr('id') == 'nav5') {
           location.href='/contest/landing/';
         } else {

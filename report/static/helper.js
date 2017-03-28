@@ -23,21 +23,25 @@ function dateafy(fgroup) {
   $("#"+fgroup["id"]).datetimepicker({format: 'YYYY-MM-DD'});
 };
 
-function formFilled(dictionary) {
+function formFilled(dictionaries) {
   var output = false;
-  for (var fgroup in dictionary) {
-    if (dictionary[fgroup]["widget"] === "date") {
-      if ($("#"+dictionary[fgroup]["id"]).children().val() === true) {
-        output = true;
+  for (var dictionary in dictionaries) {
+    for (var fgroup in dictionary) {
+      if (dictionary[fgroup]["widget"] === "date") {
+        if ($("#"+dictionary[fgroup]["id"]).children().val() === true) {
+          output = true;
+        }
+      } else {
+        if ($("#"+dictionary[fgroup]["id"]).val() === true) {
+          output = true;
+          }
+        }
       }
-    } else {
-      if ($("#"+dictionary[fgroup]["id"]).val() === true) {
-        output = true;
-      }
+    return output;
     }
-  }
   return output;
-}
+}    
+
 
 function saveform(dictionary) {
   for (var fgroup in dictionary) {
