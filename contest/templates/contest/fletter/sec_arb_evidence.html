@@ -283,7 +283,7 @@
                 <div class="panel-body" style="padding-left: 2em; font-family:Work Sans; font-size: 21px; font-weight: 200">
                   <div class="form-check">
                     <label class="form-check-label">
-                      <input class="form-check-input" type="checkbox" value="" id="initialInspection" data-toggle="toggle">
+                      <input class="form-check-input" type="checkbox" value="" id="iniInspectdate" data-toggle="toggle">
                       Did your landlord do an initial inspection of your unit with you when you first moved in?
                     </label>
                   </div>
@@ -405,35 +405,36 @@
                   <p>Submit this form as part of your evidence to the RTB.</p>
                   <!--written submission -->
                   <div id="printarea">
-                    <div id="date1print">Date: %text%</div>
+                    <div id="dateprint">Date: </div>
                       <br/>
-                    <div class="tnameprint">Tenant's Name: %text%</div>
+                    <div class="tnameprint">Tenant's Name: %tnameprint%</div>
                       <br/>
                       <u> Tenant's Address</u>:
                       <br/>
-                      <div class="taddressprint">%text%</div>
-                      <div class="tcityprint">%text%, BC</div>
-                      <div class="tpostalprint">%text%</div>
+                      <div class="taddressprint">%taddressprint%</div>
+                      <div class="tcityprint">%tcityprint%, BC</div>
+                      <div class="tpostalprint">%tpostalprint%</div>
+
                       <br/>
-                      <div class="lnameprint">Landlord's Name: %text%</div>
+                      <div class="lnameprint">Landlord's Name: %lnameprint%</div>
                       <br/>
                       <u> Landlord's Address</u>:
                       <br/>
-                      <div class="laddressprint">%text%</div>
-                      <div class="lcityprint">%text%, BC</div>
-                      <div class="lpostalprint">%text%</div>
+                      <div class="laddressprint">%laddressprint%</div>
+                      <div class="lcityprint">%lcityprint%, BC</div>
+                      <div class="lpostalprint">%lpostalprint%</div>
                       <br/>
                       <u><h2>Introduction</h2></u>
                       <br/>
-                      <p>On <div class="idateprint"> %text% </div> I moved into the unit. When I moved in I paid <div class="secdepamountprint">$%text%</div> as a security deposit. <div class="hidden iniInspdateprint initialInspection" >The initial inspection occured on %text%. </div><div class="hidden iniFindingsprint initialInspection">The initial inspection found %text%. </div>
-                      <div class="moveoutdateprint">I moved out of the unit on %text%. </div><div class="hidden insp2dateprint secondInspection">The move-out inspection occured on %text%. </div><div class="hidden insp2findingsprint secondInspection">The second inspection found %text%.</div>
+                      <p>On <div class="idateprint"> %idateprint% </div> I moved into the unit. When I moved in I paid <div class="secdepamountprint">$%secdepamountprint%</div> as a security deposit. <div class="hidden iniInspdateprint initialInspection" >The initial inspection occured on %iniInspdateprint%. </div><div class="hidden iniFindingsprint initialInspection">The initial inspection found %iniFindingsprint%. </div>
+                      <div class="moveoutdateprint">I moved out of the unit on %moveoutdateprint%. </div><div class="hidden insp2dateprint secondInspection">The move-out inspection occured on %insp2dateprint%. </div><div class="hidden insp2findingsprint secondInspection">The second inspection found %insp2findingsprint%.</div>
                       </p>
-                      <p>On <div class="ldateprint">%text%</div> I sent a letter indicating my forwarding address and requesting the return of the security deposit.
+                      <p>On <div class="ldateprint">%ldateprint%</div> I sent a letter indicating my forwarding address and requesting the return of the security deposit.
                       <div class ="hidden letterResponse">Fifteen days have passed and the landlord has not acted on the letter.</div> At this point, we request that the RTB take steps to ensure the security deposit is returned.
                       </p>
                       <br/>
                       <u><h2>Background</h2></u>
-                      <p>The landlord alleges <div class="landlordAllegationprint">%text%</div>. However, <div class="tenantResponseprint">%text%</div>.
+                      <p>The landlord alleges <div class="landlordAllegationprint">%landlordAllegationprint%</div>. However, <div class="tenantResponseprint">%tenantResponseprint%</div>.
                       <P>
                       According to B.C's Residential Tenancy Policy Guideline #17(http://www2.gov.bc.ca/assets/gov/housing-and-tenancy/residential-tenancies/policy-guidelines/gl17.pdf):
                       <br/></p>
@@ -458,15 +459,14 @@
                     To coroborate these claims the following evidence has been attached to this letter.
                     <div style="margin-left:5%">
                       <div id="evidenceLetter" class = "well">
-                          <h1><div class="eindexprint">#%text%</div></h1><br/>
-                          <h3><div class="edateprint">Date: %text%</div></h3><br/>
-                          <p><div class="enameprint">Name: %text%</div></p><br/>
-                          <p><div class="edescprint">%text%</div></p>
+                          <h1><div class="eindexprint">#%eindexprint%</div></h1><br/>
+                          <h3><div class="edateprint">Date: %edateprint%</div></h3><br/>
+                          <p><div class="enameprint">Name: %enameprint%</div></p><br/>
+                          <p><div class="edescprint">%edescprint%</div></p>
                           <br/>
                           <hr/>
                       </div>
                     </div>
-
 
                       Thank you, <br/><br/><br/>
 
@@ -533,7 +533,6 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
 $('input:checkbox').change(function() {
   if ($(this).prop('checked')) {
     $('.'+this.id).removeClass('hidden')
-    iniInspdate iniFindings
   } else if (!$(this).prop('checked')){
     $('.'+this.id).addClass('hidden')
   }

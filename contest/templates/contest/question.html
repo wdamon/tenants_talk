@@ -6,7 +6,7 @@
               {% for c in choices %}
               {% if not c.leaf  %}
                   {% if c.tooltip %}
-                    <li style="padding-bottom: 5px; width: 580px; padding-left: 10px;">
+                    <li style="padding-bottom: 5px; padding-left: 10px;">
                       <a class="btn btn-lg" style="background-color: #ffb74d; white-space: normal; width:95%" href="/contest/{{c.children.id}}"role="button"> {{ c.choice_text }}</a>
                       <a tabindex="0" id= "{{forloop.counter}}" class="fa fa-question-circle-o fa-lg" role="button" style="color:black" aria-hidden="true" data-toggle="popover" data-placement="right" data-trigger="focus" title="Tooltip"  data-content="{{c.tooltip}}"></a>
                     </li>
