@@ -20,7 +20,7 @@ function dateafy(fgroup) {
   $input = $("#"+fgroup["id"])
   formatteddate = dategroup.replace(/%id%/g, fgroup["id"]);
   $input.after(formatteddate).remove();
-  $("#"+fgroup["id"]).datetimepicker({format: 'YYYY-MM-DD'});
+  $("#"+fgroup["id"]).datetimepicker({format: 'MM-DD-YYYY'});
 };
 
 function formFilled(dictionaries) {

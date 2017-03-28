@@ -39,28 +39,27 @@
           <hr/>
           <div id="dateprint">Date: </div>
             <br/>
-          <div class="tnameprint">Tenant's Name: %text%</div>
+          <div class="tnameprint">Tenant's Name: %tnameprint%</div>
             <br/>
             <u> Tenant's Address</u>:
             <br/>
-            <div class="taddressprint">%text%</div>
-            <div class="tcityprint">%text%, BC</div>
-            <div class="tpostalprint">%text%</div>
+            <div class="taddressprint">%taddressprint%</div>
+            <div class="tcityprint">%taddressprint%, BC</div>
+            <div class="tpostalprint">%taddressprint%</div>
 
             <br/>
-            <div class="lnameprint">Landlord's Name: %text%</div>
+            <div class="lnameprint">Landlord's Name: %lnameprint%</div>
             <br/>
             <u> Landlord's Address</u>:
             <br/>
-            <div class="laddressprint">%text%</div>
-            <div class="lcityprint">%text%, BC</div>
-            <div class="lpostalprint">%text%</div>
+            <div class="laddressprint">%laddressprint%</div>
+            <div class="lcityprint">%lcityprint%, BC</div>
+            <div class="lpostalprint">%lpostalprint%</div>
             <br/>
-            <div class="lnameprint">Dear %text%,</div>
+            <div class="lnameprint">Dear %lnameprint%,</div>
             <br/>
-            <p>This is a formal request for a return of the <div class="secdepamountprint">$%text%</div> security deposit paid on <div class="idateprint">%text%</div></p>
+            <div class="secdepamountprint idateprint"><p>This is a formal request for a return of the $%secdepamountprint% security deposit paid on %idateprint%</div></p>
             <br/>
-            <div class="repairsprint">%text%</div>
             <br/><P>
             According to B.C's Residential Tenancy Policy Guideline #17(http://www2.gov.bc.ca/assets/gov/housing-and-tenancy/residential-tenancies/policy-guidelines/gl17.pdf):
             <br/></p>
@@ -72,7 +71,7 @@
               dispute resolution claiming against the deposit"</p>
             </blockquote>
             <br/>
-            I am hoping that we can resolve the above issue on or before <b><div class="rdateprint">%text%</div></b> without having to apply for dispute resolution with the Residential Tenancy Branch (RTB). If not completed by the requested date, I have the right to take legal action through the RTB.
+          <div class="rdateprint">  I am hoping that we can resolve the above issue on or before <b>%text%</b> without having to apply for dispute resolution with the Residential Tenancy Branch (RTB). If not completed by the requested date, I have the right to take legal action through the RTB.
           <br/><br/>
 
             Thank you, <br/><br/><br/>
@@ -138,7 +137,8 @@
       },"idate":{
         "id":"idate",
         "name": "Move-in or Security Deposit Payment Date",
-        "pholder": "The Move-in Date or Date Security Deposit was paid."
+        "pholder": "The Move-in Date or Date Security Deposit was paid.",
+        "widget": "date"
       },"secdepamount":{
         "id":"secdepamount",
         "name": "Amount of security deposit",
@@ -146,27 +146,38 @@
       }};
 
     window.onload = function() {
-        for (var fgroup in dict) {
-          formattedgroup = formgroup.replace(/%name%/g, dict[fgroup]["name"]).replace(/%id%/g, dict[fgroup]["id"]).replace(/%pholder%/g, dict[fgroup]["pholder"]);
-          $("#autoform").append(formattedgroup);
-        };
-        textareafy(dict["repairs"], 40, 4);
+      for (var fgroup in dict) {
+        formattedgroup = formgroup.replace(/%name%/g, dict[fgroup]["name"]).replace(/%id%/g, dict[fgroup]["id"]).replace(/%pholder%/g, dict[fgroup]["pholder"]);
+        $("#auto"+forms[num]).append(formattedgroup);
+        if (dict[fgroup]["widget"] === "textarea") {
+          textareafy(dict[fgroup], 40, 4)
+        } else if (dict[fgroup]["widget"] === "date") {
+          dateafy(dict[fgroup])
+          }
+        }
       };
+
+
     var clicks = 0;
     document.getElementById("next").addEventListener("click", function( event ) {
       if (clicks == 0) {
         var date = $("#datetimepicker12").val();
         $('#dateprint').append(date);
 
-        for (var fgroup in dict) {
-          dict[fgroup]["var"] = $("#"+dict[fgroup]["id"]).val();
-          $("." + dict[fgroup]["id"]+"print").each(function(){
+        for (var fgroup in dictionary) {
+          if (dictionary[fgroup]["widget"] === "date") {
+            dictionary[fgroup]["var"] = $("#"+dictionary[fgroup]["id"]).children().val();
+          } else {
+            dictionary[fgroup]["var"] = $("#"+dictionary[fgroup]["id"]).val();
+          }
+          var re = new RegExp("%" + dictionary[fgroup]["id"]+"print%")
+          $("." + dictionary[fgroup]["id"]+"print").each(function(){
             $(this).text(function(){
-            return $(this).text().replace(/%text%/, dict[fgroup]["var"]);
+            return $(this).text().replace(re, dictionary[fgroup]["var"]);
             });
           });
-          }
-
+        }
+          
         document.getElementById('step1').style.display = 'none';
         document.getElementById('step2').style.display = 'block';
         $("#back").attr("disabled", false);
