@@ -148,7 +148,7 @@
     window.onload = function() {
       for (var fgroup in dict) {
         formattedgroup = formgroup.replace(/%name%/g, dict[fgroup]["name"]).replace(/%id%/g, dict[fgroup]["id"]).replace(/%pholder%/g, dict[fgroup]["pholder"]);
-        $("#auto"+forms[num]).append(formattedgroup);
+        $("#autoform").append(formattedgroup);
         if (dict[fgroup]["widget"] === "textarea") {
           textareafy(dict[fgroup], 40, 4)
         } else if (dict[fgroup]["widget"] === "date") {
@@ -164,20 +164,20 @@
         var date = $("#datetimepicker12").val();
         $('#dateprint').append(date);
 
-        for (var fgroup in dictionary) {
-          if (dictionary[fgroup]["widget"] === "date") {
-            dictionary[fgroup]["var"] = $("#"+dictionary[fgroup]["id"]).children().val();
+        for (var fgroup in dict) {
+          if (dict[fgroup]["widget"] === "date") {
+            dict[fgroup]["var"] = $("#"+dict[fgroup]["id"]).children().val();
           } else {
-            dictionary[fgroup]["var"] = $("#"+dictionary[fgroup]["id"]).val();
+            dict[fgroup]["var"] = $("#"+dict[fgroup]["id"]).val();
           }
-          var re = new RegExp("%" + dictionary[fgroup]["id"]+"print%")
-          $("." + dictionary[fgroup]["id"]+"print").each(function(){
+          var re = new RegExp("%" + dict[fgroup]["id"]+"print%")
+          $("." + dict[fgroup]["id"]+"print").each(function(){
             $(this).text(function(){
-            return $(this).text().replace(re, dictionary[fgroup]["var"]);
+            return $(this).text().replace(re, dict[fgroup]["var"]);
             });
           });
         }
-          
+
         document.getElementById('step1').style.display = 'none';
         document.getElementById('step2').style.display = 'block';
         $("#back").attr("disabled", false);
