@@ -129,8 +129,8 @@
     </div>
       <div class="panel-group" style= "position:fixed; bottom:0; width:100%; z-index: 10000" id="accordion">
             <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h4 class="panel-title map-control">
+                <div class="panel-heading map-control">
+                  <h4 class="panel-title ">
                     <a data-toggle="collapse" style="background-color:#ffb74d" data-parent="#accordion" href="#collapseOne">
                       Click to View Map
                     </a>
@@ -256,9 +256,14 @@ $(function(){
       title = $(e).attr('title');
       $("#collapseOne").collapse("show");
       m.invalidateSize();
-            $(".awesome-marker[title='" + title + "\']").focus();
+      $(".awesome-marker[title='" + title + "\']").focus();
   });
 });
+
+$( "#mapid").on( "mouseenter",
+  function() {
+    m.invalidateSize()
+  })
 
 $('#collapseOne').on('show.bs.collapse', function () {
     m.invalidateSize();
