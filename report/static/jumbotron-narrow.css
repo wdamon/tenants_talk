@@ -3,14 +3,19 @@
 }
 
 .map-control {
-    color: #FFFFFF;
     text-align: center;
     width: 100%;
     display: block;
-    padding: 10px 15px;
+    padding: 0 15px 15px 0 ;
     font-size: 24px;
     font-family: Helvetica,Arial,sans-serif;
     outline: none;
+    height: 20px;
+    background-color: #000000;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    border-radius: 1em 1em 0 0;
+
 }
 
 .map-control a:hover, .map-control a:focus, .map-control a:active {
