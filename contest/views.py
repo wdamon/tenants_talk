@@ -17,6 +17,9 @@ def contest(request):
 def landing(request):
     return render(request, 'contest/landing.html')
 
+def landing(request):
+    return render(request, 'contest/petition.html') 
+
 def question(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     choices = Choice.objects.filter(question=question_id)

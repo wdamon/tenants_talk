@@ -10,5 +10,6 @@ urlpatterns = [
     url(r'^fletter/arb', views.arb, name='arb'),
     url(r'^fletter/(?P<page_slug>[\w]+)/$', views.formletter, name='formletter'),
     url(r'^landing/$', views.landing, name='landing'),
-    url(r'^filter/$', views.filter, name="filter")
+    url(r'^filter/$', views.filter, name="filter"),
+    url(r'^petition/$', views.petition, name='petition')
     ]

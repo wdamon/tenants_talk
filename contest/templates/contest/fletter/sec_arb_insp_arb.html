@@ -349,7 +349,7 @@
                       <div class="lcityprint">%lcityprint%, BC</div>
                       <div class="lpostalprint">%lpostalprint%</div>
                       <br/>
-                      <div class="secdepamountprint idateprint"><p> On %ldateprint% I served %lnameprint% with a letter formally asking for a return of the $%secdepamountprint% security deposit paid on %idateprint%.</div> The letter stipulated a deadline of <div class="rdateprint"><b>%rdateprint%</b></div> </p> 
+                      <div class="secdepamountprint lnameprint idateprint"><p> On %ldateprint% I served %lnameprint% with a letter formally asking for a return of the $%secdepamountprint% security deposit paid on %idateprint%.</div> The letter stipulated a deadline of <div class="rdateprint"><b>%rdateprint%</b></div> </p> 
                       <br/>
                       <p>The security deposit has not yet been returned and so I have taken the step of filing for dispute resolution. The landlord did not properly inspect the unit. The RTA guidelines are clear that a landlord must inspect the unit with the tenant. Because a proper inspection was not done any claims against my security deposit are extinguished.</p>
                       <P>
@@ -450,7 +450,11 @@ var repintroduction = {
         "id":"rdate",
         "name": "Deadline for return of the security deposit",
         "pholder": "In most cases leave two weeks to a month for the landlord to retun the funds",
-        "widget": "date"}
+        "widget": "date"
+      }, "id":"ldate",
+        "name": "Date letter asking for return of deposit was sent",
+        "pholder": "The date you sent a letter formally asking for a return of the security deposit",
+        "widget":"date:"}
       }
 var repbackground = {};
 var evidence = {
