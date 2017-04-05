@@ -200,7 +200,7 @@
     for (var fgroup in dict) {
       $("." + dict[fgroup]["id"]+"print").each(function(){
           $(this).text(function(){
-            return $(this).text().replace(dict[fgroup]["var"], "%text%");
+            return $(this).text().replace(dict[fgroup]["var"], "%" + dict[fgroup]["id"]+"print%");
           });
         });
     }
