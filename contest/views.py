@@ -17,7 +17,7 @@ def contest(request):
 def landing(request):
     return render(request, 'contest/landing.html')
 
-def landing(request):
+def petition(request):
     return render(request, 'contest/petition.html') 
 
 def question(request, question_id):
