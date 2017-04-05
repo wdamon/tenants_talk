@@ -1,0 +1,618 @@
+<!--#this is for peeps who said they've been warned for cause eviction-->
+{% load staticfiles %}
+<! DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Get help with your tenancy issues">
+    <meta name="author" content="William Damon">
+    <!-- <link rel="icon" href="{% static 'favicon.ico' %}">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet"  href="{% static 'offcanvas.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="{% static 'ie10-viewport-bug-workaround.css' %}" rel="stylesheet">
+    <script src="https://use.fontawesome.com/2c3856b3e5.js"></script>
+    <script type="text/javascript" src="{%  static 'jquery-3.1.0.min.js' %}"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{%  static 'moment/min/moment.min.js' %}"></script>
+    <script type="text/javascript" src="{%  static 'bootstrap-datetimepicker.js' %}"></script>
+    <script type="text/javascript" src="{%  static 'offcanvas.js'  %}"></script>
+    <script type="text/javascript" src="{%  static 'helper.js'  %}"></script>
+
+    <title> Tenants Talk | Get Help</title>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+<body>
+  <div id="wrap">
+    <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" style="color: white">Tenants Talk |</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar1">
+          <ul class="nav navbar-nav">
+            <li><a href="{% url 'index'%}">Report a Landlord</a></li>
+            <li><a href="{% url 'map' %}">Tenant Complaint Registry</a></li>
+            <li><a href="/contest">Tenant Robot Lawyer</a></li>
+          </ul>
+        </div>
+    </nav>
+    <nav class="navbar navbar-default" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar2">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Steps:</a>
+        </div>
+
+        <!-- Nav tabs -->
+        <div class="collapse navbar-collapse" id="navbar2">
+            <ul style="background-color:white" class="nav navbar-light nav-pills" role="tablist" id="navs">
+              <li role="presentation" class="active navstyle" id="nav1"><a href="#step1" aria-controls="step1" role="tab" data-toggle="tab">Apply for Dispute Resoluton</a></li>
+              <li role="presentation" class="navstyle" id="nav2"><a href="#step2" aria-controls="step2" role="tab" data-toggle="tab">Serve your landlord</a></li>
+              <li role="presentation" class="navstyle" id="nav3"><a href="#step3" aria-controls="step3" role="tab" data-toggle="tab">Prepare Evidence for your hearing</a></li>
+              <li role="presentation" class="navstyle" id="nav4"><a href="#step4" aria-controls="step4" role="tab" data-toggle="tab">Write your written submission </a></li>
+              <li role="presentation" class="navstyle disabled" id="nav5"><a href="#step5" aria-controls="step5" role="tab" data-toggle="tab">View and print your submission </a></li>
+            </ul>
+        </div>
+      </nav>
+    <!-- Tab panes -->
+    <div class="container">
+      <div class="row">
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="step1">
+            <div class="panel panel-default" style="border:1px solid black; font-family:Work Sans">
+              <div class="panel-heading" role="tab" id="headingOne">
+                <h1>
+                <span>Step 1: Apply for dispute resolution</span>
+                <button type="button"class="btn btn-default pull-right" data-toggle="collapse" data-target="#bodyOne" aria-expanded="false" aria-controls="Minimize">
+                  <i class="fa fa-minus" aria-hidden="true"></i>
+                </button>
+                </h1>
+              </div>
+              <div id="bodyOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                <div class="panel-body" style="padding-left: 2em; font-family:Work Sans; font-size: 21px; font-weight: 200">
+                  <p>So your landlord is trying to keep your deposit despite not properly inspecting your unit. Your landlord has your forwarding address and you have written the landlord a letter requesting the return of your deposit. You are going to need some evidence and energy to get your deposit back.</p>
+                  <p> Your next step is to apply for dispute resolution through B.C's <a href="http://www2.gov.bc.ca/gov/content/housing-tenancy/residential-tenancies"> Residential Tenancy Branch</a>.
+                  <p> You can apply for dispute resolution:</p>
+                  <div class="panel panel-primary" style="font-size: 21px; font-weight: 200">
+                    <div class="panel-body">
+                      <ul class="list-group">
+                        <a class"btn-group" style="text-decoration:none" href="http://www2.gov.bc.ca/gov/content/housing-tenancy/residential-tenancies/solving-problems/dispute-resolution/applying-for-dispute-resolution">
+                        <li class="list-group-item btn-group panel-link" role="group">
+                          <button type="button" class="btn btn-default" aria-label="WWW" style="margin-right:1em">
+                            <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+                          </button>
+                           online through the Residential Tenancy Branch website, or </li></a>
+                           <a class"btn-group" style="text-decoration:none" href="http://www2.gov.bc.ca/gov/content/housing-tenancy/residential-tenancies/contact-the-residential-tenancy-branch">
+                        <li class="list-group-item btn-group panel-link" role="group">
+                          <button type="button" class="btn btn-default" aria-label="in person" style="margin-right:1em">
+                            <i class="fa fa-map-signs" aria-hidden="true"></i>
+                          </button>
+                          in person at an RTB Office.</li>
+                        </p></a>
+                     </div>
+                   </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default" style="border:1px solid black; font-family:Work Sans">
+              <div class="panel-heading" role="tab" id="headingTwo">
+                <h1>
+                <span>Why go through dispute resolution?</span>
+                <button type="button"class="btn btn-default pull-right" data-toggle="collapse" data-target="#bodyTwo" aria-expanded="false" aria-controls="Minimize">
+                  <i class="fa fa-minus" aria-hidden="true"></i>
+                </button>
+                </h1>
+              </div>
+              <div id="bodyTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body" style="padding-left: 2em; font-family:Work Sans; font-size: 21px; font-weight: 200">
+                <p>It is important to not let your landlord rip you off. If successful you can get the Residential Tenancy Branch to:</p>
+                  <p class="text-center"><ul class="well well-lg" style="padding-left: 2em; font-family:Work Sans; font-size: 21px; font-weight: 200">
+                    <li>Order your landlord to return twice the amount of the deposit, and
+                    <li>Recover the cost of the filling fees
+                    <br/>
+                    <ul class="list-unstyled" style="font-size: 14px; font-weight: 100" >
+                      -see <a href="http://wiki.clicklaw.bc.ca/index.php?title=Security_Deposits_and_Additional_Fees#Getting_your_deposit_back">Clicklaw B.C's page on getting your deposit back</a> for more info.
+                    </ul>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default" style="border:1px solid black; font-family:Work Sans">
+              <div class="panel-heading" role="tab" id="headingThree">
+                <h1>
+                  <span>Fee Waiver?</span>
+                  <button type="button"class="btn btn-default pull-right" data-toggle="collapse" data-target="#bodyThree" aria-expanded="false" aria-controls="Minimize">
+                    <i class="fa fa-minus" aria-hidden="true"></i>
+                  </button>
+                </h1>
+              </div>
+              <div id="bodyThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body" style="padding-left: 2em; font-family:Work Sans; font-size: 21px; font-weight: 200">
+                  <p>Dispute resolution costs $100. However, this fee may be waived if you submit a <a href="http://www2.gov.bc.ca/gov/content/housing-tenancy/residential-tenancies/solving-problems/dispute-resolution/applying-for-dispute-resolution/fees-and-fee-waivers">Fee Waiver Application</a> along with proof that you have a low income.</p>
+                  <p>You can also get your fee back if you are successful </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="step2">
+            <div class="panel panel-default" style="border:1px solid black; font-family:Work Sans">
+              <div class="panel-heading" role="tab" id="headingFour">
+                <h1>
+                <span>Step 2: Serve your landlord</span>
+                <button type="button"class="btn btn-default pull-right" data-toggle="collapse" data-target="#bodyFour" aria-expanded="false" aria-controls="Minimize">
+                  <i class="fa fa-minus" aria-hidden="true"></i>
+                </button>
+                </h1>
+              </div>
+              <div id="bodyFour" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFour">
+                <div class="panel-body" style="padding-left: 2em; font-family:Work Sans; font-size: 21px; font-weight: 200">
+                  <p>Now that you have applied you have <b> 3 calendar days </b> to give your landlord notice of dispute resolution and hearing documents.</p>
+                  <p> There are two ways you can 'serve' these documents to your landlord.</p>
+                  <p><ul style="font-family:Work Sans; font-size: 21px; font-weight: 200">
+                    <li>In person: Bring a witness with you.
+                    <li>Send by registered mail: Keep the receipt from the post office to prove you sent the notice. Mail the documents to the landlord as soon as you receive them.
+                    </ul>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="step3">
+            <div class="panel panel-default" style="border:1px solid black; font-family:Work Sans">
+              <div class="panel-heading" role="tab" id="headingFive">
+                <h1>
+                <span>Step 3: Prepare Evidence</span>
+                <button type="button"class="btn btn-default pull-right" data-toggle="collapse" data-target="#bodyFive" aria-expanded="false" aria-controls="Minimize">
+                  <i class="fa fa-minus" aria-hidden="true"></i>
+                </button>
+                </h1>
+              </div>
+              <div id="bodyFive" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFive">
+                <div class="panel-body" style="padding-left: 2em; font-family:Work Sans; font-size: 21px; font-weight: 200">
+                    <p> You will need to present evidence at your hearing. Examples of evidence you should consider providing include:</p>
+                    <p>
+                    <form style="font-family:Work Sans; font-size: 21px; font-weight: 200 role="form">
+                     <div class="checkbox">
+                          <label>
+                            <input type="checkbox"> A completed Monetary Order Worksheet (http://www2.gov.bc.ca/assets/gov/housing-and-tenancy/residential-tenancies/forms/rtb21.pdf) for the value of twice the sercurity deposit + any filing fees
+                          </label>
+                        </div>
+                     <div class="checkbox">
+                          <label>
+                            <input type="checkbox"> Copies of written communication between you and the landlord
+                          </label>
+                        </div>
+                    
+                      <div class="checkbox">
+                          <label>
+                            <input type="checkbox"> Any inspection reports you may have for the unit
+                          </label>
+                        </div>
+
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox"> Photos / Videos/ or Audio Recordings Relevant to the Hearing (See Digital Evidence, Below)
+                          </label>
+                        </div>
+                    <div class="checkbox">
+                          <label>
+                            <input type="checkbox"> Witness Statements
+                          </label>
+                        </div>
+                    </form>
+                    </p>
+                    <p>If you didn't send evidence with your application you are required to serve copies of your evidence to both the Residential Tenancy Branch (RTB) and the other party  <b>14 days</b> before the hearing.</P>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default" style="border:1px solid black; font-family:Work Sans">
+              <div class="panel-heading" role="tab" id="headingSix">
+                <h1>
+                <span>How to Prepare Your Evidence</span>
+                <button type="button"class="btn btn-default pull-right" data-toggle="collapse" data-target="#bodySix" aria-expanded="false" aria-controls="Minimize">
+                  <i class="fa fa-minus" aria-hidden="true"></i>
+                </button>
+                </h1>
+              </div>
+              <div id="bodySix" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingSix">
+                <div class="panel-body" style="padding-left: 2em; font-family:Work Sans; font-size: 21px; font-weight: 200">
+                  <p>The first page of your evidence package should be an index clearly stating a list of all your evidence along with page numbers.</p>
+                  <p>Any witnesses should be present at the hearing. If they can't come in person you'll need to get a sworn statement from a lawyer or notary.</p>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default" style="border:1px solid black; font-family:Work Sans">
+              <div class="panel-heading" role="tab" id="headingSeven">
+                <h1>
+                <span>Digital Evidence</span>
+                <button type="button"class="btn btn-default pull-right" data-toggle="collapse" data-target="#bodySeven" aria-expanded="false" aria-controls="Minimize">
+                  <i class="fa fa-minus" aria-hidden="true"></i>
+                </button>
+                </h1>
+              </div>
+              <div id="bodySeven" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingSeven">
+                <div class="panel-body" style="padding-left: 2em; font-family:Work Sans; font-size: 21px; font-weight: 200">
+                  <p>There are special rules for digital evidence. You'll need to ensure that both the RTB and your landlord can play the digital evidence during the hearing.</p>
+                  <p>You'll need to ask both the landlord and the RTB to tell you if they have the equipment available to play your evidence.</p>
+                  <p>You must also submit the RTB's <a href="http://tenants.bc.ca/wp-content/uploads/2015/10/rtb43-1.pdf">Digital Evidence Details Form</a>.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="step4">
+            <div class="panel panel-default" style="border:1px solid black; font-family:Work Sans">
+              <div class="panel-heading" role="tab" id="headingNine">
+                <h1>
+                <span>Step 4: Write a written submission</span>
+                <button type="button"class="btn btn-default pull-right" data-toggle="collapse" data-target="#bodyNine" aria-expanded="false" aria-controls="Minimize">
+                  <i class="fa fa-minus" aria-hidden="true"></i>
+                </button>
+                </h1>
+              </div>
+              <div id="bodyNine" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingNine">
+                <div class="panel-body" style="padding-left: 2em; font-family:Work Sans; font-size: 21px; font-weight: 200">
+                  <p> You've come a long way. At this point you should have filed with the RTB, served your landlord, and prepared some killer evidence.</p>
+                  <p> The next step is important. We are going to write a written submission to the RTB, together. </P>
+                  <p> Fill out this form, below, and then click the "Next" button to generate a form letter. You can copy and paste it into word if you want to add to it or you can just print it out.</p>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default" style="border:1px solid black; font-family:Work Sans">
+              <div class="panel-heading" role="tab" id="headingTen">
+                <h1>
+                <span>Your Written Submission for Your Dispute Resolution Hearing</span>
+                <button type="button"class="btn btn-default pull-right" data-toggle="collapse" data-target="#bodyTen" aria-expanded="false" aria-controls="Minimize">
+                  <i class="fa fa-minus" aria-hidden="true"></i>
+                </button>
+                </h1>
+              </div>
+              <div id="bodyTen" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTen">
+                <div class="panel-body" style="padding-left: 2em; font-family:Work Sans; font-size: 21px; font-weight: 200">
+                  <!-- Here's the start of the form. Other panel style?-->
+                  <!-- Introduction -->
+                  <div class="panel panel-default" style="border:1px solid black; font-family:Work Sans">
+                    <div class="panel-heading" role="tab" id="headingEleven">
+                      <h4>
+                        <span>Introduction</span>
+                        <button type="button"class="btn btn-default pull-right" data-toggle="collapse" data-target="#bodyEleven" aria-expanded="false" aria-controls="Minimize">
+                          <i class="fa fa-minus" aria-hidden="true"></i>
+                        </button>
+                      </h4>
+                    </div>
+                    <div id="bodyEleven" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingEleven">
+                      <div class="panel-body" style="padding-left: 2em; font-family:Work Sans; font-size: 21px; font-weight: 200">
+                        <!--into auto form -->
+                        <div class="col-sm-6">
+                          <div id="autoformintro">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--Background -->
+                  <div class="panel panel-default" style="border:1px solid black; font-family:Work Sans">
+                    <div class="panel-heading" role="tab" id="headingTwelve">
+                      <h4>
+                        <span>Background</span>
+                        <button type="button"class="btn btn-default pull-right" data-toggle="collapse" data-target="#bodyTwelve" aria-expanded="false" aria-controls="Minimize">
+                          <i class="fa fa-minus" aria-hidden="true"></i>
+                        </button>
+                      </h4>
+                    </div>
+                    <div id="bodyTwelve" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwelve">
+                      <div class="panel-body" style="padding-left: 2em; font-family:Work Sans; font-size: 21px; font-weight: 200">
+                        <div id="autoformbckg"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--Evidence -->
+                  <div id='ediv'>
+                    <div id="e1" class="panel panel-default" style="border:1px solid black; font-family:Work Sans">
+                        <div class="panel-heading" role="tab" id="heading13">
+                          <h4>
+                            <span>Evidence</span>
+                            <button type="button"class="btn btn-default pull-right" data-toggle="collapse" data-target="#body13" aria-expanded="false" aria-controls="Minimize">
+                              <i class="fa fa-minus" aria-hidden="true"></i>
+                            </button>
+                          </h4>
+                        </div>
+                        <div id="body13" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading13">
+                          <div class="panel-body" style="padding-left: 2em; font-family:Work Sans; font-size: 21px; font-weight: 200">
+                            <div id="autoformevd"></div>
+                            <button type="button"class="btn btn-lg btn-primary btnEvd" aria-expanded="false" aria-controls="addMore">
+                              <i class="fa fa-plus-circle fa-lg" aria-hidden="true"></i> Add more evidence
+                            </button>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                  <!--Conclusion -->
+                  <div class="panel panel-default" style="border:1px solid black; font-family:Work Sans">
+                    <div class="panel-heading" role="tab" id="headingTwelve">
+                      <h4>
+                        <span>Conclusion</span>
+                        <button type="button"class="btn btn-default pull-right" data-toggle="collapse" data-target="#Conclusionbody" aria-expanded="false" aria-controls="Minimize">
+                          <i class="fa fa-minus" aria-hidden="true"></i>
+                        </button>
+                      </h4>
+                    </div>
+                    <div id="Conclusionbody" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwelve">
+                      <div class="panel-body" style="padding-left: 2em; font-family:Work Sans; font-size: 21px; font-weight: 200">
+                        <div id="autoformconc"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="step5">
+            <div class="panel panel-default" style="border:1px solid black; font-family:Work Sans">
+              <div class="panel-heading" role="tab" id="headingSubm">
+                <h1>
+                <span>Step 5: View and Print Your Written Submission</span>
+                <button type="button"class="btn btn-default pull-right" data-toggle="collapse" data-target="#bodySubm" aria-expanded="false" aria-controls="Minimize">
+                  <i class="fa fa-minus" aria-hidden="true"></i>
+                </button>
+                </h1>
+              </div>
+              <div id="bodySubm" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingSubm">
+                <div class="panel-body" style="padding-left: 2em; font-family:Work Sans; font-size: 21px; font-weight: 200">
+                  <p>Submit this form as part of your evidence to the RTB.</p>
+                  <!--written submission -->
+                  <div id="printarea">
+                    <div id="dateprint">Date: %dateprint%</div>
+                      <br/>
+                    <div class="tnameprint">Tenant's Name: %tnameprint%</div>
+                      <br/>
+                      <u> Tenant's Address</u>:
+                      <br/>
+                      <div class="taddressprint">%taddressprint%</div>
+                      <div class="tcityprint">%tcityprint%, BC</div>
+                      <div class="tpostalprint">%tpostalprint%</div>
+
+                      <br/>
+                      <div class="lnameprint">Landlord's Name: %lnameprint%</div>
+                      <br/>
+                      <u> Landlord's Address</u>:
+                      <br/>
+                      <div class="laddressprint">%laddressprint%</div>
+                      <div class="lcityprint">%lcityprint%, BC</div>
+                      <div class="lpostalprint">%lpostalprint%</div>
+                      <br/>
+                      <div class="secdepamountprint idateprint"><p> On %ldateprint% I served %lnameprint% with a letter formally asking for a return of the $%secdepamountprint% security deposit paid on %idateprint%.</div> The letter stipulated a deadline of <div class="rdateprint"><b>%rdateprint%</b></div> </p> 
+                      <br/>
+                      <p>The security deposit has not yet been returned and so I have taken the step of filing for dispute resolution. The landlord did not properly inspect the unit. The RTA guidelines are clear that a landlord must inspect the unit with the tenant. Because a proper inspection was not done any claims against my security deposit are extinguished.</p>
+                      <P>
+                      According to B.C's Residential Tenancy Policy Guideline #17(http://www2.gov.bc.ca/assets/gov/housing-and-tenancy/residential-tenancies/policy-guidelines/gl17.pdf):
+                      <br/></p>
+                      <blockquote class="blockquote">
+                        <p>"The right of a landlord to obtain the tenant’s consent to retain or file a claim against a security deposit for damage to the rental unit is extinguished if:<ul>
+                            <li>the landlord does not offer the tenant at least two opportunities for inspection as required (the landlord must use Notice of Final Opportunity to Schedule a Condition Inspection (form RTB-22) to propose a second opportunity); and/or</li>
+                            <li>having made an inspection does not complete the condition inspection report, in the form required by the Regulation, or provide the tenant with a copy of it."</li></ul></p>
+                      </blockquote>
+                      <br/>
+                    <p> Because the landlord did not respond to my initial letter and given the amount of time and energy taken on my part to file for dispute resolution and prepare my evidence I am asking for twice the value of the security deposit plus filing fees be returned to me.</p>
+                    <br/><br/>
+
+                      Thank you, <br/><br/><br/>
+
+                      _______________
+                      <div class="tnameprint">%tnameprint%</div>
+                  </div>
+                  <br/>
+                  <div style="padding-bottom:5em">
+                    <button class="btn btn-success" onclick="printDiv('printarea')" style="float:right">
+                      <i class="fa fa-print" aria-hidden="true"></i> Print Letter
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row marketing text-right" style="color: black">
+            <h4>Disclaimer</h4> Use at your own risk. &copy; <a href="www.wgdamon.com">William Damon</a> 2016
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer text-center navbar-fixed-bottom">
+    <div class="container" style="padding-top:.5em">
+     <button  class="btn btn-lg btn-primary btnPrevious" disabled="disabled" type="button" style="padding-right:1em">
+       <i class="fa fa-arrow-left" aria-hidden="true"></i> Back
+     </button>
+     <span class="fa-stack fa-lg">
+      <i class="fa fa-circle fa-stack-2x"></i>
+      <i class="fa fa-home fa-inverse fa-stack-2x"></i>
+     </span>
+     <button class="btn btn-lg btn-primary btnNext" style="padding-left:1em"> Next
+       <i class="fa fa-arrow-right" aria-hidden="true"></i>
+     </button>
+     <hr/>
+    </div>
+  </footer>
+</body>
+<script>
+
+var repintroduction = {
+      var dict = {
+      "tname":{
+        "id":"tname",
+        "name":"Your Name",
+        "pholder":"Your First and Last Name"},
+      "address":{
+        "id":"taddress",
+        "name":"Your Address",
+         "pholder":"123 Main Street"},
+      "city":{
+        "id":"tcity",
+        "name":"Your City of Residence",
+        "pholder":"Cityville"},
+      "postal":{
+        "id":"tpostal",
+        "name": "Your Postal Code",
+        "pholder":"V5Y1J2"},
+      "lname":{
+        "id": "lname",
+        "name": "Your Landlords Name",
+        "pholder": "Jane Doe"},
+      "laddress":{
+        "id": "laddress",
+        "name": "You Landlords Address",
+        "pholder": "123 Main Street"
+      },"lcity":{
+        "id":"lcity",
+        "name":"Your Landlords City of Residence",
+        "pholder":"Cityville"
+      },"lpostal":{
+        "id":"lpostal",
+        "name": "Your Postal Code",
+        "pholder":"V5Y1J2"
+      },"idate":{
+        "id":"idate",
+        "name": "Move-in or Security Deposit Payment Date",
+        "pholder": "The Move-in Date or Date Security Deposit was paid.",
+        "widget": "date"
+      },"secdepamount":{
+        "id":"secdepamount",
+        "name": "Amount of security deposit",
+        "pholder": "The amount paid for security deposit"
+      },"rdate":{
+        "id":"rdate",
+        "name": "Deadline for return of the security deposit",
+        "pholder": "In most cases leave two weeks to a month for the landlord to retun the funds",
+        "widget": "date"}
+      }
+var repbackground = {};
+var evidence = {
+};
+var repconclusion = {
+};
+  //highlights text in panel
+    $( ".panel-link").on( "mouseenter",
+      function() {
+        $( this ).addClass( "active" );
+      }).on( "mouseleave", function() {
+        $( this ).removeClass( "active" );
+      });
+  //populates forms based on dicts
+  var sections = {"repintroduction":repintroduction, "repbackground":repbackground, "evidence":evidence, "repconclusion":repconclusion};
+
+  //form sections
+  var forms = {"repintroduction":"formintro", "repbackground":"formbckg", "evidence":"formevd", "repconclusion":"formconc"};
+
+$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+  var target = $(e.target).attr("href") // activated tab
+  if (target != "#step1") {
+    $(".btnPrevious").attr("disabled", false);
+  } else {
+    $(".btnPrevious").attr("disabled", true);
+  }
+});
+var divClone = $('#printarea').clone();
+  //nav buttons at the bottom of the screen
+  //previous
+  $(function(){
+    $('.btnPrevious').click(function(e){
+      if($('#navs > .active').attr('id') == 'nav5') {
+        $("#printarea").replaceWith(divClone);
+        $('#navs > .active').prev('li').find('a').tab('show');
+      } else {
+      $('#navs > .active').prev('li').find('a').tab('show');
+      }
+    }),
+  //next
+      $('.btnNext').click(function(e){
+         if($('#navs > .active').attr('id') == 'nav4'){
+            if (formFilled(sections) === true) {
+               var divClone = $('#printarea').clone();
+               for (var section in sections){
+                 saveform(sections[section]);
+               };
+               $(".step5").attr("disabled", false);
+               $('#navs > .active').next('li').find('a').tab('show');
+            } else {
+               alert("Please complete the form to continue.")
+            }
+        } else if($('#navs > .active').attr('id') == 'nav5') {
+          location.href='/contest/landing/';
+        } else {
+        $('#navs > .active').next('li').find('a').tab('show');
+        }
+      });
+    });
+  //load forms
+  window.onload = function() {
+    for (var dict in sections) {
+      printform(dict,sections[dict]);
+    }
+    var evdcount = 0;
+    $( "#ediv").on("click", ".btnEvd", function (e) {
+      evdcount +=1;
+      formattedevd = evidenceblock.replace(/%ecount%/g, evdcount);
+      $('#ediv').append(formattedevd);
+      sections["evidence"+evdcount] = (JSON.parse(JSON.stringify(sections["evidence"])));
+      forms["evidence"+evdcount] = "formevd"+evdcount;
+      if (evdcount > 1) {
+        for (var i in sections["evidence"+evdcount]) {
+          sections["evidence"+evdcount][i]["id"] = sections["evidence"+evdcount][i]["id"].slice(0, -1) + evdcount;
+        }
+      } else {
+        for (var i in sections["evidence"+evdcount]) {
+          sections["evidence"+evdcount][i]["id"] = sections["evidence"+evdcount][i]["id"] + evdcount;
+        }
+      }
+      printform("evidence"+evdcount, sections["evidence"+evdcount])
+      formattedEvidenceLetterBlock = evidenceletterblock.replace(/%ecount%/g, evdcount);
+      $("#evidenceLetter").append(formattedEvidenceLetterBlock);
+      return evdcount
+    })
+    $( "#ediv").on("click", ".removeEvd", function (e) {
+            id = jQuery(this).attr('id');
+            console.log(id);
+            delete sections['evidence' + id]
+            delete forms['evidence' + id]
+            $('#bodyid' + id).parent().remove();
+            $('#evidenceLetter' + id).remove();
+            evdcount -=1;
+            return evdcount;
+      })
+    };
+
+
+  function printDiv(divName) {
+   var printContents = document.getElementById(divName).innerHTML;
+   w=window.open();
+   w.document.write(printContents);
+   w.print();
+   w.close();
+  }
+
+
+   </script>
+   <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <script src="{% static 'ie10-viewport-bug-workaround.js' %}"></script>
+   </body>
+   </html>
+</html>
