@@ -58,8 +58,7 @@
             <br/>
             <div class="lnameprint">Dear %lnameprint%,</div>
           </p>
-            <p>The eviction notice you sent did not follow the RTA's guideline regarding lawful notice to end tenancy. Because it is not lawful notice I will not be vacating the property</p><br/>
-            <br/>
+            <p>The eviction notice you sent did not follow the RTA's guideline regarding lawful notice to end tenancy. Because it is not lawful notice I will not be vacating the property.</p><br/>
             <p>As a landlord you have a responsibility to give me fair notice to end tenancy. You should explain why I am being evicted and give me an opportunity to fix the problem.</p>
             <p>I am hoping that we can resolve this issue without having to apply for dispute resolution with the Residential Tenancy Branch (RTB). Perhaps we could resolve these problems in person, or through some other means</p>
           <br/><br/>
@@ -131,9 +130,13 @@
         for (var fgroup in dict) {
           formattedgroup = formgroup.replace(/%name%/g, dict[fgroup]["name"]).replace(/%id%/g, dict[fgroup]["id"]).replace(/%pholder%/g, dict[fgroup]["pholder"]);
           $("#autoform").append(formattedgroup);
-        };
-        textareafy(dict["repairs"], 40, 4);
-      };
+          if (dict[fgroup]["widget"] === "textarea") {
+            textareafy(dict[fgroup], 40, 4)
+          } else if (dict[fgroup]["widget"] === "date") {
+            dateafy(dict[fgroup])
+          }
+        }
+    };
     var clicks = 0;
     document.getElementById("next").addEventListener("click", function( event ) {
       if (clicks == 0) {
@@ -141,10 +144,15 @@
         $('#dateprint').append(date);
 
         for (var fgroup in dict) {
-          dict[fgroup]["var"] = $("#"+dict[fgroup]["id"]).val();
+          if (dict[fgroup]["widget"] === "date") {
+            dict[fgroup]["var"] = $("#"+dict[fgroup]["id"]).children().val();
+          } else {
+            dict[fgroup]["var"] = $("#"+dict[fgroup]["id"]).val();
+          }
+          var re = new RegExp("%" + dict[fgroup]["id"]+"print%")
           $("." + dict[fgroup]["id"]+"print").each(function(){
             $(this).text(function(){
-            return $(this).text().replace(/%text%/, dict[fgroup]["var"]);
+            return $(this).text().replace(re, dict[fgroup]["var"]);
             });
           });
           }
@@ -159,7 +167,7 @@
     }, false);
    $(function () {
        $('#datetimepicker12').datetimepicker({
-            format: 'YYYY-MM-DD'
+            format: 'MM-DD-YYYY'
        });
    });
 
@@ -170,7 +178,7 @@
     for (var fgroup in dict) {
       $("." + dict[fgroup]["id"]+"print").each(function(){
           $(this).text(function(){
-            return $(this).text().replace(dict[fgroup]["var"], "%text%");
+            return $(this).text().replace(dict[fgroup]["var"], "%" + dict[fgroup]["id"]+"print%");
           });
         });
     }
@@ -184,4 +192,4 @@
    w.close();
   }
    </script>
-{% endblock %}
+   {% endblock %}
