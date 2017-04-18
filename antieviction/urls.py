@@ -20,7 +20,8 @@ from contest import views
 from report import views
 
 urlpatterns = [
+    url(r'^', include('report.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^contest/', include('contest.urls')),
-    url(r'^report/', include('report.urls')),
+    url(r'^report/', include('report.urls'))
 ]
