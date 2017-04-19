@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'geocoder',
     'leaflet',
     'djgeojson',
+    'home.apps.HomeConfig',
     'contest.apps.ContestConfig',
     'report.apps.ReportConfig',
     'django.contrib.admin',
