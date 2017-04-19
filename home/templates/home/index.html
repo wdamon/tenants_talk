@@ -1,0 +1,95 @@
+{% load staticfiles %}
+<! DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Add data to the debate, report your eviction">
+    <meta name="author" content="William Damon">
+    <! <link rel="icon" href="{% static 'favicon.ico' %}">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet"  href="{% static 'jumbotron-narrow.css' %}">
+    <script type="text/javascript" src="{%  static 'jquery-3.1.0.min.js' %}"></script>
+    <script type="text/javascript" src="{%  static 'moment/min/moment.min.js' %}"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+      <script type="text/javascript" src="{%  static 'bootstrap-datetimepicker.js' %}"></script>
+      <link rel="stylesheet" href="{% static 'bootstrap-datetimepicker.css' %}"/>
+      <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="{% static 'ie10-viewport-bug-workaround.css' %}" rel="stylesheet">
+    <script src="https://use.fontawesome.com/2c3856b3e5.js"></script>
+    <script type="text/javascript" src="{% static 'helper.js' %}"></script>
+
+    <title> Tenants Talk | Report your eviction</title>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+<body>
+  <div class="container">
+    <div class="header clearfix">
+      <nav style="background-color: black" class="navbar navbar-inverse">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <h3 style="color: white">Tenants talk</h3>
+          </div>
+
+          <div class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav nav-pills pull-right">
+                <input type="hidden" id="selected_menu_item" value="=$selectedMenuId; ?>" />
+                <li role="presentation" class="active"><a href="{% url 'index' %}">Share Your Experience</a></li>
+                <li role="presentation"><a href="{% url 'map' %}">Tenancy Issues Map</a></li>
+                <li role="presentation"><a href="/contest/fletter/arb">Find an Advocate</a></li>
+                <li role="presentation"><a href="/contest">Tenant Robot Lawyer</a></li>
+                <li role="presentation"><a href="/contest">About</a></li>
+              </ul>
+          </div>
+      </nav>
+    </div>
+  </div>
+<div class="jumbotron"> 
+  <div class ="container">
+    <h1>Welcome to Tenants Talk<h1>
+     <p class ="lead">A brand new website aimed to support renters in Vancouver, B.C. On this website you can share your experiences with renting in Vancouver, view a map of tenancy issues, use our tenant robot lawyer to learn more about your rights as a renter, find an advocate, and get involved in the political fight to improve renters rights in the province.<p>
+
+    <p>The resources here are offered free of charge, so please consider making a donation or providing feedback in our <em>About</em> section. </p>
+    <p><a class="btn btn-lg " style="background-color:#79bd9a;" href="/home/about" role="button">About Tenants Talk</a></p> 
+  </div>
+</div>  
+<div class="container">
+  <div class="row"> 
+    <div class="col-md-4">
+      <h2>Tenant Robot Lawyer</h2>
+      <
+
+      <div class="row marketing">
+        <div class="col-lg-12" style="color: white">
+        <hr>
+          <h4>Disclaimer</h4>
+          <p> Use at your own risk. This app is not legal advice. This program is designed to provide you with information and resources to navigate the residential tenancy system. It will not give advice on your case, nor give you any assessment of your likelihood of success in a dispute resolution or negation. If you need advice on your circumstances, consult with an advocate. </p>
+        </div>
+      </div>
+<footer class="footer">
+  <p>&copy; <a href="www.wgdamon.com">William Damon</a> 2016</p>
+</footer>
+
+</div> <!-- /container -->
+
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="{% static 'ie10-viewport-bug-workaround.js' %}">
+  $('.nav-tabs').button()
+</script>
+</body>
+</html>
