@@ -12,6 +12,7 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet"  href="{% static 'jumbotron-narrow.css' %}">
+    <script type="text/javascript" src="{%  static 'jquery-3.1.0.min.js' %}"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
       <script type="text/javascript" src="{%  static 'bootstrap-datetimepicker.js' %}"></script>
       <link rel="stylesheet" href="{% static 'bootstrap-datetimepicker.css' %}"/>
@@ -40,7 +41,8 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
               </button>
-              <h3 style="color: white">Tenants talk</h3>
+              <a class="navbar-brand" href="">Tenants Talk</a>
+              <!--<h3 style="color: white">Tenants talk</h3>-->
           </div>
 
           <div class="collapse navbar-collapse" id="myNavbar">
@@ -59,9 +61,9 @@
 <div class="jumbotron"> 
   <div class ="container">
     <h1>Welcome to Tenants Talk<h1>
-     <p class ="lead">A brand new website aimed to support renters in Vancouver, B.C. On this website you can share your experiences with renting in Vancouver, view a map of tenancy issues, use our tenant robot lawyer to learn more about your rights as a renter, find an advocate, and get involved in the political fight to improve renters rights in the province.<p>
+     <p class ="lead">A brand new website helping renters in Vancouver, B.C. With Tenants Talk you can share your experiences with renting in Vancouver, view a map of tenancy issues, use our tenant robot lawyer to learn more about your rights as a renter, find an advocate, and get involved in the political fight to improve renters rights in the province.<p>
 
-    <p>The resources here are offered free of charge, so please consider making a donation or providing feedback in our <em>About</em> section. </p>
+    <p>The resources here are offered free of charge, so please consider making a donation or providing feedback in the About Section. </p>
     <p><a class="btn btn-lg " style="background-color:#79bd9a;" href="/about" role="button">About Tenants Talk</a></p> 
   </div>
 </div>  
@@ -69,7 +71,30 @@
   <div class="row"> 
     <div class="col-md-4">
       <h2>Tenant Robot Lawyer</h2>
-      <p class="lead">
+      <p class="lead"> 
+        The Tenant Robot Lawyer is a simple interactive tool that helps tenants understand their rights as renters in B.C. It is a helpful first step for tenants who think their rights have been violated and can help you stay organized and aware of your next steps.  
+      </p>
+      <p><a class="btn btn-lg " style="background-color:#79bd9a;" href="/contest" role="button">Meet the Robot Lawyer</a></p>
+    </div>
+    <div class="col-md-4">
+      <h2>Tenancy Issues Map</h2>
+      <p class="lead"> 
+        This map is a registry of tenant complaints about poor or unlawful treatment. Anyone is free to post to this page, so take everything posted here with a grain of salt. You can use the maps search and filter interfaces to see if anyone near you has had an issue. 
+      </p>
+      <p><a class="btn btn-lg " style="background-color:#79bd9a;" href="{% url 'map' %}" role="button">View the Map</a>
+      <a class="btn btn-lg " style="background-color:#79bd9a;" href="{% url 'index' %}" role="button">Share Your Experience</a></p>
+    </div>
+    <div class="col-md-4">
+      <h2>Stand Up, Fight Back</h2>
+      <p class="lead"> 
+        Tenants in B.C have it rough -- and loopholes in the RTA are just the tip of the iceberg. Like a leaky bucket, fixing one or two loopholes wont make a difference in a system tilted in favor of landlords. Tenants in B.C should have the same protections that tenants across North America enjoy: 
+        <ul class="list-group">
+          <li class="list-group-item"> An opt-out system of dispute resolution for evictions (instead of B.C's complaint based system with its tight deadlines)</li>
+          <li class="list-group-item">A right to first refusal for no-fault evictions and a more substantial relocation fee for no-fault evictions </li>
+          <li class="list-group-item">Close all the loopholes</li>
+          <li class="list-group-item">Fund real social housing and adopt a poverty reduction plan!</li>
+      </p>
+      <p><a class="btn btn-lg " style="background-color:#79bd9a;" href="/contest" role="button">Meet the Robot Lawyer</a></p>
     </div>
   </div>
 
@@ -81,7 +106,7 @@
         </div>
       </div>
 <footer class="footer">
-  <p>&copy; <a href="www.wgdamon.com">William Damon</a> 2016</p>
+  <p>&copy; <a href="http://www.wgdamon.com">William Damon</a> 2016</p>
 </footer>
 
 </div> <!-- /container -->
