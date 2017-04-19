@@ -12,8 +12,6 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet"  href="{% static 'jumbotron-narrow.css' %}">
-    <script type="text/javascript" src="{%  static 'jquery-3.1.0.min.js' %}"></script>
-    <script type="text/javascript" src="{%  static 'moment/min/moment.min.js' %}"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
       <script type="text/javascript" src="{%  static 'bootstrap-datetimepicker.js' %}"></script>
       <link rel="stylesheet" href="{% static 'bootstrap-datetimepicker.css' %}"/>
@@ -48,11 +46,11 @@
           <div class="collapse navbar-collapse" id="myNavbar">
               <ul class="nav nav-pills pull-right">
                 <input type="hidden" id="selected_menu_item" value="=$selectedMenuId; ?>" />
-                <li role="presentation" class="active"><a href="{% url 'index' %}">Share Your Experience</a></li>
+                <li role="presentation"><a href="{% url 'index' %}">Share Your Experience</a></li>
                 <li role="presentation"><a href="{% url 'map' %}">Tenancy Issues Map</a></li>
                 <li role="presentation"><a href="/contest/fletter/arb">Find an Advocate</a></li>
                 <li role="presentation"><a href="/contest">Tenant Robot Lawyer</a></li>
-                <li role="presentation"><a href="/contest">About</a></li>
+                <li role="presentation"><a href="/about">About</a></li>
               </ul>
           </div>
       </nav>
@@ -64,13 +62,14 @@
      <p class ="lead">A brand new website aimed to support renters in Vancouver, B.C. On this website you can share your experiences with renting in Vancouver, view a map of tenancy issues, use our tenant robot lawyer to learn more about your rights as a renter, find an advocate, and get involved in the political fight to improve renters rights in the province.<p>
 
     <p>The resources here are offered free of charge, so please consider making a donation or providing feedback in our <em>About</em> section. </p>
-    <p><a class="btn btn-lg " style="background-color:#79bd9a;" href="/home/about" role="button">About Tenants Talk</a></p> 
+    <p><a class="btn btn-lg " style="background-color:#79bd9a;" href="/about" role="button">About Tenants Talk</a></p> 
   </div>
 </div>  
 <div class="container">
   <div class="row"> 
     <div class="col-md-4">
       <h2>Tenant Robot Lawyer</h2>
+      <p class="lead">
     </div>
   </div>
 
