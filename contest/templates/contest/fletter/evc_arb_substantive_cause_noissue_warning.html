@@ -384,7 +384,7 @@
                   <p>Submit this form as part of your evidence to the RTB.</p>
                   <!--written submission -->
                   <div id="printarea">
-                    <div id="dateprint">Date: %dateprint%</div>
+                    <div id="dateprint">Date: %date1print%</div>
                       <br/>
                     <div class="tnameprint">Tenant's Name: %tnameprint%</div>
                       <br/>
@@ -506,8 +506,13 @@ var repintroduction = {
 var repbackground = {"issuesummary":{
       "id":"issuesummary",
       "name":"Issue summary",
-      "pholder": "Brief summary of the issue, in complete sentences. The sink was broken.",
+      "pholder": "Brief summary of the issue, in complete sentences. 'The sink was broken.' If your landlord gave you warnings or interacted with you be sure to describe those interactions and explain what happened afterwards.",
       "widget": "textarea"},
+   "issueDate":{
+    "id":"idate",
+    "name": "Issue Date",
+    "pholder": "Date you first heard from your landlord regarding the issue at hand.",
+    "widget":"date"},   
   "landlordAllegation":{
       "id":"landlordAllegation",
       "name": "Landlord Allegations",
@@ -539,10 +544,10 @@ var evidence = {
     "widget":"textarea"}
 };
 var repconclusion = {
-  "damages":{
-    "id":"damages",
-    "name":"Damages",
-    "pholder":"Amount of money you are asking to get re-imbursed for. If you are asking for money back you should submit a Monetary order worksheet (http://www2.gov.bc.ca/assets/gov/housing-and-tenancy/residential-tenancies/forms/rtb21.pdf)",
+  "Summary":{
+    "id":"summary",
+    "name":"Summary",
+    "pholder":"Summarize why you should not be evicted. Refer to your evidence as necessary",
     "widget":"textarea"
   }
 };
