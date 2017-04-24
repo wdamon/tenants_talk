@@ -41,7 +41,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" style="color: white">Tenants Talk |</a>
+          <a class="navbar-brand" style="color: white" href="{% url 'home' %}">Tenants Talk |</a>
         </div>
 
         <div class="collapse navbar-collapse" id="navbar1">
@@ -130,7 +130,8 @@
                 <div class="panel-body" style="padding-left: 2em; font-family:Work Sans; font-size: 21px; font-weight: 200">
                 <p> If successful you can get the Residential Tenancy Branch to:</p>
                   <p class="text-center"><ul class="well well-lg" style="padding-left: 2em; font-family:Work Sans; font-size: 21px; font-weight: 200">
-                    <li>Overturn the notice to end tenancy
+                    <li>Overturn the notice to end tenancy,</li>
+                    <li>Buy more time to arrange a move,</li>
                     <li>Order your landlord to pay for your filling fees
                     <br/>
                     <ul class="list-unstyled" style="font-size: 14px; font-weight: 100" >
@@ -171,10 +172,32 @@
                   <p>Now that you have applied you have <b> 3 calendar days </b> to give your landlord notice of dispute resolution and hearing documents.</p>
                   <p> There are two ways you can 'serve' these documents to your landlord.</p>
                   <p><ul style="font-family:Work Sans; font-size: 21px; font-weight: 200">
-                    <li>In person: Bring a witness with you.
-                    <li>Send by registered mail: Keep the receipt from the post office to prove you sent the notice. Mail the documents to the landlord as soon as you receive them.
+                    <li>In person: Bring a witness with you.</li>
+                    <li>Send by registered mail: Keep the receipt from the post office to prove you sent the notice. Mail the documents to the landlord as soon as you receive them.</li>
                     </ul>
                   </p>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default" style="border:1px solid black; font-family:Work Sans">
+              <div class="panel-heading" role="tab" id="headingDetails">
+                <h1>
+                <span>How to Serve Your Landlord -- Details Matter!</span>
+                <button type="button"class="btn btn-default pull-right" data-toggle="collapse" data-target="#bodyDetails" aria-expanded="false" aria-controls="Minimize">
+                  <i class="fa fa-minus" aria-hidden="true"></i>
+                </button>
+                </h1>
+              </div>
+              <div id="bodyDetails" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingDetails">
+                <div class="panel-body" style="padding-left: 2em; font-family:Work Sans; font-size: 21px; font-weight: 200">
+                  <p> There are rules about how and when a tenant can serve notice to a landlord. For a complete detailed walkthrough of the rules for service go to the B.C Government's Website: <a href="http://www2.gov.bc.ca/gov/content/housing-tenancy/residential-tenancies/during-a-tenancy/serving-notices-during-tenancy">HERE</a></p>
+                  <ul>
+                    <li>Sliding a copy of a document under the landlord's door or EMAILING or TEXTING is not an acceptable method!</li>
+                    <li>Faxed documents are considered served in 3 days</li>
+                    <li>Leaving a copy in a mailbox at an address where the person does business as a landlord is considered served in 3 days</li>
+                    <li>A copy sent through registered mailed to the landlord's address is considered received 5 days later (unless the landlord indicates they received it earlier)</li>
+                    <li>A copy given directly to the landlord or landlord's agent (make sure to note their name) is considered served on the same day</li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -191,18 +214,20 @@
               </div>
               <div id="bodyFive" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingFive">
                 <div class="panel-body" style="padding-left: 2em; font-family:Work Sans; font-size: 21px; font-weight: 200">
-                    <p> You will need to present evidence at your hearing. Examples of evidence you should consider providing include:</p>
+                    <p> You will need to present evidence at your hearing. This is crucial you need to use evidence to refute your landlord's claims. Examples of evidence you should consider providing include:</p>
                     <p><ul style="font-family:Work Sans; font-size: 21px; font-weight: 200">
-                      <li>Pictures
-                      <li>Copies of written communication
-                      <li>Your tenancy agreement
-                      <li>Video/audio recordings
-                      <li>Witness statements
-                      <li>Cost estimates from a tradesman
-                      <li>Receipts
+                    <li>If you have evidence that the reason your landlord gave for evicting you is misleading or untrue include it here. This would include: postings of the unit for rent, a lack of permits for renovation or demolition, or other to the effect that the landlord is not acting in good faith.
+                    </li>
+                      <li>Witness's statements (note that witnesses need to call into your hearing or give a sworn statement from a lawyer or notary)</li>
+                      <li>Neighbor's statements (Knock on your neighbor's doors and see if they will support you, especially if you are accused of making noise or nuisance, but note that they will also have to call into the hearing or give a sworn statement)</li>
+                      <li>Copies of written communication with the landlord</li>
+                      <li>Your tenancy agreement</li>
+                      <li>Video/audio recordings</li>
+                      <li>Cost estimates from a tradesman</li>
+                      <li>Relevant Receipts</li>
                     </ul>
                     </p>
-                    <p>If you didn't send evidence with your application you are required to send copies of your evidence to both the Residential Tenancy Branch (RTB) and the other party  <b>14 days</b> before the hearing.</P>
+                    <p>If you didn't send evidence with your application you are required to send copies of your evidence to both the Residential Tenancy Branch (RTB) and the other party <strong><u>14 days</u></strong> before the hearing.</P>
                 </div>
               </div>
             </div>
@@ -362,7 +387,7 @@
                   <p>Submit this form as part of your evidence to the RTB.</p>
                   <!--written submission -->
                   <div id="printarea">
-                    <div id="dateprint">Date: %dateprint%</div>
+                    <div id="dateprint">Date: %date1print%</div>
                       <br/>
                     <div class="tnameprint">Tenant's Name: %tnameprint%</div>
                       <br/>
@@ -383,12 +408,16 @@
                       <br/>
                       <u><h2>Introduction</h2></u>
                       <br/>
-                      <p><div class="idateprint issuesummaryprint">On %idateprint% %issuesummaryprint%.</div></p>
-                      <p><div class="landlordAllegationprint tenantResponseprint">The landlord alleges that %landlordAllegationprint% However, these allegations are not accurate. In fact, %tenantResponseprint%</p></div>
+                      <p><div class="idateprint issuesummaryprint">On %idateprint% the landlord served mme with a notice to end tenancy.</div></p>
+                      <p><div class="landlordAllegationprint tenantResponseprint">The landlord allegedly intends to %landlordAllegationprint% However, these allegations are not accurate. However, the landlord's stated intent does not appear to be true. In fact, %tenantResponseprint%
+                      The landlord is clearly trying to avoid the protections of the RTA.</p></div>
                       <br/>
+                      <u><h2>Conclusion</h2></u>
+                      <br/>
+                       <p>The decision to evict is a serious one. Given the evidence I presented (summarized below) and the aforementioned background, please delay or cancel this notice to end tenancy. <div class="summaryprint">%summaryprint%</div></p>
                       <br/>
 
-                    <h4>Evidence</h4>
+                    <u><h2>Evidence</h2></u>
                     To coroborate these claims the following evidence has been attached to this letter.
                     <div style="margin-left:5%">
                       <div id="evidenceLetter" class = "well">
@@ -479,24 +508,24 @@ var repintroduction = {
   "lpostal":{
       "id":"lpostal",
       "name": "Your Landlords Postal Code",
-      "pholder":"V5Y1J2"},
-  "issuesummary":{
-      "id":"issuesummary",
-      "name":"Issue summary",
-      "pholder": "Brief summary of the issue, in complete sentences. The sink was broken.",
-      "widget": "textarea"},
+      "pholder":"V5Y1J2"}
+  };
+var repbackground = {  
+  "idate":{
+      "id":"idate",
+      "name":"Date you were given notice",
+      "pholder": "Date you were given notice.",
+      "widget": "date"},
   "landlordAllegation":{
       "id":"landlordAllegation",
-      "name": "Landlord Allegations",
-      "pholder": "The landlord alleges that ______ ('I played my music too loud')",
+      "name": "Landlord's Stated Intent",
+      "pholder": "The landlord intends to ______ ('Renovate the property')",
       "widget": "textarea"},
   "tenantResponse":{
       "id":"tenantResponse",
-      "name": "Tenant's Response to landlord allegations",
-      "pholder": "However, these allegations are not accurate. In fact, ________ ('I have a witness who can testify that I was not even in the building that night')",
-      "widget": "textarea"},
-  };
-var repbackground = {};
+      "name": "Tenant's evidence of bad faith.",
+      "pholder": "However, the landlord's stated intent does not appear to be true. In fact, ________ ('I have a witness who can testify that the unit is being rented out again next month)",
+      "widget": "textarea"},};
 var evidence = {
   "edate":{
     "id": "edate",
@@ -518,10 +547,10 @@ var evidence = {
     "widget":"textarea"}
 };
 var repconclusion = {
-  "damages":{
+  "Summary":{
     "id":"damages",
-    "name":"Damages",
-    "pholder":"Amount of money you are asking to get re-imbursed for. If you are asking for money back you should submit a Monetary order worksheet (http://www2.gov.bc.ca/assets/gov/housing-and-tenancy/residential-tenancies/forms/rtb21.pdf)",
+    "name":"Summary",
+    "pholder":"Summarize your argument, laying out your evidence and rationale. Focus on your evidence that the landlord is acting in bad faith.",
     "widget":"textarea"
   }
 };
