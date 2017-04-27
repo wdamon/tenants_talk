@@ -28,6 +28,7 @@ def map2(request):
 
 def form(request):
     form = ReportForm()
+    form.fields['evictreason'].widget.attrs['maxlength']= '500'
     return render(request, 'report/form.html', {'form':form})
 
 def post_report(request):
