@@ -11,16 +11,22 @@ CATEGORIES = (
     ('OTH', 'Other'),
 )
 
+
+    class Meta:
+        model = Article
+        fields = ['headline', 'content']
+
 class ReportForm(forms.ModelForm):
     lat = forms.DecimalField(widget=forms.HiddenInput(), initial=123)
     lon = forms.DecimalField(widget=forms.HiddenInput(), initial=123)
     category = forms.ChoiceField(choices=CATEGORIES, required=True)
+    evictreason = forms.CharField(widget=forms.Textarea(attrs={'rows':8, max_length:'500'}))
 
     class Meta:
         model = Eviction
         fields = ['category', 'address', 'city', 'province', 'postal', 'evictdate', 'evictreason', 'lat', 'lon']
         labels = {'category': ('What best describes your issue?'), 'address': ('Address'), 'city': ('City'), 'province': ('Province'), 'postal': ('Postal Code'), 'evictdate': ('Date'), 'evictreason': ('Reason')}
-        widgets = {'evictreason': forms.Textarea(attrs={'rows':8}), 'evictdate': forms.DateInput(attrs={'id': 'datetimepicker12'})}
+        widgets = {'evictdate': forms.DateInput(attrs={'id': 'datetimepicker12'})}
 
     def save(self, *args, **kwargs):
         location = "%s,%s,%s,%s" % (self.cleaned_data['address'], self.cleaned_data['city'], self.cleaned_data['province'], self.cleaned_data['postal'])
