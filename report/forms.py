@@ -20,7 +20,11 @@ class ReportForm(forms.ModelForm):
     lat = forms.DecimalField(widget=forms.HiddenInput(), initial=123)
     lon = forms.DecimalField(widget=forms.HiddenInput(), initial=123)
     category = forms.ChoiceField(choices=CATEGORIES, required=True)
-    evictreason = forms.CharField(widget=forms.Textarea(attrs={'rows':8, max_length:'500'}))
+    evictreason = forms.CharField(
+        widget=forms.Textarea(attrs={
+            'rows':8, 
+            'max_length':'500'})
+        )
 
     class Meta:
         model = Eviction
