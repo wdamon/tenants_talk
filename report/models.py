@@ -17,7 +17,7 @@ class Eviction(models.Model):
     province = models.CharField(max_length=100)
     postal = models.CharField(max_length=100)
     evictdate = models.DateField()
-    evictreason = models.CharField(max_length=500)
+    evictreason = models.CharField(max_length=1000)
     lat = models.FloatField()
     lon = models.FloatField()
     geom = PointField()
