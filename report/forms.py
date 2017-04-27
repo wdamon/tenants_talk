@@ -18,7 +18,8 @@ class ReportForm(forms.ModelForm):
     evictreason = forms.CharField(
         widget=forms.Textarea(attrs={
             'rows':8, 
-            'max_length':'500'})
+            'max_length':'500',
+            'label':"Description of events"})
         )
 
     class Meta:
