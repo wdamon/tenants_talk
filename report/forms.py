@@ -11,11 +11,6 @@ CATEGORIES = (
     ('OTH', 'Other'),
 )
 
-
-    class Meta:
-        model = Article
-        fields = ['headline', 'content']
-
 class ReportForm(forms.ModelForm):
     lat = forms.DecimalField(widget=forms.HiddenInput(), initial=123)
     lon = forms.DecimalField(widget=forms.HiddenInput(), initial=123)
