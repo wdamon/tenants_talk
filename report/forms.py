@@ -19,7 +19,7 @@ class ReportForm(forms.ModelForm):
     class Meta:
         model = Eviction
         fields = ['category', 'address', 'city', 'province', 'postal', 'evictdate', 'evictreason', 'lat', 'lon']
-        labels = {'category': ('What best describes your issue?'), 'address': ('Address'), 'city': ('City'), 'province': ('Province'), 'postal': ('Postal Code'), 'evictdate': ('Date'), 'evictreason': ('Reason')}
+        labels = {'category': ('What best describes your issue?'), 'address': ('Address'), 'city': ('City'), 'province': ('Province'), 'postal': ('Postal Code'), 'evictdate': ('Date'), 'evictreason': ('Description of Events')}
         widgets = {'evictdate': forms.DateInput(attrs={'id': 'datetimepicker12'}), 'evictreason':forms.Textarea(attrs={'rows': 8, 'max_length':'1000'})}
 
     def save(self, *args, **kwargs):
