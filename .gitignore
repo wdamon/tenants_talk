@@ -4,7 +4,6 @@ __pycache__/
 *.DS_Store
 *local_settings.py
 contest/notes.txt
-report/static/images
 report/static/fuse.js
 report/static/leaflet-ajax
 report/static/leaflet-fusesearch-master
